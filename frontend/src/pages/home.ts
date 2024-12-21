@@ -1,7 +1,7 @@
 export default function Home() {
   return `
   <section class="flex flex-col justify-center h-full">
-    <h1 class="font-bold text-3xl">Hi, I'm Ryan Bowler</h1>
+    <h1 class="font-bold text-3xl">Ryan Bowler</h1>
     <p class="text-xl mt-2 max-w-[60ch]">
       A passionate <span class="font-bold">Full Stack Developer</span> and
       professional problem solver who loves to build things!

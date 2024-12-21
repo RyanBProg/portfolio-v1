@@ -2,6 +2,8 @@ import "./style.css";
 import Header from "./components/header.ts";
 import Home from "./pages/home.ts";
 import Projects from "./pages/projects.ts";
+import About from "./pages/about.ts";
+import Contact from "./pages/contact.ts";
 
 document.getElementById("header-cont")!.innerHTML = Header();
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = Home();
@@ -29,15 +31,13 @@ navButtons.forEach((button) => {
         document.querySelector<HTMLDivElement>("#app")!.innerHTML = Home();
         break;
       case "about-nav-button":
-        document.querySelector<HTMLDivElement>("#app")!.innerHTML =
-          "<section><h1>About Page</h1><p>About content goes here.</p></section>";
+        document.querySelector<HTMLDivElement>("#app")!.innerHTML = About();
         break;
       case "portfolio-nav-button":
         document.querySelector<HTMLDivElement>("#app")!.innerHTML = Projects();
         break;
       case "contact-nav-button":
-        document.querySelector<HTMLDivElement>("#app")!.innerHTML =
-          "<section><h1>Contact Page</h1><p>Contact content goes here.</p></section>";
+        document.querySelector<HTMLDivElement>("#app")!.innerHTML = Contact();
         break;
     }
   });
