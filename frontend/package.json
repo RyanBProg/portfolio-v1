@@ -16,6 +16,8 @@
     "vite": "^6.0.3"
   },
   "dependencies": {
-    "@tailwindcss/typography": "^0.5.15"
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/gsap": "^3.0.0",
+    "gsap": "^3.12.5"
   }
 }
