@@ -11,10 +11,234 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
   </head>
-  <body class="font-space-grotesk h-dvh w-dvw overflow-clip md:flex">
-    <div id="header-cont"></div>
-    <div id="app" class="overflow-y-scroll w-full scrollbar-container"></div>
+  <body class="font-space-grotesk">
+    <!-- HEADER -->
+    <header class="absolute z-20 p-[5px]" id="header">
+      <nav
+        class="absolute w-[200px] flex items-center pl-5 pt-20 pb-10 bg-black rounded-xl transform md:hidden"
+        id="nav">
+        <ul class="grid gap-1">
+          <li>
+            <a
+              href="#"
+              class="text-xl text-white font-medium transition-colors hover:text-neutral-400 active"
+              id="home-nav-button"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-xl text-white font-medium transition-colors hover:text-neutral-400"
+              id="about-nav-button"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-xl text-white font-medium transition-colors hover:text-neutral-400"
+              id="portfolio-nav-button"
+              >Portfolio</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-xl text-white font-medium transition-colors hover:text-neutral-400"
+              id="contact-nav-button"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <button
+        aria-label="Open Mobile Navigation"
+        class="block w-10 h-10 rounded-md text-white bg-black border-none transition-colors translate-x-0 hover:cursor-pointer hover:text-neutral-400"
+        id="mobile-nav-btn">
+        X
+      </button>
+    </header>
+
+    <main>
+      <!-- BANNER -->
+      <section class="h-dvh flex flex-col justify-center items-center px-5">
+        <h1
+          class="font-bold text-7xl text-center tracking-tighter leading-none sm:text-9xl md:text-[10rem]">
+          <span class="main-heading">Ryan</span> <br /><span
+            class="main-heading"
+            >Bowler</span
+          >
+        </h1>
+        <p class="text-base sm:text-xl mt-2 text-center text-neutral-700">
+          A passionate <span class="font-bold">Full Stack Developer</span> and
+          <br />professional problem solver who loves to build things!
+        </p>
+        <div class="mt-16 flex gap-5 justify-center">
+          <div class="text-center">
+            <h2 class="font-bold text-lg sm:text-xl">4+ Years</h2>
+            <p class="text-neutral-700">Coding experience</p>
+          </div>
+          <div class="text-center">
+            <h2 class="font-bold text-lg sm:text-xl">10+ Years</h2>
+            <p class="text-neutral-700">Engineering experience</p>
+          </div>
+        </div>
+        <div class="flex gap-5 mt-6 justify-center">
+          <button
+            class="bg-neutral-500 rounded-xl block h-20 w-20 text-xs transition-colors hover:bg-neutral-400">
+            GitHub
+          </button>
+          <button
+            class="bg-neutral-500 rounded-xl block h-20 w-20 text-xs transition-colors hover:bg-neutral-400">
+            LinkedIn
+          </button>
+          <button
+            class="bg-neutral-500 rounded-xl block h-20 w-20 text-xs transition-colors hover:bg-neutral-400">
+            Resume
+          </button>
+        </div>
+      </section>
+
+      <!-- WHITESPACE -->
+      <div class="h-[200px]"></div>
+
+      <!-- PROJECTS -->
+      <section>
+        <h2 class="font-bold text-7xl pl-5 pb-5 tracking-tight sm:pl-10">
+          Projects
+        </h2>
+        <article
+          class="bg-neutral-100 h-dvh flex flex-col justify-center gap-10 py-20 px-5 md:flex-row sm:px-10 md:items-center">
+          <h3 class="text-5xl tracking-tight font-bold md:flex-1">
+            Better Spanish
+          </h3>
+          <div class="md:w-[300px] lg:w-[480px]">
+            <p>
+              This was a project that i built this weekend and i really enjoyed
+              it, please check it out
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="bg-neutral-400 p-1 rounded-md">Typscript</span>
+              <span class="bg-neutral-400 p-1 rounded-md">Next.js</span>
+              <span class="bg-neutral-400 p-1 rounded-md">Tailwind</span>
+              <span class="bg-neutral-400 p-1 rounded-md">Mongo DB</span>
+            </div>
+          </div>
+          <button
+            class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-100">
+            More =>
+          </button>
+        </article>
+        <article
+          class="bg-neutral-200 h-dvh flex flex-col justify-center gap-10 py-20 px-5 md:flex-row sm:px-10 md:items-center">
+          <h3 class="text-5xl tracking-tight font-bold md:flex-1">
+            Dev Trainer
+          </h3>
+          <div class="md:w-[300px] lg:w-[480px]">
+            <p>
+              This was a project that i built this weekend and i really enjoyed
+              it, please check it out
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="bg-neutral-400 p-1 rounded-md">Typscript</span>
+              <span class="bg-neutral-400 p-1 rounded-md">Next.js</span>
+              <span class="bg-neutral-400 p-1 rounded-md">Tailwind</span>
+              <span class="bg-neutral-400 p-1 rounded-md">Mongo DB</span>
+            </div>
+          </div>
+          <button
+            class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-100">
+            More =>
+          </button>
+        </article>
+        <article
+          class="bg-neutral-100 h-dvh flex flex-col justify-center gap-10 py-20 px-5 md:flex-row sm:px-10 md:items-center">
+          <h3 class="text-5xl tracking-tight font-bold md:flex-1">Map Nerd</h3>
+          <div class="md:w-[300px] lg:w-[480px]">
+            <p>
+              This was a project that i built this weekend and i really enjoyed
+              it, please check it out
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="bg-neutral-400 p-1 rounded-md">Typscript</span>
+              <span class="bg-neutral-400 p-1 rounded-md">Next.js</span>
+              <span class="bg-neutral-400 p-1 rounded-md">Tailwind</span>
+              <span class="bg-neutral-400 p-1 rounded-md">Mongo DB</span>
+            </div>
+          </div>
+          <button
+            class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-100">
+            More =>
+          </button>
+        </article>
+        <article
+          class="bg-neutral-200 h-dvh flex flex-col justify-center gap-10 py-20 px-5 md:flex-row sm:px-10 md:items-center">
+          <h3 class="text-5xl tracking-tight font-bold md:flex-1">
+            My Portfolio
+          </h3>
+          <div class="md:w-[300px] lg:w-[480px]">
+            <p>
+              This was a project that i built this weekend and i really enjoyed
+              it, please check it out
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="bg-neutral-400 p-1 rounded-md">Typscript</span>
+              <span class="bg-neutral-400 p-1 rounded-md">Next.js</span>
+              <span class="bg-neutral-400 p-1 rounded-md">Tailwind</span>
+              <span class="bg-neutral-400 p-1 rounded-md">Mongo DB</span>
+            </div>
+          </div>
+          <button
+            class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-100">
+            More =>
+          </button>
+        </article>
+      </section>
+
+      <!-- WHITESPACE -->
+      <div class="h-[200px]"></div>
+
+      <!-- CONTACT -->
+      <section class="flex flex-col justify-center gap-4 h-dvh">
+        <h1
+          class="font-bold text-5xl pl-5 pb-5 tracking-tight sm:text-7xl sm:pl-10">
+          Contact Me
+        </h1>
+        <form class="flex flex-col gap-4 max-w-[600px] px-5 sm:pl-10">
+          <label class="flex flex-col">
+            <span class="font-bold text-xl">Name</span>
+            <input
+              type="text"
+              class="border p-2 rounded"
+              placeholder="Your Name"
+              required />
+          </label>
+          <label class="flex flex-col">
+            <span class="font-bold text-xl">Email</span>
+            <input
+              type="email"
+              class="border p-2 rounded"
+              placeholder="Your Email"
+              required />
+          </label>
+          <label class="flex flex-col">
+            <span class="font-bold text-xl">Message</span>
+            <textarea
+              class="border p-2 rounded"
+              rows="5"
+              placeholder="Your Message"
+              required></textarea>
+          </label>
+          <button
+            type="submit"
+            class="bg-black hover:bg-neutral-500 rounded-xl p-3 text-white font-bold mt-4">
+            Send Message
+          </button>
+        </form>
+      </section>
+    </main>
+
     <script type="module" src="/src/main.ts"></script>
-    <script src="src/scripts.ts"></script>
   </body>
 </html>
