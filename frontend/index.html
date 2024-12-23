@@ -54,9 +54,9 @@
       </nav>
       <button
         aria-label="Open Mobile Navigation"
-        class="block w-10 h-10 rounded-md text-white bg-black border-none transition-colors translate-x-0 hover:cursor-pointer hover:text-neutral-400"
+        class="block w-10 h-10 text-2xl rounded-md text-white bg-black border-none transition-colors translate-x-0 hover:cursor-pointer hover:text-neutral-400"
         id="mobile-nav-btn">
-        X
+        ☰
       </button>
     </header>
 
@@ -64,17 +64,21 @@
       <!-- BANNER -->
       <section class="h-dvh flex flex-col justify-center items-center px-5">
         <h1
-          class="font-bold text-7xl text-center tracking-tighter leading-none sm:text-9xl md:text-[10rem]">
-          <span class="main-heading">Ryan</span> <br /><span
-            class="main-heading"
-            >Bowler</span
-          >
+          class="font-bold text-7xl text-center tracking-tighter sm:text-9xl md:text-[10rem]">
+          <div class="overflow-hidden pb-2">
+            <span class="main-heading block">Ryan</span>
+          </div>
+          <div class="overflow-hidden">
+            <span class="main-heading block">Bowler</span>
+          </div>
         </h1>
-        <p class="text-base sm:text-xl mt-2 text-center text-neutral-700">
+        <p
+          id="sub-text"
+          class="text-base sm:text-xl mt-2 text-center text-neutral-700">
           A passionate <span class="font-bold">Full Stack Developer</span> and
           <br />professional problem solver who loves to build things!
         </p>
-        <div class="mt-16 flex gap-5 justify-center">
+        <div id="stats" class="mt-16 flex gap-5 justify-center">
           <div class="text-center">
             <h2 class="font-bold text-lg sm:text-xl">4+ Years</h2>
             <p class="text-neutral-700">Coding experience</p>
@@ -84,7 +88,7 @@
             <p class="text-neutral-700">Engineering experience</p>
           </div>
         </div>
-        <div class="flex gap-5 mt-6 justify-center">
+        <div id="socials" class="flex gap-5 mt-6 justify-center">
           <button
             class="bg-neutral-500 rounded-xl block h-20 w-20 text-xs transition-colors hover:bg-neutral-400">
             GitHub
@@ -104,97 +108,219 @@
       <div class="h-[200px]"></div>
 
       <!-- PROJECTS -->
-      <section>
+      <section class="about-projects-wrap">
         <h2 class="font-bold text-7xl pl-5 pb-5 tracking-tight sm:pl-10">
           Projects
         </h2>
-        <article
-          class="bg-neutral-100 h-dvh flex flex-col justify-center gap-10 py-20 px-5 md:flex-row sm:px-10 md:items-center">
-          <h3 class="text-5xl tracking-tight font-bold md:flex-1">
-            Better Spanish
-          </h3>
-          <div class="md:w-[300px] lg:w-[480px]">
-            <p>
-              This was a project that i built this weekend and i really enjoyed
-              it, please check it out
-            </p>
-            <div class="flex flex-wrap gap-2 mt-4">
-              <span class="bg-neutral-400 p-1 rounded-md">Typscript</span>
-              <span class="bg-neutral-400 p-1 rounded-md">Next.js</span>
-              <span class="bg-neutral-400 p-1 rounded-md">Tailwind</span>
-              <span class="bg-neutral-400 p-1 rounded-md">Mongo DB</span>
+        <div
+          data-w-id="9ff6c1d3-c932-9cc3-7ccf-327af82f8969"
+          class="section_projects relative">
+          <div class="w-dyn-list">
+            <div role="list" class="w-dyn-items">
+              <div
+                role="listitem"
+                class="scroll-trigger-img w-dyn-item relative">
+                <img
+                  src="https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/669ee576a05e890caf24b147_DSC_9785-1.webp"
+                  loading="lazy"
+                  alt=""
+                  sizes="100vw"
+                  srcset="
+                    https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/669ee576a05e890caf24b147_DSC_9785-1-p-500.webp   500w,
+                    https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/669ee576a05e890caf24b147_DSC_9785-1-p-800.webp   800w,
+                    https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/669ee576a05e890caf24b147_DSC_9785-1-p-1080.webp 1080w,
+                    https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/669ee576a05e890caf24b147_DSC_9785-1-p-1600.webp 1600w,
+                    https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/669ee576a05e890caf24b147_DSC_9785-1.webp        1680w
+                  "
+                  class="scroll-img-bg h-dvh w-dvw object-cover"
+                  style="
+                    translate: none;
+                    rotate: none;
+                    scale: none;
+                    transform: translate(0px, 0px);
+                  " />
+                <div
+                  class="overlay-img-bg-project absolute inset-0 bg-black/50"></div>
+              </div>
+              <div
+                role="listitem"
+                class="scroll-trigger-img w-dyn-item relative">
+                <img
+                  src="https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/66b2aa7260e2fac5abf06078_Rectangle%201%20(1).webp"
+                  loading="lazy"
+                  alt=""
+                  sizes="100vw"
+                  srcset="
+                    https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/66b2aa7260e2fac5abf06078_Rectangle%201%20(1)-p-500.webp   500w,
+                    https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/66b2aa7260e2fac5abf06078_Rectangle%201%20(1)-p-800.webp   800w,
+                    https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/66b2aa7260e2fac5abf06078_Rectangle%201%20(1)-p-1080.webp 1080w,
+                    https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/66b2aa7260e2fac5abf06078_Rectangle%201%20(1)-p-1600.webp 1600w,
+                    https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/66b2aa7260e2fac5abf06078_Rectangle%201%20(1)-p-2000.webp 2000w,
+                    https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/66b2aa7260e2fac5abf06078_Rectangle%201%20(1).webp        2882w
+                  "
+                  class="scroll-img-bg h-dvh w-dvw object-cover"
+                  style="
+                    translate: none;
+                    rotate: none;
+                    scale: none;
+                    transform: translate(0px, 0px);
+                  " />
+                <div
+                  class="overlay-img-bg-project absolute inset-0 bg-black/50"></div>
+              </div>
+              <div
+                role="listitem"
+                class="scroll-trigger-img w-dyn-item relative">
+                <img
+                  src="https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/670ef6f05fb3f7bd45f40d64_Screenshot%202024-10-14%20at%2012.04.20%202.webp"
+                  loading="lazy"
+                  alt=""
+                  sizes="100vw"
+                  srcset="
+                    https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/670ef6f05fb3f7bd45f40d64_Screenshot%202024-10-14%20at%2012.04.20%202-p-500.webp   500w,
+                    https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/670ef6f05fb3f7bd45f40d64_Screenshot%202024-10-14%20at%2012.04.20%202-p-800.webp   800w,
+                    https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/670ef6f05fb3f7bd45f40d64_Screenshot%202024-10-14%20at%2012.04.20%202-p-1080.webp 1080w,
+                    https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/670ef6f05fb3f7bd45f40d64_Screenshot%202024-10-14%20at%2012.04.20%202-p-1600.webp 1600w,
+                    https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/670ef6f05fb3f7bd45f40d64_Screenshot%202024-10-14%20at%2012.04.20%202-p-2000.webp 2000w,
+                    https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/670ef6f05fb3f7bd45f40d64_Screenshot%202024-10-14%20at%2012.04.20%202.webp        2882w
+                  "
+                  class="scroll-img-bg h-dvh w-dvw object-cover"
+                  style="
+                    translate: none;
+                    rotate: none;
+                    scale: none;
+                    transform: translate(0px, 0px);
+                  " />
+                <div
+                  class="overlay-img-bg-project absolute inset-0 bg-black/50"></div>
+              </div>
             </div>
           </div>
-          <button
-            class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-100">
-            More =>
-          </button>
-        </article>
-        <article
-          class="bg-neutral-200 h-dvh flex flex-col justify-center gap-10 py-20 px-5 md:flex-row sm:px-10 md:items-center">
-          <h3 class="text-5xl tracking-tight font-bold md:flex-1">
-            Dev Trainer
-          </h3>
-          <div class="md:w-[300px] lg:w-[480px]">
-            <p>
-              This was a project that i built this weekend and i really enjoyed
-              it, please check it out
-            </p>
-            <div class="flex flex-wrap gap-2 mt-4">
-              <span class="bg-neutral-400 p-1 rounded-md">Typscript</span>
-              <span class="bg-neutral-400 p-1 rounded-md">Next.js</span>
-              <span class="bg-neutral-400 p-1 rounded-md">Tailwind</span>
-              <span class="bg-neutral-400 p-1 rounded-md">Mongo DB</span>
+          <div class="scroll-track w-dyn-list absolute inset-0">
+            <div
+              role="list"
+              class="scroll-sticky w-dyn-items w-full h-dvh sticky top-0">
+              <div
+                role="listitem"
+                class="scroll-item w-dyn-item absolute inset-0 flex items-center justify-between px-[5%]"
+                style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)">
+                <div
+                  class="text-white flex flex-col justify-center gap-10 px-5 md:flex-row sm:px-10 md:items-center">
+                  <h3 class="text-5xl tracking-tight font-bold md:flex-1">
+                    Dev Trainer
+                  </h3>
+                  <div class="md:w-[300px] lg:w-[480px]">
+                    <p>
+                      This was a project that i built this weekend and i really
+                      enjoyed it, please check it out
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                      <span class="bg-neutral-500 p-1 rounded-md"
+                        >Typscript</span
+                      >
+                      <span class="bg-neutral-500/70 p-1 rounded-md"
+                        >Next.js</span
+                      >
+                      <span class="bg-neutral-500/70 p-1 rounded-md"
+                        >Tailwind</span
+                      >
+                      <span class="bg-neutral-500/70 p-1 rounded-md"
+                        >Mongo DB</span
+                      >
+                      <span class="bg-neutral-500/70 p-1 rounded-md"
+                        >Express.js</span
+                      >
+                    </div>
+                  </div>
+                  <button
+                    class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-500/30">
+                    More &rarr;
+                  </button>
+                </div>
+              </div>
+              <div
+                role="listitem"
+                class="scroll-item w-dyn-item absolute inset-0 flex items-center justify-between px-[5%]"
+                style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)">
+                <div
+                  class="text-white flex flex-col justify-center gap-10 px-5 md:flex-row sm:px-10 md:items-center">
+                  <h3 class="text-5xl tracking-tight font-bold md:flex-1">
+                    Better Spanish
+                  </h3>
+                  <div class="md:w-[300px] lg:w-[480px]">
+                    <p>
+                      This was a project that i built this weekend and i really
+                      enjoyed it, please check it out
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                      <span class="bg-neutral-500 p-1 rounded-md"
+                        >Typscript</span
+                      >
+                      <span class="bg-neutral-500/70 p-1 rounded-md"
+                        >Next.js</span
+                      >
+                      <span class="bg-neutral-500/70 p-1 rounded-md"
+                        >Tailwind</span
+                      >
+                      <span class="bg-neutral-500/70 p-1 rounded-md"
+                        >Mongo DB</span
+                      >
+                    </div>
+                  </div>
+                  <button
+                    class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-500/30">
+                    More &rarr;
+                  </button>
+                </div>
+              </div>
+              <div
+                role="listitem"
+                class="scroll-item w-dyn-item absolute inset-0 flex items-center justify-between px-[5%]"
+                style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)">
+                <div
+                  class="text-white flex flex-col justify-center gap-10 px-5 md:flex-row sm:px-10 md:items-center">
+                  <h3 class="text-5xl tracking-tight font-bold md:flex-1">
+                    My Portfolio
+                  </h3>
+                  <div class="md:w-[300px] lg:w-[480px]">
+                    <p>
+                      This was a project that i built this weekend and i really
+                      enjoyed it, please check it out
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                      <span class="bg-neutral-500 p-1 rounded-md"
+                        >Typscript</span
+                      >
+                      <span class="bg-neutral-500/70 p-1 rounded-md"
+                        >Next.js</span
+                      >
+                      <span class="bg-neutral-500/70 p-1 rounded-md"
+                        >Tailwind</span
+                      >
+                      <span class="bg-neutral-500/70 p-1 rounded-md"
+                        >Mongo DB</span
+                      >
+                      <span class="bg-neutral-500/70 p-1 rounded-md"
+                        >Express.js</span
+                      >
+                    </div>
+                  </div>
+                  <button
+                    class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-500/30">
+                    More &rarr;
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-          <button
-            class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-100">
-            More =>
-          </button>
-        </article>
-        <article
-          class="bg-neutral-100 h-dvh flex flex-col justify-center gap-10 py-20 px-5 md:flex-row sm:px-10 md:items-center">
-          <h3 class="text-5xl tracking-tight font-bold md:flex-1">Map Nerd</h3>
-          <div class="md:w-[300px] lg:w-[480px]">
-            <p>
-              This was a project that i built this weekend and i really enjoyed
-              it, please check it out
-            </p>
-            <div class="flex flex-wrap gap-2 mt-4">
-              <span class="bg-neutral-400 p-1 rounded-md">Typscript</span>
-              <span class="bg-neutral-400 p-1 rounded-md">Next.js</span>
-              <span class="bg-neutral-400 p-1 rounded-md">Tailwind</span>
-              <span class="bg-neutral-400 p-1 rounded-md">Mongo DB</span>
-            </div>
-          </div>
-          <button
-            class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-100">
-            More =>
-          </button>
-        </article>
-        <article
-          class="bg-neutral-200 h-dvh flex flex-col justify-center gap-10 py-20 px-5 md:flex-row sm:px-10 md:items-center">
-          <h3 class="text-5xl tracking-tight font-bold md:flex-1">
-            My Portfolio
-          </h3>
-          <div class="md:w-[300px] lg:w-[480px]">
-            <p>
-              This was a project that i built this weekend and i really enjoyed
-              it, please check it out
-            </p>
-            <div class="flex flex-wrap gap-2 mt-4">
-              <span class="bg-neutral-400 p-1 rounded-md">Typscript</span>
-              <span class="bg-neutral-400 p-1 rounded-md">Next.js</span>
-              <span class="bg-neutral-400 p-1 rounded-md">Tailwind</span>
-              <span class="bg-neutral-400 p-1 rounded-md">Mongo DB</span>
-            </div>
-          </div>
-          <button
-            class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-100">
-            More =>
-          </button>
-        </article>
+        </div>
       </section>
+
+      <!-- SEE MORE -->
+      <div
+        class="h-[400px] z-99 relative bg-black text-white flex items-center justify-center">
+        <h2 class="text-7xl text-center">See More Projects</h2>
+      </div>
 
       <!-- WHITESPACE -->
       <div class="h-[200px]"></div>

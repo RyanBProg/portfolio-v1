@@ -1,27 +1,63 @@
 import "./style.css";
 import { gsap } from "gsap";
-// import Header from "./components/header.ts";
-// import Home from "./pages/home.ts";
-// import Projects from "./pages/projects.ts";
-// import About from "./pages/about.ts";
-// import Contact from "./pages/contact.ts";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const mainHeading = document.getElementsByClassName("main-heading");
+gsap.registerPlugin(ScrollTrigger);
 
-gsap.fromTo(
-  mainHeading,
+const mainHeading = document.querySelectorAll(".main-heading");
+const subText = document.getElementById("sub-text");
+const stats = document.getElementById("stats");
+const socials = document.getElementById("socials");
+const mobileButton = document.getElementById("mobile-nav-btn");
+
+// Set initial states
+gsap.set([subText, stats, socials], { opacity: 0 });
+
+// Create timeline
+const tl = gsap.timeline();
+
+// Add animations to timeline
+tl.fromTo(
+  mobileButton,
   {
-    y: -100,
-    // opacity: 0,
+    x: "-100%",
+    opacity: 0,
   },
   {
-    y: 0,
-    // opacity: 1,
-    duration: 2,
-    stagger: 0.5,
+    x: "0%",
+    opacity: 1,
+    duration: 0.8,
+    stagger: 1,
+    ease: "back.out",
   }
-);
+)
+  .fromTo(
+    mainHeading,
+    {
+      y: "100%",
+      opacity: 0,
+    },
+    {
+      y: "0%",
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.8,
+      ease: "sine.inOut",
+    }
+  )
+  .fromTo(
+    [subText, stats, socials],
+    {
+      opacity: 0,
+    },
+    {
+      opacity: 1,
+      duration: 2,
+      ease: "sine.out",
+    }
+  );
 
+// more button animation
 document.querySelectorAll(".more-button").forEach((button) => {
   gsap.to(button, {
     y: -8,
@@ -31,40 +67,80 @@ document.querySelectorAll(".more-button").forEach((button) => {
   });
 });
 
-// document.getElementById("header-cont")!.innerHTML = Header();
-// document.querySelector<HTMLDivElement>("#app")!.innerHTML = Home();
+// Projects section animations
+document.querySelectorAll(".section_projects").forEach((section) => {
+  let triggers = section.querySelectorAll(".scroll-trigger-img");
+  let items = section.querySelectorAll(".scroll-item");
 
-// const header = document.getElementById("header");
-// const mobileButton = document.getElementById("mobile-nav-btn");
+  triggers.forEach((trigger, index) => {
+    let background = trigger.querySelector(".scroll-img-bg");
+    let item = items[index];
 
-// mobileButton?.addEventListener("click", () => {
-//   if (header?.classList.contains("mobile-nav-open")) {
-//     header?.classList.remove("mobile-nav-open");
-//   } else {
-//     header?.classList.add("mobile-nav-open");
-//   }
-// });
+    if (index === 0) {
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: trigger,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+        defaults: {
+          ease: "none",
+        },
+      });
+      tl.fromTo(
+        item,
+        { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
+        { clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" }
+      );
+    } else if (index === items.length - 1) {
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: trigger,
+          start: "top bottom",
+          end: "bottom bottom",
+          scrub: true,
+        },
+        defaults: {
+          ease: "none",
+        },
+      });
+      tl.fromTo(
+        item,
+        { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" },
+        { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" }
+      );
+    } else {
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: trigger,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+        defaults: {
+          ease: "none",
+        },
+      });
+      tl.fromTo(
+        item,
+        { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" },
+        { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" }
+      );
+      tl.to(item, { clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" });
+    }
 
-// const navButtons = document.querySelectorAll("[id$='nav-button']");
-
-// navButtons.forEach((button) => {
-//   button.addEventListener("click", () => {
-//     navButtons.forEach((btn) => btn.classList.remove("active"));
-//     button.classList.add("active");
-
-//     switch (button.id) {
-//       case "home-nav-button":
-//         document.querySelector<HTMLDivElement>("#app")!.innerHTML = Home();
-//         break;
-//       case "about-nav-button":
-//         document.querySelector<HTMLDivElement>("#app")!.innerHTML = About();
-//         break;
-//       case "portfolio-nav-button":
-//         document.querySelector<HTMLDivElement>("#app")!.innerHTML = Projects();
-//         break;
-//       case "contact-nav-button":
-//         document.querySelector<HTMLDivElement>("#app")!.innerHTML = Contact();
-//         break;
-//     }
-//   });
-// });
+    let tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: trigger,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+      defaults: {
+        ease: "none",
+      },
+    });
+    tl2.to(background, { yPercent: 50 });
+  });
+});
