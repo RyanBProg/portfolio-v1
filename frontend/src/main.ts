@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 
-// SMOOTH SCROLLING
+// Smooth scrolling
 const lenis = new Lenis();
 
 function raf(time) {
@@ -20,7 +20,7 @@ gsap.ticker.lagSmoothing(0);
 
 requestAnimationFrame(raf);
 
-// GSAP ANIMATIONS
+// GSAP animations
 gsap.registerPlugin(ScrollTrigger);
 
 const mainHeading = document.querySelectorAll(".main-heading");
@@ -29,13 +29,8 @@ const stats = document.getElementById("stats");
 const socials = document.getElementById("socials");
 const mobileButton = document.getElementById("mobile-nav-btn");
 
-// Set initial states
 gsap.set([subText, stats, socials], { opacity: 0 });
-
-// Create timeline
 const tl = gsap.timeline();
-
-// Add animations to timeline
 tl.fromTo(
   mobileButton,
   {
@@ -82,7 +77,7 @@ document.querySelectorAll(".more-button").forEach((button) => {
     y: -8,
     repeat: -1,
     yoyo: true,
-    duration: 0.6,
+    duration: 1,
   });
 });
 
@@ -163,6 +158,8 @@ document.querySelectorAll(".section_projects").forEach((section) => {
     tl2.to(background, { yPercent: 50 });
   });
 });
+
+// Nav animation
 
 const nav = document.getElementById("nav");
 const navLinks = document.getElementById("nav-list");
