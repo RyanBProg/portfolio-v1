@@ -15,9 +15,9 @@
     <!-- HEADER -->
     <header class="absolute z-20 p-[5px]" id="header">
       <nav
-        class="absolute w-[200px] flex items-center pl-5 pt-20 pb-10 bg-black rounded-xl transform md:hidden"
-        id="nav">
-        <ul class="grid gap-1">
+        id="nav"
+        class="absolute top-[5px] left-[5px] rounded-sm pt-20 pb-10 px-10 bg-black origin-top-left scale-0">
+        <ul id="nav-list" class="grid gap-3 relative z-10 opacity-0">
           <li>
             <a
               href="#"
@@ -54,7 +54,7 @@
       </nav>
       <button
         aria-label="Open Mobile Navigation"
-        class="block w-10 h-10 text-2xl rounded-md text-white bg-black border-none transition-colors translate-x-0 hover:cursor-pointer hover:text-neutral-400"
+        class="block w-10 h-10 text-2xl rounded-sm text-white bg-black border-none transition-colors translate-x-0 hover:cursor-pointer hover:text-neutral-400"
         id="mobile-nav-btn">
         ☰
       </button>

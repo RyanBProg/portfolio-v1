@@ -163,3 +163,63 @@ document.querySelectorAll(".section_projects").forEach((section) => {
     tl2.to(background, { yPercent: 50 });
   });
 });
+
+const nav = document.getElementById("nav");
+const navLinks = document.getElementById("nav-list");
+let isNavOpen = false;
+
+mobileButton?.addEventListener("click", () => {
+  isNavOpen = !isNavOpen;
+
+  if (isNavOpen) {
+    // Open animation
+    const tl = gsap.timeline();
+    tl.set(nav, {
+      display: "flex",
+    })
+      .to(nav, {
+        scale: 1,
+        duration: 0.6,
+        ease: "sine.inOut",
+      })
+      .to(
+        navLinks,
+        {
+          opacity: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        },
+        "-=0.2"
+      )
+      .to(
+        mobileButton,
+        {
+          innerHTML: "✕",
+          duration: 0.1,
+        },
+        "-=0.3"
+      );
+  } else {
+    // Close animation
+    const tl = gsap.timeline();
+    tl.to(navLinks, {
+      opacity: 0,
+      duration: 0.3,
+      ease: "sine.inOut",
+    })
+      .to(nav, {
+        scale: 0,
+        duration: 0.6,
+        ease: "power2.inOut",
+      })
+      .set(nav, { display: "none" })
+      .to(
+        mobileButton,
+        {
+          innerHTML: "☰",
+          duration: 0.1,
+        },
+        "-=0.6"
+      );
+  }
+});
