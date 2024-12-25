@@ -24,7 +24,7 @@
         <ul id="nav-list" class="grid gap-3 relative z-10 opacity-0">
           <li>
             <a
-              href="#"
+              href="/"
               class="text-xl text-white font-medium transition-colors hover:text-neutral-400 active"
               id="home-nav-button"
               >Home</a
@@ -32,7 +32,7 @@
           </li>
           <li>
             <a
-              href="#"
+              href="/src/pages/about"
               class="text-xl text-white font-medium transition-colors hover:text-neutral-400"
               id="about-nav-button"
               >About</a
@@ -40,7 +40,7 @@
           </li>
           <li>
             <a
-              href="#"
+              href="/portfolio"
               class="text-xl text-white font-medium transition-colors hover:text-neutral-400"
               id="portfolio-nav-button"
               >Portfolio</a
@@ -48,7 +48,7 @@
           </li>
           <li>
             <a
-              href="#"
+              href="/contact"
               class="text-xl text-white font-medium transition-colors hover:text-neutral-400"
               id="contact-nav-button"
               >Contact</a
@@ -69,7 +69,7 @@
       <section
         class="relative h-dvh flex flex-col justify-center items-center px-5">
         <h1
-          class="font-bold text-7xl text-center tracking-tighter sm:text-9xl md:text-[10rem]">
+          class="font-bold text-8xl text-center tracking-tighter sm:text-9xl md:text-[10rem]">
           <div class="overflow-hidden pb-2">
             <span class="main-heading block">Ryan</span>
           </div>
@@ -93,7 +93,7 @@
             <p class="text-neutral-700">Engineering experience</p>
           </div>
         </div>
-        <div id="socials" class="flex gap-10 mt-6 justify-center">
+        <div id="socials" class="flex gap-16 mt-6 justify-center">
           <a
             href="https://github.com/RyanBProg"
             target="_blank"
@@ -111,13 +111,13 @@
           href="https://www.github.com/RyanBProg"
           target="_blank"
           class="absolute bottom-5 left-5 flex gap-2 items-center rounded-lg p-2 hover:bg-neutral-500/10">
-          <img src="/public/send.png" alt="download resume" />
+          <img src="/public/send.png" alt="download resume" class="h-6 w-6" />
           <span>Download Resume</span>
         </a>
       </section>
 
       <!-- WHITESPACE -->
-      <div class="h-[200px]"></div>
+      <div class="h-[150px] sm:h-[200px]"></div>
 
       <!-- PROJECTS -->
       <section class="about-projects-wrap">
@@ -339,12 +339,15 @@
 
       <!-- SEE MORE -->
       <div
-        class="h-[400px] z-99 relative bg-black text-white flex items-center justify-center">
-        <h2 class="text-7xl text-center">See More Projects</h2>
+        class="h-[400px] z-99 relative bg-black text-white flex items-center justify-center px-5 sm:px-10">
+        <a
+          class="text-6xl text-center hover:text-white/80 hover:cursor-pointer sm:text-7xl"
+          >See More Projects</a
+        >
       </div>
 
       <!-- WHITESPACE -->
-      <div class="h-[200px]"></div>
+      <div class="h-[150px] sm:h-[200px]"></div>
 
       <!-- CONTACT -->
       <section class="flex flex-col justify-center gap-4 h-dvh px-5 sm:px-10">
@@ -392,6 +395,9 @@
           </button>
         </form>
       </section>
+
+      <!-- WHITESPACE -->
+      <div class="h-[150px] sm:h-[200px]"></div>
     </main>
 
     <footer
