@@ -5,172 +5,173 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
-      rel="stylesheet" />
+      rel="stylesheet"
+    />
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <title>Portfolio | Ryan Bowler</title>
     <meta
       name="description"
-      content="Portfolio of Ryan Bowler, a full stack developer" />
+      content="Portfolio of Ryan Bowler, a full stack developer"
+    />
     <meta name="author" content="Ryan Bowler" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
-	<body class="font-space-grotesk min-h-dvh">
-		<!-- HEADER -->
-		<header class="absolute z-20 p-[5px]" id="header">
-			<nav
-				id="nav"
-				class="absolute top-[5px] left-[5px] rounded-sm pt-20 pb-10 px-10 bg-black origin-top-left scale-0">
-				<ul id="nav-list" class="grid gap-3 relative z-10 opacity-0">
-					<li>
-						<a
-							href="/"
-							class="text-xl text-white font-medium transition-colors hover:text-neutral-400 active"
-							id="home-nav-button"
-							>Home</a
-						>
-					</li>
-					<li>
-						<a
-							href="/about"
-							class="text-xl text-white font-medium transition-colors hover:text-neutral-400"
-							id="about-nav-button"
-							>About</a
-						>
-					</li>
-					<li>
-						<a
-							href="/projects"
-							class="text-xl text-white font-medium transition-colors hover:text-neutral-400"
-							id="projects-nav-button"
-							>Projects</a
-						>
-					</li>
-					<li>
-						<a
-							href="/contact"
-							class="text-xl text-white font-medium transition-colors hover:text-neutral-400"
-							id="contact-nav-button"
-							>Contact</a
-						>
-					</li>
-				</ul>
-			</nav>
-			<button
-				aria-label="Open Mobile Navigation"
-				class="block w-10 h-10 text-2xl rounded-sm text-white bg-black border-none transition-colors translate-x-0 hover:cursor-pointer hover:text-neutral-400"
-				id="mobile-nav-btn">
-				☰
-			</button>
-		</header>
+  <body class="font-space-grotesk min-h-dvh">
+    <!-- HEADER -->
+    <header class="absolute z-20 p-[5px]" id="header">
+      <nav
+        id="nav"
+        class="absolute top-[5px] left-[5px] rounded-sm pt-20 pb-10 px-10 bg-black origin-top-left scale-0"
+      >
+        <ul id="nav-list" class="grid gap-3 relative z-10 opacity-0">
+          <li>
+            <a
+              href="/"
+              class="text-xl text-white font-medium transition-colors hover:text-neutral-400 active"
+              id="home-nav-button">Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="/about"
+              class="text-xl text-white font-medium transition-colors hover:text-neutral-400"
+              id="about-nav-button">About</a
+            >
+          </li>
+          <li>
+            <a
+              href="/projects"
+              class="text-xl text-white font-medium transition-colors hover:text-neutral-400"
+              id="projects-nav-button">Projects</a
+            >
+          </li>
+          <li>
+            <a
+              href="/contact"
+              class="text-xl text-white font-medium transition-colors hover:text-neutral-400"
+              id="contact-nav-button">Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <button
+        aria-label="Open Mobile Navigation"
+        class="block w-10 h-10 text-2xl rounded-sm text-white bg-black border-none transition-colors translate-x-0 hover:cursor-pointer hover:text-neutral-400"
+        id="mobile-nav-btn"
+      >
+        ☰
+      </button>
+    </header>
 
-		<!-- SLOT -->
-		<slot />
+    <!-- SLOT -->
+    <slot />
 
-		<!-- FOOTER -->
-		<footer
-			class="bg-black text-white px-5 sm:px-10 py-10 flex justify-between items-center gap-5">
-			<p>
-				Built by Ryan Bowler using HTML, TailwindCSS, TypeScript and Express.js
-			</p>
-			<button class="rounded-full w-10 h-10 bg-neutral-500/50">&uarr;</button>
-		</footer>
-	</body>
+    <!-- FOOTER -->
+    <footer
+      class="bg-black text-white px-5 sm:px-10 py-10 flex justify-between items-center gap-5"
+    >
+      <p>
+        Built by Ryan Bowler using HTML, TailwindCSS, TypeScript and Express.js
+      </p>
+      <button class="rounded-full w-10 h-10 bg-neutral-500/50">&uarr;</button>
+    </footer>
+  </body>
 </html>
 
 <style>
-	body {
-		background-image: radial-gradient(#0000004a 1px, #ffffff 1px);
-		background-size: 40px 40px;
-		transition: background-size 0.3s ease-out;
-	}
+  body {
+    background-image: radial-gradient(#0000004a 1px, #ffffff 1px);
+    background-size: 40px 40px;
+    transition: background-size 0.3s ease-out;
+  }
 
-	ul .active {
-		font-size: 3rem;
-		font-weight: 700;
-	}
+  ul .active {
+    font-size: 3rem;
+    font-weight: 700;
+  }
 </style>
 
 <script>
-	import { gsap } from "gsap";
-	import { ScrollTrigger } from "gsap/ScrollTrigger";
-	import Lenis from "lenis";
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import Lenis from "lenis";
 
-	// Smooth scrolling
-	const lenis = new Lenis();
-	function raf(time: number) {
-		lenis.raf(time);
-		requestAnimationFrame(raf);
-	}
+  // Smooth scrolling
+  const lenis = new Lenis();
+  function raf(time: number) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
 
-	// Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
-	lenis.on("scroll", ScrollTrigger.update);
-	gsap.ticker.add((time) => {
-		lenis.raf(time * 1000);
-	});
-	gsap.ticker.lagSmoothing(0);
+  // Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+  gsap.ticker.lagSmoothing(0);
 
-	requestAnimationFrame(raf);
+  requestAnimationFrame(raf);
 
-	// Nav animation
-	const mobileButton = document.getElementById("mobile-nav-btn");
-	const nav = document.getElementById("nav");
-	const navLinks = document.getElementById("nav-list");
-	let isNavOpen = false;
+  // Nav animation
+  const mobileButton = document.getElementById("mobile-nav-btn");
+  const nav = document.getElementById("nav");
+  const navLinks = document.getElementById("nav-list");
+  let isNavOpen = false;
 
-	mobileButton?.addEventListener("click", () => {
-		isNavOpen = !isNavOpen;
+  mobileButton?.addEventListener("click", () => {
+    isNavOpen = !isNavOpen;
 
-		if (isNavOpen) {
-			// Open animation
-			const tl = gsap.timeline();
-			tl.set(nav, {
-				display: "flex",
-			})
-				.to(nav, {
-					scale: 1,
-					duration: 0.6,
-					ease: "sine.inOut",
-				})
-				.to(
-					navLinks,
-					{
-						opacity: 1,
-						duration: 0.3,
-						ease: "power2.out",
-					},
-					"-=0.2"
-				)
-				.to(
-					mobileButton,
-					{
-						innerHTML: "✕",
-						duration: 0.1,
-					},
-					"-=0.3"
-				);
-		} else {
-			// Close animation
-			const tl = gsap.timeline();
-			tl.to(navLinks, {
-				opacity: 0,
-				duration: 0.3,
-				ease: "sine.inOut",
-			})
-				.to(nav, {
-					scale: 0,
-					duration: 0.6,
-					ease: "power2.inOut",
-				})
-				.set(nav, { display: "none" })
-				.to(
-					mobileButton,
-					{
-						innerHTML: "☰",
-						duration: 0.1,
-					},
-					"-=0.6"
-				);
-		}
-	});
+    if (isNavOpen) {
+      // Open animation
+      const tl = gsap.timeline();
+      tl.set(nav, {
+        display: "flex",
+      })
+        .to(nav, {
+          scale: 1,
+          duration: 0.6,
+          ease: "sine.inOut",
+        })
+        .to(
+          navLinks,
+          {
+            opacity: 1,
+            duration: 0.3,
+            ease: "power2.out",
+          },
+          "-=0.2",
+        )
+        .to(
+          mobileButton,
+          {
+            innerHTML: "✕",
+            duration: 0.1,
+          },
+          "-=0.3",
+        );
+    } else {
+      // Close animation
+      const tl = gsap.timeline();
+      tl.to(navLinks, {
+        opacity: 0,
+        duration: 0.3,
+        ease: "sine.inOut",
+      })
+        .to(nav, {
+          scale: 0,
+          duration: 0.6,
+          ease: "power2.inOut",
+        })
+        .set(nav, { display: "none" })
+        .to(
+          mobileButton,
+          {
+            innerHTML: "☰",
+            duration: 0.1,
+          },
+          "-=0.6",
+        );
+    }
+  });
 </script>

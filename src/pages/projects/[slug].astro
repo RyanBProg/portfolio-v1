@@ -1,8 +1,10 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from "../../layouts/Layout.astro";
 // Get the slug from the URL
 export async function getStaticPaths() {
-  const projects = await import("../../data/projects.ts").then((module) => module.default);
+  const projects = await import("../../data/projects.ts").then(
+    (module) => module.default,
+  );
   return projects.map((project) => ({
     params: { slug: project.slug },
     props: { project },
