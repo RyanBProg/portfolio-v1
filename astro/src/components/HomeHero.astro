@@ -1,0 +1,103 @@
+<section
+class="relative h-dvh flex flex-col justify-center items-center px-5">
+  <h1
+    class="font-bold text-8xl text-center tracking-tighter sm:text-9xl md:text-[10rem]">
+    <div class="overflow-hidden pb-2">
+      <span class="main-heading block">Ryan</span>
+    </div>
+    <div class="overflow-hidden">
+      <span class="main-heading block">Bowler</span>
+    </div>
+  </h1>
+  <p
+    id="sub-text"
+    class="text-base sm:text-xl mt-2 text-center text-neutral-700">
+    A passionate <span class="font-bold">Full Stack Developer</span> and
+    <br />professional problem solver who loves to build things!
+  </p>
+  <div id="stats" class="mt-16 flex gap-5 justify-center">
+    <div class="text-center">
+      <h2 class="font-bold text-lg sm:text-xl">4+ Years</h2>
+      <p class="text-neutral-700">Coding experience</p>
+    </div>
+    <div class="text-center">
+      <h2 class="font-bold text-lg sm:text-xl">10+ Years</h2>
+      <p class="text-neutral-700">Engineering experience</p>
+    </div>
+  </div>
+  <div id="socials" class="flex gap-16 mt-6 justify-center">
+    <a
+      href="https://github.com/RyanBProg"
+      target="_blank"
+      class="bg-white rounded-xl block h-14 w-14 text-xs transition-transform hover:-translate-y-1 hover:cursor-pointer">
+      <img src="/github-sign.png" alt="github" />
+    </a>
+    <a
+      href="https://www.linkedin.com/in/ryan-bowler-601919170"
+      target="_blank"
+      class="bg-white rounded-xl block h-14 w-14 text-xs transition-transform hover:-translate-y-1 hover:cursor-pointer">
+      <img src="/linkedin.png" alt="linkedin" />
+    </a>
+  </div>
+  <a
+    href="https://www.github.com/RyanBProg"
+    target="_blank"
+    class="absolute bottom-5 left-5 flex gap-2 items-center rounded-lg p-2 hover:bg-neutral-500/10">
+    <img src="/send.png" alt="download resume" class="h-6 w-6" />
+    <span>Download Resume</span>
+  </a>
+</section>
+
+<script>
+	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const mainHeading = document.querySelectorAll(".main-heading");
+  const subText = document.getElementById("sub-text");
+  const stats = document.getElementById("stats");
+  const socials = document.getElementById("socials");
+  const mobileButton = document.getElementById("mobile-nav-btn");
+
+  gsap.set([subText, stats, socials], { opacity: 0 });
+  const tl = gsap.timeline();
+  tl.fromTo(
+    mobileButton,
+    {
+      x: "-100%",
+      opacity: 0,
+    },
+    {
+      x: "0%",
+      opacity: 1,
+      duration: 0.8,
+      stagger: 1,
+      ease: "back.out",
+    }
+  )
+    .fromTo(
+      mainHeading,
+      {
+        y: "100%",
+        opacity: 0,
+      },
+      {
+        y: "0%",
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.8,
+        ease: "sine.inOut",
+      }
+    )
+    .fromTo(
+      [subText, stats, socials],
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 2,
+        ease: "sine.out",
+      }
+    );
+</script>
