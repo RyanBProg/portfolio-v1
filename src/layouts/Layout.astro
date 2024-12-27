@@ -1,4 +1,7 @@
-<!doctype html>
+---
+const { title } = Astro.props;
+---
+
 <html lang="en">
   <head>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -9,7 +12,7 @@
     />
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <title>Portfolio | Ryan Bowler</title>
+    <title>{title}</title>
     <meta
       name="description"
       content="Portfolio of Ryan Bowler, a full stack developer"
@@ -28,7 +31,7 @@
           <li>
             <a
               href="/"
-              class="text-xl text-white font-medium transition-colors hover:text-neutral-400 active"
+              class="text-xl text-white font-medium transition-colors hover:text-neutral-400"
               id="home-nav-button">Home</a
             >
           </li>

@@ -23,10 +23,11 @@ export interface Props {
 const { project } = Astro.props;
 ---
 
-<Layout>
+<Layout title=`${project.title} | Ryan Bowler`>
   <article>
     <h1>{project.title}</h1>
     <img src={project.image} alt={project.title} />
     <p>{project.description}</p>
+    <p>Features I wish to add in the future:</p>
   </article>
 </Layout>
