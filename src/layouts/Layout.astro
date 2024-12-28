@@ -77,7 +77,10 @@ const { title } = Astro.props;
       <p>
         Built by Ryan Bowler using HTML, TailwindCSS, TypeScript and Express.js
       </p>
-      <button class="rounded-full w-10 h-10 bg-neutral-500/50">&uarr;</button>
+      <button
+        id="scroll-button"
+        class="rounded-full w-10 h-10 bg-neutral-500/50">&uarr;</button
+      >
     </footer>
   </body>
 </html>
@@ -87,11 +90,6 @@ const { title } = Astro.props;
     background-image: radial-gradient(#0000004a 1px, #ffffff 1px);
     background-size: 40px 40px;
     transition: background-size 0.3s ease-out;
-  }
-
-  ul .active {
-    font-size: 3rem;
-    font-weight: 700;
   }
 </style>
 
@@ -177,4 +175,14 @@ const { title } = Astro.props;
         );
     }
   });
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const scrollButton = document.getElementById("scroll-button");
+  scrollButton?.addEventListener("click", scrollToTop);
 </script>
