@@ -1,3 +1,10 @@
+---
+import { Image } from "astro:assets";
+import githubIcon from "../../assets/icons/github-square.png";
+import linkedinIcon from "../../assets/icons/linkedin-square.png";
+import sendIcon from "../../assets/icons/send.png";
+---
+
 <section class="relative h-dvh flex flex-col justify-center items-center px-5">
   <h1
     class="font-bold text-8xl text-center tracking-tighter sm:text-9xl md:text-[10rem]"
@@ -27,16 +34,16 @@
     <a
       href="https://github.com/RyanBProg"
       target="_blank"
-      class="bg-white rounded-xl block h-14 w-14 text-xs transition-transform hover:-translate-y-1 hover:cursor-pointer"
+      class="bg-white rounded-xl block h-14 w-14 transition-transform hover:-translate-y-1 hover:cursor-pointer"
     >
-      <img src="/github-sign.png" alt="github" />
+      <Image src={githubIcon} alt="github" height="56" width="56" />
     </a>
     <a
       href="https://www.linkedin.com/in/ryan-bowler-601919170"
       target="_blank"
-      class="bg-white rounded-xl block h-14 w-14 text-xs transition-transform hover:-translate-y-1 hover:cursor-pointer"
+      class="bg-white rounded-xl block h-14 w-14 transition-transform hover:-translate-y-1 hover:cursor-pointer"
     >
-      <img src="/linkedin.png" alt="linkedin" />
+      <Image src={linkedinIcon} alt="linkedin" height="56" width="56" />
     </a>
   </div>
   <a
@@ -44,7 +51,7 @@
     target="_blank"
     class="absolute bottom-5 left-5 flex gap-2 items-center rounded-lg p-2 hover:bg-neutral-500/10"
   >
-    <img src="/send.png" alt="download resume" class="h-6 w-6" />
+    <Image src={sendIcon} alt="airplane" height="24" width="24" />
     <span>Download Resume</span>
   </a>
 </section>
