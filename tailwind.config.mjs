@@ -8,9 +8,6 @@ export default {
       fontFamily: {
         sans: ["SpaceGrotesk", ...defaultTheme.fontFamily.sans],
       },
-      backgroundImage: {
-        "projects-banner": "url('/projects-banner.png')",
-      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
