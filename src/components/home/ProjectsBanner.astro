@@ -1,76 +1,45 @@
+---
+import { Image } from "astro:assets";
+import projectImage1 from "../../assets/images/project-banner-1.png";
+import projectImage2 from "../../assets/images/project-banner-2.jpg";
+import projectImage3 from "../../assets/images/project-banner-3.jpg";
+import projectsBannerImage from "../../assets/images/multi-projects-banner.png";
+import TechBadge from "../TechBadge.astro";
+import typescriptIcon from "../../assets/icons/typescript.svg";
+import reactIcon from "../../assets/icons/react.svg";
+import mongoDBIcon from "../../assets/icons/mongo-db.svg";
+import tailwindIcon from "../../assets/icons/tailwind.svg";
+import nextJSIcon from "../../assets/icons/next-js.svg";
+import nodeJSIcon from "../../assets/icons/node-js.svg";
+import expressJSIcon from "../../assets/icons/express.svg";
+---
+
 <section>
   <!-- PROJECTS -->
   <h2 class="font-bold text-7xl pl-5 pb-5 tracking-tight sm:pl-10">Projects</h2>
   <div class="section_projects relative">
     <div role="list">
       <div role="listitem" class="scroll-trigger-img relative">
-        <img
-          src="https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/669ee576a05e890caf24b147_DSC_9785-1.webp"
-          loading="lazy"
-          alt=""
-          sizes="100vw"
-          srcset="
-                https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/669ee576a05e890caf24b147_DSC_9785-1-p-500.webp   500w,
-                https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/669ee576a05e890caf24b147_DSC_9785-1-p-800.webp   800w,
-                https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/669ee576a05e890caf24b147_DSC_9785-1-p-1080.webp 1080w,
-                https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/669ee576a05e890caf24b147_DSC_9785-1-p-1600.webp 1600w,
-                https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/669ee576a05e890caf24b147_DSC_9785-1.webp        1680w
-              "
+        <Image
+          src={projectImage1}
+          alt="dev trainer"
           class="scroll-img-bg h-dvh w-dvw object-cover"
-          style="
-                translate: none;
-                rotate: none;
-                scale: none;
-                transform: translate(0px, 0px);
-              "
         />
         <div class="absolute inset-0 bg-black/50"></div>
       </div>
       <div role="listitem" class="scroll-trigger-img relative">
-        <img
-          src="https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/66b2aa7260e2fac5abf06078_Rectangle%201%20(1).webp"
-          loading="lazy"
-          alt=""
-          sizes="100vw"
-          srcset="
-                https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/66b2aa7260e2fac5abf06078_Rectangle%201%20(1)-p-500.webp   500w,
-                https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/66b2aa7260e2fac5abf06078_Rectangle%201%20(1)-p-800.webp   800w,
-                https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/66b2aa7260e2fac5abf06078_Rectangle%201%20(1)-p-1080.webp 1080w,
-                https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/66b2aa7260e2fac5abf06078_Rectangle%201%20(1)-p-1600.webp 1600w,
-                https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/66b2aa7260e2fac5abf06078_Rectangle%201%20(1)-p-2000.webp 2000w,
-                https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/66b2aa7260e2fac5abf06078_Rectangle%201%20(1).webp        2882w
-              "
+        <Image
+          src={projectImage2}
+          alt="better spanish"
           class="scroll-img-bg h-dvh w-dvw object-cover"
-          style="
-                translate: none;
-                rotate: none;
-                scale: none;
-                transform: translate(0px, 0px);
-              "
         />
         <div class="absolute inset-0 bg-black/50"></div>
       </div>
       <div role="listitem" class="scroll-trigger-img relative">
-        <img
-          src="https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/670ef6f05fb3f7bd45f40d64_Screenshot%202024-10-14%20at%2012.04.20%202.webp"
-          loading="lazy"
-          alt=""
-          sizes="100vw"
-          srcset="
-                https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/670ef6f05fb3f7bd45f40d64_Screenshot%202024-10-14%20at%2012.04.20%202-p-500.webp   500w,
-                https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/670ef6f05fb3f7bd45f40d64_Screenshot%202024-10-14%20at%2012.04.20%202-p-800.webp   800w,
-                https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/670ef6f05fb3f7bd45f40d64_Screenshot%202024-10-14%20at%2012.04.20%202-p-1080.webp 1080w,
-                https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/670ef6f05fb3f7bd45f40d64_Screenshot%202024-10-14%20at%2012.04.20%202-p-1600.webp 1600w,
-                https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/670ef6f05fb3f7bd45f40d64_Screenshot%202024-10-14%20at%2012.04.20%202-p-2000.webp 2000w,
-                https://cdn.prod.website-files.com/669ee37559969f9efba7ee67/670ef6f05fb3f7bd45f40d64_Screenshot%202024-10-14%20at%2012.04.20%202.webp        2882w
-              "
+        <Image
+          src={projectImage3}
+          alt="shoe junky"
           class="scroll-img-bg h-dvh w-dvw object-cover"
-          style="
-                translate: none;
-                rotate: none;
-                scale: none;
-                transform: translate(0px, 0px);
-              "
         />
         <div class="absolute inset-0 bg-black/50"></div>
       </div>
@@ -94,13 +63,21 @@
                 cheatsheets shortucts and snippets
               </p>
               <div class="flex flex-wrap gap-2 mt-4">
-                <span class="bg-neutral-500 p-1 rounded-md">Typscript</span>
-                <span class="bg-neutral-500/70 p-1 rounded-md">React</span>
-                <span class="bg-neutral-500/70 p-1 rounded-md">Next.js</span>
-                <span class="bg-neutral-500/70 p-1 rounded-md">Tailwind</span>
-                <span class="bg-neutral-500/70 p-1 rounded-md">Mongo DB</span>
-                <span class="bg-neutral-500/70 p-1 rounded-md">Express.js</span>
-                <span class="bg-neutral-500/70 p-1 rounded-md">Node.js</span>
+                <TechBadge
+                  title="Typscript"
+                  img={typescriptIcon}
+                  alt="typescript"
+                />
+                <TechBadge title="React" img={reactIcon} alt="react" />
+                <TechBadge title="Next.js" img={nextJSIcon} alt="next.js" />
+                <TechBadge title="Tailwind" img={tailwindIcon} alt="tailwind" />
+                <TechBadge title="Mongo DB" img={mongoDBIcon} alt="mongo db" />
+                <TechBadge
+                  title="Express.js"
+                  img={expressJSIcon}
+                  alt="express.js"
+                />
+                <TechBadge title="Node.js" img={nodeJSIcon} alt="node.js" />
               </div>
             </div>
             <a
@@ -128,10 +105,14 @@
                 high frequency words to get fluent faster
               </p>
               <div class="flex flex-wrap gap-2 mt-4">
-                <span class="bg-neutral-500 p-1 rounded-md">Typscript</span>
-                <span class="bg-neutral-500/70 p-1 rounded-md">Next.js</span>
-                <span class="bg-neutral-500/70 p-1 rounded-md">Tailwind</span>
-                <span class="bg-neutral-500/70 p-1 rounded-md">Mongo DB</span>
+                <TechBadge
+                  title="Typscript"
+                  img={typescriptIcon}
+                  alt="typescript"
+                />
+                <TechBadge title="Next.js" img={nextJSIcon} alt="next.js" />
+                <TechBadge title="Tailwind" img={tailwindIcon} alt="tailwind" />
+                <TechBadge title="Mongo DB" img={mongoDBIcon} alt="mongo db" />
               </div>
             </div>
             <a
@@ -151,23 +132,27 @@
             class="text-white w-full flex flex-col justify-center gap-10 px-5 md:flex-row sm:px-10 md:items-center"
           >
             <h3 class="text-5xl tracking-tight font-bold md:flex-1">
-              My Portfolio
+              Shoe Junky
             </h3>
             <div class="md:w-[300px] lg:w-[480px]">
               <p>
-                A site to showcase my work and projects that I have built over
-                my coding journey
+                A learning platform for people who want to learn spanish using
+                high frequency words to get fluent faster
               </p>
               <div class="flex flex-wrap gap-2 mt-4">
-                <span class="bg-neutral-500 p-1 rounded-md">Typscript</span>
-                <span class="bg-neutral-500/70 p-1 rounded-md">Next.js</span>
-                <span class="bg-neutral-500/70 p-1 rounded-md">Tailwind</span>
-                <span class="bg-neutral-500/70 p-1 rounded-md">Mongo DB</span>
-                <span class="bg-neutral-500/70 p-1 rounded-md">Express.js</span>
+                <TechBadge
+                  title="Typscript"
+                  img={typescriptIcon}
+                  alt="typescript"
+                />
+                <TechBadge title="React" img={reactIcon} alt="react" />
+                <TechBadge title="Next.js" img={nextJSIcon} alt="next.js" />
+                <TechBadge title="Tailwind" img={tailwindIcon} alt="tailwind" />
+                <TechBadge title="Mongo DB" img={mongoDBIcon} alt="mongo db" />
               </div>
             </div>
             <a
-              href="/projects/my-portfolio"
+              href="/projects/shoe-junky"
               class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-500/30"
             >
               More &rarr;
@@ -176,45 +161,102 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- SEE MORE -->
-  <div class="h-[500px] z-99 relative bg-projects-banner bg-cover text-white">
-    <div
-      class="absolute inset-0 bg-black/80 flex items-center justify-center px-5 sm:px-10"
-    >
-      <a
-        class="text-6xl text-center hover:text-white/80 hover:cursor-pointer sm:text-7xl"
-        >See More Projects</a
+    <!-- SEE MORE -->
+    <div class="h-[700px] z-99 relative text-white">
+      <Image
+        src={projectsBannerImage}
+        alt="projects"
+        class="absolute left-0 top-0 w-full h-full object-cover"
+      />
+      <div
+        class="absolute inset-0 bg-black/80 flex items-center justify-center px-5 sm:px-10"
       >
+        <a
+          class="text-6xl text-center hover:text-white/70 hover:cursor-pointer sm:text-7xl"
+          >See More Projects</a
+        >
+      </div>
     </div>
   </div>
-</section>
 
-<script>
-  import { gsap } from "gsap";
+  <script>
+    import { gsap } from "gsap";
 
-  // More button animation
-  document.querySelectorAll(".more-button").forEach((button) => {
-    gsap.to(button, {
-      y: -8,
-      repeat: -1,
-      yoyo: true,
-      duration: 1,
+    // More button animation
+    document.querySelectorAll(".more-button").forEach((button) => {
+      gsap.to(button, {
+        y: -8,
+        repeat: -1,
+        yoyo: true,
+        duration: 1,
+      });
     });
-  });
 
-  // Projects section animations
-  document.querySelectorAll(".section_projects").forEach((section) => {
-    let triggers = section.querySelectorAll(".scroll-trigger-img");
-    let items = section.querySelectorAll(".scroll-item");
+    // Projects section animations
+    document.querySelectorAll(".section_projects").forEach((section) => {
+      let triggers = section.querySelectorAll(".scroll-trigger-img");
+      let items = section.querySelectorAll(".scroll-item");
 
-    triggers.forEach((trigger, index) => {
-      let background = trigger.querySelector(".scroll-img-bg");
-      let item = items[index];
+      triggers.forEach((trigger, index) => {
+        let background = trigger.querySelector(".scroll-img-bg");
+        let item = items[index];
 
-      if (index === 0) {
-        let tl = gsap.timeline({
+        if (index === 0) {
+          let tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: trigger,
+              start: "top top",
+              end: "bottom top",
+              scrub: true,
+            },
+            defaults: {
+              ease: "none",
+            },
+          });
+          tl.fromTo(
+            item,
+            { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
+            { clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" },
+          );
+        } else if (index === items.length - 1) {
+          let tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: trigger,
+              start: "top bottom",
+              end: "bottom bottom",
+              scrub: true,
+            },
+            defaults: {
+              ease: "none",
+            },
+          });
+          tl.fromTo(
+            item,
+            { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" },
+            { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
+          );
+        } else {
+          let tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: trigger,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+            defaults: {
+              ease: "none",
+            },
+          });
+          tl.fromTo(
+            item,
+            { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" },
+            { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
+          );
+          tl.to(item, { clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" });
+        }
+
+        let tl2 = gsap.timeline({
           scrollTrigger: {
             trigger: trigger,
             start: "top top",
@@ -225,60 +267,8 @@
             ease: "none",
           },
         });
-        tl.fromTo(
-          item,
-          { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
-          { clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" },
-        );
-      } else if (index === items.length - 1) {
-        let tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: trigger,
-            start: "top bottom",
-            end: "bottom bottom",
-            scrub: true,
-          },
-          defaults: {
-            ease: "none",
-          },
-        });
-        tl.fromTo(
-          item,
-          { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" },
-          { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
-        );
-      } else {
-        let tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: trigger,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-          defaults: {
-            ease: "none",
-          },
-        });
-        tl.fromTo(
-          item,
-          { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" },
-          { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
-        );
-        tl.to(item, { clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" });
-      }
-
-      let tl2 = gsap.timeline({
-        scrollTrigger: {
-          trigger: trigger,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-        defaults: {
-          ease: "none",
-        },
+        tl2.to(background, { yPercent: 50 });
       });
-      tl2.to(background, { yPercent: 50 });
     });
-  });
-</script>
+  </script>
+</section>
