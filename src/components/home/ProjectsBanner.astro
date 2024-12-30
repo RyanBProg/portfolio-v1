@@ -179,84 +179,32 @@ import expressJSIcon from "../../assets/icons/express.svg";
       </div>
     </div>
   </div>
+</section>
 
-  <script>
-    import { gsap } from "gsap";
+<script>
+  import { gsap } from "gsap";
 
-    // More button animation
-    document.querySelectorAll(".more-button").forEach((button) => {
-      gsap.to(button, {
-        y: -8,
-        repeat: -1,
-        yoyo: true,
-        duration: 1,
-      });
+  // More button animation
+  document.querySelectorAll(".more-button").forEach((button) => {
+    gsap.to(button, {
+      y: -8,
+      repeat: -1,
+      yoyo: true,
+      duration: 1,
     });
+  });
 
-    // Projects section animations
-    document.querySelectorAll(".section_projects").forEach((section) => {
-      let triggers = section.querySelectorAll(".scroll-trigger-img");
-      let items = section.querySelectorAll(".scroll-item");
+  // Projects section animations
+  document.querySelectorAll(".section_projects").forEach((section) => {
+    let triggers = section.querySelectorAll(".scroll-trigger-img");
+    let items = section.querySelectorAll(".scroll-item");
 
-      triggers.forEach((trigger, index) => {
-        let background = trigger.querySelector(".scroll-img-bg");
-        let item = items[index];
+    triggers.forEach((trigger, index) => {
+      let background = trigger.querySelector(".scroll-img-bg");
+      let item = items[index];
 
-        if (index === 0) {
-          let tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: trigger,
-              start: "top top",
-              end: "bottom top",
-              scrub: true,
-            },
-            defaults: {
-              ease: "none",
-            },
-          });
-          tl.fromTo(
-            item,
-            { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
-            { clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" },
-          );
-        } else if (index === items.length - 1) {
-          let tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: trigger,
-              start: "top bottom",
-              end: "bottom bottom",
-              scrub: true,
-            },
-            defaults: {
-              ease: "none",
-            },
-          });
-          tl.fromTo(
-            item,
-            { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" },
-            { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
-          );
-        } else {
-          let tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: trigger,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-            },
-            defaults: {
-              ease: "none",
-            },
-          });
-          tl.fromTo(
-            item,
-            { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" },
-            { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
-          );
-          tl.to(item, { clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" });
-        }
-
-        let tl2 = gsap.timeline({
+      if (index === 0) {
+        let tl = gsap.timeline({
           scrollTrigger: {
             trigger: trigger,
             start: "top top",
@@ -267,8 +215,60 @@ import expressJSIcon from "../../assets/icons/express.svg";
             ease: "none",
           },
         });
-        tl2.to(background, { yPercent: 50 });
+        tl.fromTo(
+          item,
+          { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
+          { clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" },
+        );
+      } else if (index === items.length - 1) {
+        let tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: trigger,
+            start: "top bottom",
+            end: "bottom bottom",
+            scrub: true,
+          },
+          defaults: {
+            ease: "none",
+          },
+        });
+        tl.fromTo(
+          item,
+          { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" },
+          { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
+        );
+      } else {
+        let tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: trigger,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+          defaults: {
+            ease: "none",
+          },
+        });
+        tl.fromTo(
+          item,
+          { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" },
+          { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
+        );
+        tl.to(item, { clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" });
+      }
+
+      let tl2 = gsap.timeline({
+        scrollTrigger: {
+          trigger: trigger,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+        defaults: {
+          ease: "none",
+        },
       });
+      tl2.to(background, { yPercent: 50 });
     });
-  </script>
-</section>
+  });
+</script>
