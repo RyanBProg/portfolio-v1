@@ -1,37 +1,15 @@
 ---
 import TechBadge from "../TechBadge.astro";
-import typescriptIcon from "../../assets/icons/typescript.svg";
-import javascriptIcon from "../../assets/icons/javascript.svg";
-import reactIcon from "../../assets/icons/react.svg";
-import mongoDBIcon from "../../assets/icons/mongo-db.svg";
-import nextJSIcon from "../../assets/icons/next-js.svg";
-import nodeJSIcon from "../../assets/icons/node-js.svg";
-import expressJSIcon from "../../assets/icons/express.svg";
-import astroIcon from "../../assets/icons/astro.svg";
-import tailwindIcon from "../../assets/icons/tailwind.svg";
-import bootstrapIcon from "../../assets/icons/bootstrap.svg";
-import htmlIcon from "../../assets/icons/html.svg";
-import cssIcon from "../../assets/icons/css.svg";
-import gitIcon from "../../assets/icons/git.svg";
-import githubIcon from "../../assets/icons/github-round.svg";
+import badges from "../../content/techBadges";
 ---
 
 <div>
   <h2 class="font-semibold text-xl mb-2">Technologies Used</h2>
   <div class="flex flex-wrap gap-2">
-    <TechBadge title="Typscript" img={typescriptIcon} alt="typescript" />
-    <TechBadge title="Javascript" img={javascriptIcon} alt="javascript" />
-    <TechBadge title="React" img={reactIcon} alt="react" />
-    <TechBadge title="Next.js" img={nextJSIcon} alt="next.js" />
-    <TechBadge title="Astro" img={astroIcon} alt="astro" />
-    <TechBadge title="Node.js" img={nodeJSIcon} alt="node.js" />
-    <TechBadge title="Express.js" img={expressJSIcon} alt="express.js" />
-    <TechBadge title="Tailwind" img={tailwindIcon} alt="tailwind" />
-    <TechBadge title="Mongo DB" img={mongoDBIcon} alt="mongo db" />
-    <TechBadge title="Bootstrap" img={bootstrapIcon} alt="bootstrap" />
-    <TechBadge title="HTML" img={htmlIcon} alt="html" />
-    <TechBadge title="CSS" img={cssIcon} alt="css" />
-    <TechBadge title="Git" img={gitIcon} alt="git" />
-    <TechBadge title="Github" img={githubIcon} alt="github" />
+    {
+      badges.map((badge) => (
+        <TechBadge title={badge.title} img={badge.img} alt={badge.alt} />
+      ))
+    }
   </div>
 </div>
