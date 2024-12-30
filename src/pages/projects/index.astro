@@ -1,5 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import badges from "../../content/techBadges";
+import projectImage1 from "../../assets/images/project-banner-1.png";
+import ProjectArticle from "../../components/projects/ProjectArticle.astro";
 ---
 
 <Layout title="Projects | Ryan Bowler">
@@ -7,6 +10,56 @@ import Layout from "../../layouts/Layout.astro";
     <!-- WHITESPACE -->
     <div class="h-[150px] sm:h-[200px]"></div>
 
-    <h1>Projects</h1>
+    <h1 class="font-bold text-7xl px-5 mb-20 tracking-tight sm:px-10">
+      Projects
+    </h1>
+
+    <ProjectArticle
+      projectTitle="Dev trainer"
+      projectDescription="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo fuga dolore officiis! Quam ullam fuga debitis fugiat voluptates, animi eveniet optio. Accusantium earum consequuntur debitis, incidunt expedita cupiditate numquam optio!"
+      projectImage={projectImage1}
+      leftAlign={true}
+      badges={badges}
+      slug="dev-trainer"
+    />
+
+    <!-- WHITESPACE -->
+    <div class="h-[150px] sm:h-[200px]"></div>
+
+    <ProjectArticle
+      projectTitle="Better Spanish"
+      projectDescription="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo fuga dolore officiis! Quam ullam fuga debitis fugiat voluptates, animi eveniet optio. Accusantium earum consequuntur debitis, incidunt expedita cupiditate numquam optio!"
+      projectImage={projectImage1}
+      leftAlign={false}
+      badges={badges}
+      slug="better-spanish"
+    />
+
+    <!-- WHITESPACE -->
+    <div class="h-[150px] sm:h-[200px]"></div>
+
+    <ProjectArticle
+      projectTitle="Shoe Junky"
+      projectDescription="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo fuga dolore officiis! Quam ullam fuga debitis fugiat voluptates, animi eveniet optio. Accusantium earum consequuntur debitis, incidunt expedita cupiditate numquam optio!"
+      projectImage={projectImage1}
+      leftAlign={true}
+      badges={badges}
+      slug="shoe-junky"
+    />
+
+    <!-- WHITESPACE -->
+    <div class="h-[150px] sm:h-[200px]"></div>
+
+    <ProjectArticle
+      projectTitle="Shoe Junky"
+      projectDescription="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo fuga dolore officiis! Quam ullam fuga debitis fugiat voluptates, animi eveniet optio. Accusantium earum consequuntur debitis, incidunt expedita cupiditate numquam optio!"
+      projectImage={projectImage1}
+      leftAlign={false}
+      badges={badges}
+      slug="shoe-junky"
+    />
+
+    <!-- WHITESPACE -->
+    <div class="h-[150px] sm:h-[200px]"></div>
   </main>
 </Layout>
