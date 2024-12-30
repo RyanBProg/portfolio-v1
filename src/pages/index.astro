@@ -1,18 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import HomeHero from "../components/home/Hero.astro";
-import HomeProjects from "../components/home/ProjectsBanner.astro";
-import HomeContact from "../components/Contact.astro";
+import Hero from "../components/home/Hero.astro";
+import ProjectsBanner from "../components/home/ProjectsBanner.astro";
+import ContactForm from "../components/ContactForm.astro";
 ---
 
 <Layout title="Portfolio | Ryan Bowler">
   <main>
-    <HomeHero />
+    <Hero />
 
     <!-- WHITESPACE -->
     <div class="h-[150px] sm:h-[200px]"></div>
 
-    <HomeProjects />
+    <ProjectsBanner />
 
     <!-- WHITESPACE -->
     <div class="h-[150px] sm:h-[200px]"></div>
@@ -23,7 +23,7 @@ import HomeContact from "../components/Contact.astro";
       >
         Contact Me
       </h2>
-      <HomeContact />
+      <ContactForm />
     </section>
 
     <!-- WHITESPACE -->
