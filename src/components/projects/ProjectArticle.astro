@@ -46,7 +46,7 @@ const projectBadges = badges.filter((badge) => badgeList.includes(badge.title));
     <p>
       {projectDescription}
     </p>
-    <div class="flex gap-2">
+    <div class="flex gap-2 flex-wrap">
       {
         projectBadges.map((badge) => (
           <TechBadge title={badge.title} img={badge.img} alt={badge.alt} />
