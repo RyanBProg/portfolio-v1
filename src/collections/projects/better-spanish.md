@@ -5,7 +5,7 @@
     projectUrl: www.github.com
     githubUrl: www.github.com
     slug: better-spanish
-    image: ./assest/images/project-banner-2.jpg
+    image: "../../assets/images/project-banner-2.jpg"
 ---
 
 # Better Spanish

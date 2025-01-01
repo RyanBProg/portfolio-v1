@@ -5,7 +5,7 @@
     projectUrl: www.github.com
     githubUrl: www.github.com
     slug: dev-trainer
-    image: ./assest/images/project-banner-1.jpg
+    image: "../../assets/images/project-banner-1.png"
 ---
 
 # Dev Trainer

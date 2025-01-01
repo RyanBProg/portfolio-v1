@@ -5,7 +5,7 @@
     projectUrl: www.github.com
     githubUrl: www.github.com
     slug: shoe-junky
-    image: ./assest/images/project-banner-2.jpg
+    image: "../../assets/images/project-banner-3.jpg"
 ---
 
 # Shoe Junky
