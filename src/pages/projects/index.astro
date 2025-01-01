@@ -4,7 +4,6 @@ const projects = await getCollection("projectsCollection");
 
 import Layout from "../../layouts/Layout.astro";
 import badges from "../../collections/techBadges";
-import projectImage1 from "../../assets/images/project-banner-1.png";
 import ProjectArticle from "../../components/projects/ProjectArticle.astro";
 ---
 
@@ -23,7 +22,7 @@ import ProjectArticle from "../../components/projects/ProjectArticle.astro";
           <ProjectArticle
             projectTitle={project.data.title}
             projectDescription={project.data.description}
-            projectImage={projectImage1}
+            projectImage={project.data.image}
             leftAlign={index % 2 === 0}
             techStack={project.data.techStack}
             allBadges={badges}
