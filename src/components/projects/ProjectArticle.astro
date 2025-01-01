@@ -15,20 +15,23 @@ interface Props {
   projectImage: ImageMetadata;
   leftAlign: boolean;
   slug: string;
-  badges: TTechBadge[];
+  techStack: string[];
+  allBadges: TTechBadge[];
 }
-const badgeList = ["TypeScript", "JavaScript", "React", "Tailwind", "Next.js"];
 
 const {
   projectTitle,
   projectDescription,
   projectImage,
   leftAlign,
-  badges,
+  techStack,
+  allBadges,
   slug,
 } = Astro.props;
 
-const projectBadges = badges.filter((badge) => badgeList.includes(badge.title));
+const projectBadges = allBadges.filter((badge) =>
+  techStack.includes(badge.title),
+);
 ---
 
 <article
@@ -38,7 +41,7 @@ const projectBadges = badges.filter((badge) => badgeList.includes(badge.title));
     <Image
       src={projectImage}
       alt="dev trainer"
-      class="block w-auto h-full rounded-xl"
+      class="block w-auto h-full rounded-xl object-cover"
     />
   </div>
   <div class="flex flex-col gap-4">
