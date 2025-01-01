@@ -25,7 +25,7 @@ const { project } = Astro.props;
 
 <Layout title=`${project.title} | Ryan Bowler`>
   <article>
-    <h1>{project.title}</h1>
+    <h1 class="text-6xl font-bold tracking-tight">{project.title}</h1>
     <img src={project.image} alt={project.title} />
     <p>{project.description}</p>
     <p>Features I wish to add in the future:</p>
