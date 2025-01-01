@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 const projects = await getCollection("projectsCollection");
 
 import Layout from "../../layouts/Layout.astro";
-import badges from "../../content/techBadges";
+import badges from "../../collections/techBadges";
 import projectImage1 from "../../assets/images/project-banner-1.png";
 import ProjectArticle from "../../components/projects/ProjectArticle.astro";
 ---
