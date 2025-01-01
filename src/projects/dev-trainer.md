@@ -1,5 +1,5 @@
 ---
-    title: dev trainer
+    title: Dev Trainer
     description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolorem doloribus cupiditate sint iste quam debitis sequi? Fuga, similique quos?
     techStack: [ React, Next.js , Typescript, Express.js, MongoDB, Tailwind ]
     projectUrl: www.github.com

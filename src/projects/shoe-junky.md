@@ -1,5 +1,5 @@
 ---
-    title: shoe junky
+    title: Shoe Junky
     description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolorem doloribus cupiditate sint iste quam debitis sequi? Fuga, similique quos?
     techStack: [ React, Astro , Typescript, Express.js, MongoDB, CSS ]
     projectUrl: www.github.com
