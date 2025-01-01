@@ -2,8 +2,8 @@
     title: Dev Trainer
     description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolorem doloribus cupiditate sint iste quam debitis sequi? Fuga, similique quos?
     techStack: [ React, Next.js , Typescript, Express.js, MongoDB, Tailwind ]
-    projectUrl: www.github.com
-    githubUrl: www.github.com
+    projectUrl: "https://dev-trainer.vercel.app"
+    githubUrl: "https://github.com/RyanBProg/dev-trainer"
     slug: dev-trainer
     image: "../../assets/images/project-banner-1.png"
 ---
