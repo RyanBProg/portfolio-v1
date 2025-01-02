@@ -14,40 +14,39 @@ import nodeJSIcon from "../../assets/icons/node-js.svg";
 import expressJSIcon from "../../assets/icons/express.svg";
 ---
 
-<section>
+<section aria-label="Featured Projects" class="relative h-dvh overflow-hidden">
   <!-- PROJECTS -->
   <h2 class="font-bold text-7xl pl-5 pb-5 tracking-tight sm:pl-10">Projects</h2>
   <div class="section_projects relative">
-    <div role="list">
-      <div role="listitem" class="scroll-trigger-img relative">
+    <ul>
+      <li class="scroll-trigger-img relative">
         <Image
           src={projectImage1}
           alt="dev trainer"
           class="scroll-img-bg h-dvh w-dvw object-cover"
         />
         <div class="absolute inset-0 bg-black/50"></div>
-      </div>
-      <div role="listitem" class="scroll-trigger-img relative">
+      </li>
+      <li class="scroll-trigger-img relative">
         <Image
           src={projectImage2}
           alt="better spanish"
           class="scroll-img-bg h-dvh w-dvw object-cover"
         />
         <div class="absolute inset-0 bg-black/50"></div>
-      </div>
-      <div role="listitem" class="scroll-trigger-img relative">
+      </li>
+      <li class="scroll-trigger-img relative">
         <Image
           src={projectImage3}
           alt="shoe junky"
           class="scroll-img-bg h-dvh w-dvw object-cover"
         />
         <div class="absolute inset-0 bg-black/50"></div>
-      </div>
-    </div>
+      </li>
+    </ul>
     <div class="absolute inset-0">
-      <div role="list" class="w-full h-dvh sticky top-0">
-        <div
-          role="listitem"
+      <ul class="w-full h-dvh sticky top-0">
+        <li
           class="scroll-item absolute inset-0 flex items-center justify-between px-[5%]"
           style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
         >
@@ -62,7 +61,10 @@ import expressJSIcon from "../../assets/icons/express.svg";
                 A learning reference for developers who want to build custom
                 cheatsheets shortucts and snippets
               </p>
-              <div class="flex flex-wrap gap-2 mt-4">
+              <div
+                class="flex flex-wrap gap-2 mt-4"
+                aria-label="Technologies used"
+              >
                 <TechBadge
                   title="Typscript"
                   img={typescriptIcon}
@@ -81,15 +83,15 @@ import expressJSIcon from "../../assets/icons/express.svg";
               </div>
             </div>
             <a
+              aria-label="Learn more about Dev Trainer project"
               href="/projects/dev-trainer"
               class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-500/30"
             >
               More &rarr;
             </a>
           </div>
-        </div>
-        <div
-          role="listitem"
+        </li>
+        <li
           class="scroll-item absolute inset-0 flex items-center justify-between px-[5%]"
           style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
         >
@@ -104,7 +106,10 @@ import expressJSIcon from "../../assets/icons/express.svg";
                 A learning platform for people who want to learn spanish using
                 high frequency words to get fluent faster
               </p>
-              <div class="flex flex-wrap gap-2 mt-4">
+              <div
+                class="flex flex-wrap gap-2 mt-4"
+                aria-label="Technologies used"
+              >
                 <TechBadge
                   title="Typscript"
                   img={typescriptIcon}
@@ -116,15 +121,15 @@ import expressJSIcon from "../../assets/icons/express.svg";
               </div>
             </div>
             <a
+              aria-label="Learn more about Better Spanish project"
               href="/projects/better-spanish"
               class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-500/30"
             >
               More &rarr;
             </a>
           </div>
-        </div>
-        <div
-          role="listitem"
+        </li>
+        <li
           class="scroll-item absolute inset-0 flex items-center justify-between px-[5%]"
           style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
         >
@@ -139,7 +144,10 @@ import expressJSIcon from "../../assets/icons/express.svg";
                 A learning platform for people who want to learn spanish using
                 high frequency words to get fluent faster
               </p>
-              <div class="flex flex-wrap gap-2 mt-4">
+              <div
+                class="flex flex-wrap gap-2 mt-4"
+                aria-label="Technologies used"
+              >
                 <TechBadge
                   title="Typscript"
                   img={typescriptIcon}
@@ -152,14 +160,15 @@ import expressJSIcon from "../../assets/icons/express.svg";
               </div>
             </div>
             <a
+              aria-label="Learn more about Shoe Junky project"
               href="/projects/shoe-junky"
               class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-500/30"
             >
               More &rarr;
             </a>
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
 
     <!-- SEE MORE -->

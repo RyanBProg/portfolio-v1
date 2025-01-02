@@ -1,7 +1,13 @@
-<form class="mx-auto flex flex-col gap-4 w-full max-w-[600px]">
+<form
+  aria-label="Contact form"
+  class="mx-auto flex flex-col gap-4 w-full max-w-[600px]"
+>
   <label class="flex flex-col">
     <span class="font-bold text-xl">Name</span>
     <input
+      id="name"
+      name="name"
+      aria-required="true"
       type="text"
       class="border p-2 rounded"
       placeholder="Your Name"
@@ -11,6 +17,9 @@
   <label class="flex flex-col">
     <span class="font-bold text-xl">Email</span>
     <input
+      id="email"
+      name="email"
+      aria-required="true"
       type="email"
       class="border p-2 rounded"
       placeholder="Your Email"
@@ -20,6 +29,9 @@
   <label class="flex flex-col">
     <span class="font-bold text-xl">Contact Number</span>
     <input
+      id="contact number"
+      name="contact number"
+      aria-required="true"
       type="text"
       class="border p-2 rounded"
       placeholder="Your Number"
@@ -29,6 +41,9 @@
   <label class="flex flex-col">
     <span class="font-bold text-xl">Message</span>
     <textarea
+      id="message"
+      name="message"
+      aria-required="true"
       class="border p-2 rounded"
       rows="5"
       placeholder="Your Message"

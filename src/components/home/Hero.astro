@@ -5,7 +5,10 @@ import linkedinIcon from "../../assets/icons/linkedin-square.png";
 import sendIcon from "../../assets/icons/send.png";
 ---
 
-<section class="relative h-dvh flex flex-col justify-center items-center px-5">
+<section
+  aria-label="Introduction"
+  class="relative h-dvh flex flex-col justify-center items-center px-5"
+>
   <h1
     class="font-bold text-8xl text-center tracking-tighter sm:text-9xl md:text-[10rem]"
   >
@@ -30,10 +33,16 @@ import sendIcon from "../../assets/icons/send.png";
       <p>Engineering experience</p>
     </div>
   </div>
-  <div id="socials" class="flex gap-16 mt-6 justify-center">
+  <div
+    id="socials"
+    aria-label="Social media links"
+    class="flex gap-16 mt-6 justify-center"
+  >
     <a
       href="https://github.com/RyanBProg"
       target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Visit my GitHub profile"
       class="bg-white rounded-xl block h-14 w-14 transition-transform hover:-translate-y-1 hover:cursor-pointer"
     >
       <Image src={githubIcon} alt="github" height="56" width="56" />
@@ -41,6 +50,8 @@ import sendIcon from "../../assets/icons/send.png";
     <a
       href="https://www.linkedin.com/in/ryan-bowler-601919170"
       target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Visit my Linkedin profile"
       class="bg-white rounded-xl block h-14 w-14 transition-transform hover:-translate-y-1 hover:cursor-pointer"
     >
       <Image src={linkedinIcon} alt="linkedin" height="56" width="56" />
