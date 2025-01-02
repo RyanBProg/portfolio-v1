@@ -8,14 +8,12 @@
     image: "../../assets/images/project-banner-1.png"
 ---
 
-# Dev Trainer
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod quae asperiores tenetur reprehenderit. Nostrum ea quae rerum sit, eaque laborum doloremque a dolore doloribus sed accusamus incidunt impedit deserunt accusantium.
+
+### Lessons Learned
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod quae asperiores tenetur reprehenderit. Nostrum ea quae rerum sit, eaque laborum doloremque a dolore doloribus sed accusamus incidunt impedit deserunt accusantium.
 
-## Lessons Learned
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod quae asperiores tenetur reprehenderit. Nostrum ea quae rerum sit, eaque laborum doloremque a dolore doloribus sed accusamus incidunt impedit deserunt accusantium.
-
-## Future Optimisations
+### Future Optimisations
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod quae asperiores tenetur reprehenderit. Nostrum ea quae rerum sit, eaque laborum doloremque a dolore doloribus sed accusamus incidunt impedit deserunt accusantium.
