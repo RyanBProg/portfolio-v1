@@ -12,11 +12,13 @@ import ProjectArticle from "../../components/projects/ProjectArticle.astro";
     <!-- WHITESPACE -->
     <div class="h-[150px] sm:h-[200px]"></div>
 
-    <h1 class="font-bold text-7xl px-5 mb-20 tracking-tight sm:px-10">
-      Projects
-    </h1>
+    <div class="container mx-auto px-5 sm:px-10">
+      <h1 class="font-bold text-7xl px-5 mb-20 tracking-tight sm:px-10">
+        Projects
+      </h1>
+    </div>
 
-    <div class="container mx-auto grid gap-36 sm:gap-52">
+    <div class="container mx-auto px-5 sm:px-10 grid gap-36 sm:gap-52">
       {
         projects.map((project, index) => (
           <ProjectArticle
