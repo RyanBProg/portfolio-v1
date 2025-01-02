@@ -1,173 +1,78 @@
 ---
 import { Image } from "astro:assets";
-import projectImage1 from "../../assets/images/project-banner-1.png";
-import projectImage2 from "../../assets/images/project-banner-2.jpg";
-import projectImage3 from "../../assets/images/project-banner-3.jpg";
+import badges from "../../collections/techBadges";
+
+import { getCollection } from "astro:content";
+const featuredProjects = await getCollection(
+  "projectsCollection",
+  ({ data }) => {
+    return data.featured === true;
+  },
+);
+
 import projectsBannerImage from "../../assets/images/multi-projects-banner.png";
 import TechBadge from "../TechBadge.astro";
-import typescriptIcon from "../../assets/icons/typescript.svg";
-import reactIcon from "../../assets/icons/react.svg";
-import mongoDBIcon from "../../assets/icons/mongo-db.svg";
-import tailwindIcon from "../../assets/icons/tailwind.svg";
-import nextJSIcon from "../../assets/icons/next-js.svg";
-import nodeJSIcon from "../../assets/icons/node-js.svg";
-import expressJSIcon from "../../assets/icons/express.svg";
 ---
 
-<section aria-label="Featured Projects" class="relative h-dvh overflow-hidden">
-  <!-- PROJECTS -->
+<section aria-label="Featured Projects">
   <h2 class="font-bold text-7xl pl-5 pb-5 tracking-tight sm:pl-10">Projects</h2>
   <div class="section_projects relative">
     <ul>
-      <li class="scroll-trigger-img relative">
-        <Image
-          src={projectImage1}
-          alt="dev trainer"
-          class="scroll-img-bg h-dvh w-dvw object-cover"
-        />
-        <div class="absolute inset-0 bg-black/50"></div>
-      </li>
-      <li class="scroll-trigger-img relative">
-        <Image
-          src={projectImage2}
-          alt="better spanish"
-          class="scroll-img-bg h-dvh w-dvw object-cover"
-        />
-        <div class="absolute inset-0 bg-black/50"></div>
-      </li>
-      <li class="scroll-trigger-img relative">
-        <Image
-          src={projectImage3}
-          alt="shoe junky"
-          class="scroll-img-bg h-dvh w-dvw object-cover"
-        />
-        <div class="absolute inset-0 bg-black/50"></div>
-      </li>
+      {
+        featuredProjects.map((project) => (
+          <li class="scroll-trigger-img relative">
+            <Image
+              src={project.data.image}
+              alt="dev trainer"
+              class="scroll-img-bg h-dvh w-dvw object-cover"
+            />
+            <div class="absolute inset-0 bg-black/50" />
+          </li>
+        ))
+      }
     </ul>
     <div class="absolute inset-0">
       <ul class="w-full h-dvh sticky top-0">
-        <li
-          class="scroll-item absolute inset-0 flex items-center justify-between px-[5%]"
-          style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
-        >
-          <div
-            class="text-white w-full flex flex-col justify-center gap-10 px-5 md:flex-row sm:px-10 md:items-center"
-          >
-            <h3 class="text-5xl tracking-tight font-bold md:flex-1">
-              Dev Trainer
-            </h3>
-            <div class="md:w-[300px] lg:w-[480px]">
-              <p>
-                A learning reference for developers who want to build custom
-                cheatsheets shortucts and snippets
-              </p>
-              <div
-                class="flex flex-wrap gap-2 mt-4"
-                aria-label="Technologies used"
-              >
-                <TechBadge
-                  title="Typscript"
-                  img={typescriptIcon}
-                  alt="typescript"
-                />
-                <TechBadge title="React" img={reactIcon} alt="react" />
-                <TechBadge title="Next.js" img={nextJSIcon} alt="next.js" />
-                <TechBadge title="Tailwind" img={tailwindIcon} alt="tailwind" />
-                <TechBadge title="Mongo DB" img={mongoDBIcon} alt="mongo db" />
-                <TechBadge
-                  title="Express.js"
-                  img={expressJSIcon}
-                  alt="express.js"
-                />
-                <TechBadge title="Node.js" img={nodeJSIcon} alt="node.js" />
-              </div>
-            </div>
-            <a
-              aria-label="Learn more about Dev Trainer project"
-              href="/projects/dev-trainer"
-              class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-500/30"
+        {
+          featuredProjects.map((project) => (
+            <li
+              class="scroll-item absolute inset-0 flex items-center justify-between px-[5%]"
+              style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
             >
-              More &rarr;
-            </a>
-          </div>
-        </li>
-        <li
-          class="scroll-item absolute inset-0 flex items-center justify-between px-[5%]"
-          style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
-        >
-          <div
-            class="text-white w-full flex flex-col justify-center gap-10 px-5 md:flex-row sm:px-10 md:items-center"
-          >
-            <h3 class="text-5xl tracking-tight font-bold md:flex-1">
-              Better Spanish
-            </h3>
-            <div class="md:w-[300px] lg:w-[480px]">
-              <p>
-                A learning platform for people who want to learn spanish using
-                high frequency words to get fluent faster
-              </p>
-              <div
-                class="flex flex-wrap gap-2 mt-4"
-                aria-label="Technologies used"
-              >
-                <TechBadge
-                  title="Typscript"
-                  img={typescriptIcon}
-                  alt="typescript"
-                />
-                <TechBadge title="Next.js" img={nextJSIcon} alt="next.js" />
-                <TechBadge title="Tailwind" img={tailwindIcon} alt="tailwind" />
-                <TechBadge title="Mongo DB" img={mongoDBIcon} alt="mongo db" />
+              <div class="text-white w-full flex flex-col justify-center gap-10 px-5 md:flex-row sm:px-10 md:items-center">
+                <h3 class="text-5xl tracking-tight font-bold md:flex-1">
+                  {project.data.title}
+                </h3>
+                <div class="md:w-[300px] lg:w-[480px]">
+                  <p>{project.data.description}</p>
+                  <div
+                    class="flex flex-wrap gap-2 mt-4"
+                    aria-label="Technologies used"
+                  >
+                    {badges
+                      .filter((badge) =>
+                        project.data.techStack.includes(badge.title),
+                      )
+                      .map((badge) => (
+                        <TechBadge
+                          title={badge.title}
+                          img={badge.img}
+                          alt={badge.alt}
+                        />
+                      ))}
+                  </div>
+                </div>
+                <a
+                  aria-label={`Learn more about ${project.data.title} project`}
+                  href={`/projects/${project.data.slug}`}
+                  class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-500/30"
+                >
+                  More &rarr;
+                </a>
               </div>
-            </div>
-            <a
-              aria-label="Learn more about Better Spanish project"
-              href="/projects/better-spanish"
-              class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-500/30"
-            >
-              More &rarr;
-            </a>
-          </div>
-        </li>
-        <li
-          class="scroll-item absolute inset-0 flex items-center justify-between px-[5%]"
-          style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
-        >
-          <div
-            class="text-white w-full flex flex-col justify-center gap-10 px-5 md:flex-row sm:px-10 md:items-center"
-          >
-            <h3 class="text-5xl tracking-tight font-bold md:flex-1">
-              Shoe Junky
-            </h3>
-            <div class="md:w-[300px] lg:w-[480px]">
-              <p>
-                A learning platform for people who want to learn spanish using
-                high frequency words to get fluent faster
-              </p>
-              <div
-                class="flex flex-wrap gap-2 mt-4"
-                aria-label="Technologies used"
-              >
-                <TechBadge
-                  title="Typscript"
-                  img={typescriptIcon}
-                  alt="typescript"
-                />
-                <TechBadge title="React" img={reactIcon} alt="react" />
-                <TechBadge title="Next.js" img={nextJSIcon} alt="next.js" />
-                <TechBadge title="Tailwind" img={tailwindIcon} alt="tailwind" />
-                <TechBadge title="Mongo DB" img={mongoDBIcon} alt="mongo db" />
-              </div>
-            </div>
-            <a
-              aria-label="Learn more about Shoe Junky project"
-              href="/projects/shoe-junky"
-              class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-500/30"
-            >
-              More &rarr;
-            </a>
-          </div>
-        </li>
+            </li>
+          ))
+        }
       </ul>
     </div>
 
@@ -183,7 +88,7 @@ import expressJSIcon from "../../assets/icons/express.svg";
       >
         <a
           class="text-6xl text-center hover:text-white/70 hover:cursor-pointer sm:text-7xl"
-          >See More Projects</a
+          href="/projects">See More Projects</a
         >
       </div>
     </div>
