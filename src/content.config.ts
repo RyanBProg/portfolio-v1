@@ -12,6 +12,7 @@ const projectsCollection = defineCollection({
       githubUrl: z.string(),
       slug: z.string(),
       image: image(),
+      featured: z.boolean(),
     }),
 });
 

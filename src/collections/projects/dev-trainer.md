@@ -6,6 +6,7 @@
     githubUrl: "https://github.com/RyanBProg/dev-trainer"
     slug: dev-trainer
     image: "../../assets/images/project-banner-1.png"
+    featured: true
 ---
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod quae asperiores tenetur reprehenderit. Nostrum ea quae rerum sit, eaque laborum doloremque a dolore doloribus sed accusamus incidunt impedit deserunt accusantium.

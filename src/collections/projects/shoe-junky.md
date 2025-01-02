@@ -6,6 +6,7 @@
     githubUrl: "https://github.com/RyanBProg/shoe-junky-ecom"
     slug: shoe-junky
     image: "../../assets/images/project-banner-3.jpg"
+    featured: true
 ---
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod quae asperiores tenetur reprehenderit. Nostrum ea quae rerum sit, eaque laborum doloremque a dolore doloribus sed accusamus incidunt impedit deserunt accusantium.

@@ -6,6 +6,7 @@
     githubUrl: "https://github.com/RyanBProg/my-portfolio"
     slug: my-portfolio
     image: "../../assets/images/project-banner-2.jpg"
+    featured: false
 ---
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod quae asperiores tenetur reprehenderit. Nostrum ea quae rerum sit, eaque laborum doloremque a dolore doloribus sed accusamus incidunt impedit deserunt accusantium.
