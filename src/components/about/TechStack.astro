@@ -5,11 +5,13 @@ import badges from "../../collections/techBadges";
 
 <div>
   <h2 class="font-semibold tracking-tight text-xl mb-2">Technologies Used</h2>
-  <div class="flex flex-wrap gap-2">
+  <ul class="flex flex-wrap gap-2" aria-label="Technologies used">
     {
       badges.map((badge) => (
-        <TechBadge title={badge.title} img={badge.img} alt={badge.alt} />
+        <li>
+          <TechBadge title={badge.title} img={badge.img} alt={badge.alt} />
+        </li>
       ))
     }
-  </div>
+  </ul>
 </div>

@@ -46,7 +46,7 @@ import TechBadge from "../TechBadge.astro";
                   </h3>
                   <div class="md:w-[300px] lg:w-[480px]">
                     <p>{project.data.description}</p>
-                    <div
+                    <ul
                       class="flex flex-wrap gap-2 mt-4"
                       aria-label="Technologies used"
                     >
@@ -55,13 +55,15 @@ import TechBadge from "../TechBadge.astro";
                           project.data.techStack.includes(badge.title),
                         )
                         .map((badge) => (
-                          <TechBadge
-                            title={badge.title}
-                            img={badge.img}
-                            alt={badge.alt}
-                          />
+                          <li>
+                            <TechBadge
+                              title={badge.title}
+                              img={badge.img}
+                              alt={badge.alt}
+                            />
+                          </li>
                         ))}
-                    </div>
+                    </ul>
                   </div>
                   <a
                     aria-label={`Learn more about ${project.data.title} project`}

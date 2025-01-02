@@ -49,13 +49,15 @@ const projectBadges = allBadges.filter((badge) =>
     <p>
       {projectDescription}
     </p>
-    <div class="flex gap-2 flex-wrap">
+    <ul class="flex gap-2 flex-wrap" aria-label="Technologies used">
       {
         projectBadges.map((badge) => (
-          <TechBadge title={badge.title} img={badge.img} alt={badge.alt} />
+          <li>
+            <TechBadge title={badge.title} img={badge.img} alt={badge.alt} />
+          </li>
         ))
       }
-    </div>
+    </ul>
     <a
       href={`/projects/${slug}`}
       class="mt-5 p-2 rounded-xl bg-black text-white w-fit transition-colors hover:text-neutral-300"
