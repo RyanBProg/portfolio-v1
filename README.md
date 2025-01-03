@@ -1,48 +1,88 @@
-# Astro Starter Kit: Basics
+# Ryan Bowler - Portfolio
 
-```sh
-npm create astro@latest -- --template basics
-```
+A modern, responsive portfolio website showcasing my work as a Full Stack Developer. Built with Astro for optimal performance and user experience.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+### 🚀 Live Demo
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- [View Live Site](https://github.com/ryanbprog/portfolio-v1)
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+### 🌟 Key Features Implemented
 
-## 🚀 Project Structure
+- **Performance Optimized**: Built with Astro for fast page loads and static site generation
+- **Mobile-first Responsive Design**: Fully responsive across all device sizes
+- **Custom GSAP Animations**: Custom animations using GSAP for enhanced user experience
+- **Dynamic Project Gallery**: Interactive project showcase with dynamic routing
+- **Accessibility**: ARIA labels and semantic HTML for better accessibility
+- **Optimization Asset Loading**: Automatic image optimization through Astro's image components
+- **Type Safety**: Full TypeScript integration for robust code
+- **Dynamic project pages using Astro collections**: Content-driven pages with automatic routing and type-safe schemas
+- **SEO-friendly meta tags**: Optimized meta descriptions and dynamic titles for better search engine visibility
 
-Inside of your Astro project, you'll see the following folders and files:
+### 🛠️ Technologies Used
 
-```text
-/
-├── public/
-│   └── favicon.svg
+- **Astro**: Main framework
+- **TypeScript**: Type safety
+- **Tailwind CSS**: Styling
+- **GSAP**: Animations
+- **Lenis**: Smooth scrolling
+
+### 🎯 Future Improvements
+
+<input disabled="" type="checkbox"> Add form functionality with reCAPTCHA integration<br>
+<input disabled="" type="checkbox"> Enhance animations across all pages<br>
+<input disabled="" type="checkbox"> Add more interactive elements<br>
+<input disabled="" type="checkbox"> Add blog section<br>
+<input disabled="" type="checkbox"> Implement light/dark mode<br>
+<input disabled="" type="checkbox"> Add unit tests<br>
+<input disabled="" type="checkbox"> Add CI/CD pipeline<br>
+
+### 📁 Project Structure
+
+```bash
+.<br>
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│ ├── assets/ # Images and icons
+│ ├── collections/ # Content collections and tech badges
+│ ├── components/ # Reusable UI components
+│ ├── layouts/ # Page layouts
+│ └── pages/ # Route pages
+├── public/ # Static assets
+└── astro.config.mjs # Astro configuration
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+### 🚀 Getting Started
 
-## 🧞 Commands
+Clone the repository:
 
-All commands are run from the root of the project, from a terminal:
+```bash
+git clone https://github.com/RyanBProg/portfolio-v1
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Install dependencies:
 
-## 👀 Want to learn more?
+```bash
+npm install
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+### 📄 License
+
+This project is open source and available under the MIT License.
+
+### 📫 Contact
+
+Feel free to reach out if you have any questions or would like to connect:
+
+- [GitHub](https://github.com/ryanbprog)
+- [LinkedIn](https://www.linkedin.com/in/ryan-bowler-601919170)
