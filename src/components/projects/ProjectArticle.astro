@@ -40,7 +40,7 @@ const projectBadges = allBadges.filter((badge) =>
   <div>
     <Image
       src={projectImage}
-      alt={projectTitle}
+      alt={`Screenshot showing ${projectTitle} project interface`}
       class="block w-auto h-full rounded-xl object-cover"
     />
   </div>
@@ -60,6 +60,7 @@ const projectBadges = allBadges.filter((badge) =>
     </ul>
     <a
       href={`/projects/${slug}`}
+      aria-label={`Go to ${projectTitle} project page`}
       class="mt-5 p-2 rounded-xl bg-black text-white w-fit transition-colors hover:text-neutral-300"
       >See More &rarr;</a
     >

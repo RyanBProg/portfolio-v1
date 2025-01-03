@@ -18,21 +18,23 @@ import ProjectArticle from "../../components/projects/ProjectArticle.astro";
       </h1>
     </div>
 
-    <div class="container mx-auto px-5 sm:px-10 grid gap-36 sm:gap-52">
+    <ul class="container mx-auto px-5 sm:px-10 grid gap-36 sm:gap-52">
       {
         projects.map((project, index) => (
-          <ProjectArticle
-            projectTitle={project.data.title}
-            projectDescription={project.data.description}
-            projectImage={project.data.image}
-            leftAlign={index % 2 === 0}
-            techStack={project.data.techStack}
-            allBadges={badges}
-            slug={project.data.slug}
-          />
+          <li>
+            <ProjectArticle
+              projectTitle={project.data.title}
+              projectDescription={project.data.description}
+              projectImage={project.data.image}
+              leftAlign={index % 2 === 0}
+              techStack={project.data.techStack}
+              allBadges={badges}
+              slug={project.data.slug}
+            />
+          </li>
         ))
       }
-    </div>
+    </ul>
 
     <!-- WHITESPACE -->
     <div class="h-[150px] sm:h-[200px]" role="presentation"></div>

@@ -32,7 +32,7 @@ const projectBadges = badges.filter((badge) =>
       <div>
         <Image
           src={project.data.image}
-          alt={project.data.title}
+          alt={`Screenshot showing ${project.data.title} project interface`}
           class="block w-auto h-full rounded-xl object-cover"
         />
       </div>
@@ -42,27 +42,37 @@ const projectBadges = badges.filter((badge) =>
         <p>
           {project.data.description}
         </p>
-        <div class="flex gap-2 flex-wrap">
+        <ul aria-label="Technologies used" class="flex gap-2 flex-wrap">
           {
             projectBadges.map((badge) => (
-              <TechBadge title={badge.title} img={badge.img} alt={badge.alt} />
+              <li>
+                <TechBadge
+                  title={badge.title}
+                  img={badge.img}
+                  alt={badge.alt}
+                />
+              </li>
             ))
           }
-        </div>
-        <div class="flex gap-4">
+        </ul>
+        <div class="flex gap-4" aria-label="Project links">
           <a
             href={project.data.projectUrl}
             target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit live project"
             class="bg-white rounded-xl block h-14 w-14 transition-transform hover:-translate-y-1 hover:cursor-pointer"
           >
-            <Image src={webIcon} alt="github" height="56" width="56" />
+            <Image src={webIcon} alt="website icon" height="56" width="56" />
           </a>
           <a
             href={project.data.githubUrl}
             target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Github to view source code"
             class="bg-white rounded-xl block h-14 w-14 transition-transform hover:-translate-y-1 hover:cursor-pointer"
           >
-            <Image src={githubIcon} alt="github" height="56" width="56" />
+            <Image src={githubIcon} alt="github icon" height="56" width="56" />
           </a>
         </div>
       </div>
