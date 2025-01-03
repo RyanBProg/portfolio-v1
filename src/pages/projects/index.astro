@@ -8,35 +8,33 @@ import ProjectArticle from "../../components/projects/ProjectArticle.astro";
 ---
 
 <Layout title="Projects | Ryan Bowler">
-  <main>
-    <!-- WHITESPACE -->
-    <div class="h-[150px] sm:h-[200px]" role="presentation"></div>
+  <!-- WHITESPACE -->
+  <div class="h-[150px] sm:h-[200px]" role="presentation"></div>
 
-    <div class="container mx-auto px-5 sm:px-10">
-      <h1 class="font-bold text-7xl px-5 mb-20 tracking-tight sm:px-10">
-        Projects
-      </h1>
-    </div>
+  <div class="container mx-auto px-5 sm:px-10">
+    <h1 class="font-bold text-7xl px-5 mb-20 tracking-tight sm:px-10">
+      Projects
+    </h1>
+  </div>
 
-    <ul class="container mx-auto px-5 sm:px-10 grid gap-36 sm:gap-52">
-      {
-        projects.map((project, index) => (
-          <li>
-            <ProjectArticle
-              projectTitle={project.data.title}
-              projectDescription={project.data.description}
-              projectImage={project.data.image}
-              leftAlign={index % 2 === 0}
-              techStack={project.data.techStack}
-              allBadges={badges}
-              slug={project.data.slug}
-            />
-          </li>
-        ))
-      }
-    </ul>
+  <ul class="container mx-auto px-5 sm:px-10 grid gap-36 sm:gap-52">
+    {
+      projects.map((project, index) => (
+        <li>
+          <ProjectArticle
+            projectTitle={project.data.title}
+            projectDescription={project.data.description}
+            projectImage={project.data.image}
+            leftAlign={index % 2 === 0}
+            techStack={project.data.techStack}
+            allBadges={badges}
+            slug={project.data.slug}
+          />
+        </li>
+      ))
+    }
+  </ul>
 
-    <!-- WHITESPACE -->
-    <div class="h-[150px] sm:h-[200px]" role="presentation"></div>
-  </main>
+  <!-- WHITESPACE -->
+  <div class="h-[150px] sm:h-[200px]" role="presentation"></div>
 </Layout>
