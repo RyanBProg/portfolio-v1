@@ -5,7 +5,7 @@
     projectUrl: "https://ryanbprog.com"
     githubUrl: "https://github.com/RyanBProg/shoe-junky-ecom"
     slug: shoe-junky
-    image: "../../assets/images/project-banner-3.jpg"
+    image: "../../assets/images/better-spanish-cover.jpg"
     featured: true
 ---
 

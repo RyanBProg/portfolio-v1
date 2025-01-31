@@ -5,7 +5,7 @@
     projectUrl: "https://dev-trainer.vercel.app"
     githubUrl: "https://github.com/RyanBProg/dev-trainer"
     slug: dev-trainer
-    image: "../../assets/images/project-banner-1.png"
+    image: "../../assets/images/dev-trainer-cover.jpg"
     featured: true
 ---
 

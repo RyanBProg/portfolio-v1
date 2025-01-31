@@ -5,7 +5,7 @@
     projectUrl: "https://better-spanish.vercel.app"
     githubUrl: "https://github.com/RyanBProg/better-spanish"
     slug: better-spanish
-    image: "../../assets/images/project-banner-2.jpg"
+    image: "../../assets/images/better-spanish-cover.jpg"
     featured: true
 ---
 

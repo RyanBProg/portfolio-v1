@@ -5,7 +5,7 @@
     projectUrl: "https://github.com"
     githubUrl: "https://github.com/RyanBProg/my-portfolio"
     slug: my-portfolio
-    image: "../../assets/images/project-banner-2.jpg"
+    image: "../../assets/images/my-portfolio-cover.jpg"
     featured: false
 ---
 
