@@ -19,63 +19,67 @@ import TechBadge from "../TechBadge.astro";
   <div class="section_projects relative">
     <ul>
       {
-        featuredProjects.map((project) => (
-          <li class="scroll-trigger-img relative">
-            <Image
-              src={project.data.image}
-              alt="dev trainer"
-              class="scroll-img-bg h-dvh w-dvw object-cover"
-            />
-            <div class="absolute inset-0 bg-black/50" />
-          </li>
-        ))
+        featuredProjects
+          .sort((a, b) => a.data.title.localeCompare(b.data.title))
+          .map((project) => (
+            <li class="scroll-trigger-img relative">
+              <Image
+                src={project.data.image}
+                alt="dev trainer"
+                class="scroll-img-bg h-dvh w-dvw object-cover"
+              />
+              <div class="absolute inset-0 bg-black/80" />
+            </li>
+          ))
       }
     </ul>
     <div class="absolute inset-0">
       <ul class="w-full h-dvh sticky top-0">
         {
-          featuredProjects.map((project) => {
-            return (
-              <li
-                class="scroll-item absolute inset-0 flex items-center justify-between px-[5%]"
-                style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
-              >
-                <div class="text-white w-full flex flex-col justify-center gap-10 px-5 md:flex-row sm:px-10 md:items-center">
-                  <h3 class="text-5xl tracking-tight font-bold md:flex-1">
-                    {project.data.title}
-                  </h3>
-                  <div class="md:w-[300px] lg:w-[480px]">
-                    <p>{project.data.description}</p>
-                    <ul
-                      class="flex flex-wrap gap-2 mt-4"
-                      aria-label="Technologies used"
+          featuredProjects
+            .sort((a, b) => a.data.title.localeCompare(b.data.title))
+            .map((project) => {
+              return (
+                <li
+                  class="scroll-item absolute inset-0 flex items-center justify-between px-[5%]"
+                  style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
+                >
+                  <div class="text-white w-full flex flex-col justify-center gap-10 px-5 md:flex-row sm:px-10 md:items-center">
+                    <h3 class="text-5xl tracking-tight font-bold md:flex-1">
+                      {project.data.title}
+                    </h3>
+                    <div class="md:w-[300px] lg:w-[480px]">
+                      <p>{project.data.description}</p>
+                      <ul
+                        class="flex flex-wrap gap-2 mt-4"
+                        aria-label="Technologies used"
+                      >
+                        {badges
+                          .filter((badge) =>
+                            project.data.techStack.includes(badge.title),
+                          )
+                          .map((badge) => (
+                            <li>
+                              <TechBadge
+                                title={badge.title}
+                                img={badge.img}
+                                alt={badge.alt}
+                              />
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
+                    <a
+                      aria-label={`Learn more about ${project.data.title} project`}
+                      href={`/projects/${project.data.slug}`}
+                      class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-500/30"
                     >
-                      {badges
-                        .filter((badge) =>
-                          project.data.techStack.includes(badge.title),
-                        )
-                        .map((badge) => (
-                          <li>
-                            <TechBadge
-                              title={badge.title}
-                              img={badge.img}
-                              alt={badge.alt}
-                            />
-                          </li>
-                        ))}
-                    </ul>
+                      More &rarr;
+                    </a>
                   </div>
-                  <a
-                    aria-label={`Learn more about ${project.data.title} project`}
-                    href={`/projects/${project.data.slug}`}
-                    class="more-button font-bold text-3xl p-1 w-fit rounded-lg transition-colors hover:bg-neutral-500/30"
-                  >
-                    More &rarr;
-                  </a>
-                </div>
-              </li>
-            );
-          })
+                </li>
+              );
+            })
         }
       </ul>
     </div>
