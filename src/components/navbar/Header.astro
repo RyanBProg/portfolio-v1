@@ -1,0 +1,215 @@
+<header>
+  <nav aria-label="primary navigation" class="p-4 relative">
+    <button
+      aria-label="toggle navigation"
+      aria-expanded="false"
+      aria-controls="nav-list"
+      id="toggle-nav-btn"
+      class="relative z-20 bg-black p-3 transition-all duration-500 ease-out hover:rounded-xl hover:bg-pink-800 focus:outline-4 focus:outline-offset-4 focus:outline-pink-800"
+    >
+      <div
+        id="nav-button-icon"
+        aria-hidden="true"
+        class="relative w-[30px] h-[30px]"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+
+    <ul
+      id="nav-list"
+      class="z-10 absolute top-0 -translate-y-full inset-x-0 flex flex-col gap-5 bg-white/10 shadow backdrop-blur-sm text-black text-3xl font-medium tracking-tight p-10 pt-32 pb-20 transition-transform duration-500 ease-out"
+      role="menubar"
+    >
+      <li role="none">
+        <a
+          href="/"
+          id="nav-link"
+          tabindex="-1"
+          class="transition-colors duration-300 ease-out hover:text-rose-300"
+          role="menuitem"
+          aria-current={Astro.url.pathname === "/" ? "page" : undefined}
+        >
+          Home</a
+        >
+      </li>
+      <li role="none">
+        <a
+          href="/about"
+          id="nav-link"
+          tabindex="-1"
+          class="transition-colors duration-300 ease-out hover:text-rose-300"
+          role="menuitem"
+          aria-current={Astro.url.pathname === "/about" ? "page" : undefined}
+          >About</a
+        >
+      </li>
+      <li role="none">
+        <a
+          href="/projects"
+          id="nav-link"
+          tabindex="-1"
+          class="transition-colors duration-300 ease-out hover:text-rose-300"
+          role="menuitem"
+          aria-current={Astro.url.pathname === "/projects" ? "page" : undefined}
+          >Projects</a
+        >
+      </li>
+      <li role="none">
+        <a
+          href="/contact"
+          id="nav-link"
+          tabindex="-1"
+          class="transition-colors duration-300 ease-out hover:text-rose-300"
+          role="menuitem"
+          aria-current={Astro.url.pathname === "/contact" ? "page" : undefined}
+          >Contact</a
+        >
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  #nav-button-icon {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+  }
+
+  #nav-button-icon span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.25s ease-in-out;
+    -moz-transition: 0.25s ease-in-out;
+    -o-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;
+  }
+
+  #nav-button-icon span:nth-child(1) {
+    top: 0px;
+  }
+
+  #nav-button-icon span:nth-child(2) {
+    top: 13px;
+  }
+
+  #nav-button-icon span:nth-child(3) {
+    top: 26px;
+  }
+
+  #nav-button-icon.open span:nth-child(1) {
+    top: 13px;
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+
+  #nav-button-icon.open span:nth-child(2) {
+    opacity: 0;
+    left: -60px;
+  }
+
+  #nav-button-icon.open span:nth-child(3) {
+    top: 13px;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+  }
+</style>
+
+<script>
+  const toggleNavButton = document.getElementById("toggle-nav-btn");
+  const navButtonIcon = document.getElementById("nav-button-icon");
+  const navList = document.getElementById("nav-list");
+  const navLinks = document.querySelectorAll("#nav-link");
+  let isNavOpen = false;
+
+  // Handle clicks outside the menu
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      isNavOpen &&
+      navList &&
+      !navList.contains(event.target) &&
+      toggleNavButton &&
+      !toggleNavButton.contains(event.target)
+    ) {
+      closeNav();
+    }
+  };
+
+  // Handle Escape key press
+  const handleEscKeyPress = (event: KeyboardEvent) => {
+    if (event.key === "Escape" && isNavOpen) {
+      closeNav();
+    }
+  };
+
+  // Close navigation function
+  const closeNav = () => {
+    isNavOpen = false;
+    navButtonIcon?.classList.remove("open");
+    toggleNavButton?.classList.remove("bg-pink-800");
+    toggleNavButton?.classList.add("bg-black");
+    navList?.classList.add("-translate-y-full");
+    navList?.classList.remove("translate-y-0");
+
+    navLinks.forEach((link) => {
+      link.setAttribute("tabindex", "-1");
+    });
+
+    toggleNavButton?.setAttribute("aria-expanded", "false");
+  };
+
+  // Toggle navigation function
+  toggleNavButton?.addEventListener("click", () => {
+    isNavOpen = !isNavOpen;
+
+    if (isNavOpen) {
+      navButtonIcon?.classList.add("open");
+      toggleNavButton.classList.add("bg-pink-800");
+      toggleNavButton.classList.remove("bg-black");
+      navList?.classList.add("translate-y-0");
+      navList?.classList.remove("-translate-y-full");
+    } else {
+      closeNav();
+    }
+
+    navLinks.forEach((link) => {
+      link.setAttribute("tabindex", isNavOpen ? "0" : "-1");
+    });
+
+    toggleNavButton.setAttribute("aria-expanded", isNavOpen ? "true" : "false");
+  });
+
+  // Add event listeners
+  document.addEventListener("mousedown", handleClickOutside);
+  document.addEventListener("keydown", handleEscKeyPress);
+</script>
+
+<!-- 
+TODO:
+
+- Turn css into tailwind
+- Add gsap for text animations
+- Fix event ts errors
+
+-->

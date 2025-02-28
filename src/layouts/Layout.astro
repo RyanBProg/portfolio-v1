@@ -1,4 +1,6 @@
 ---
+import Header from "../components/navbar/Header.astro";
+
 const { title } = Astro.props;
 ---
 
@@ -25,7 +27,7 @@ const { title } = Astro.props;
     </a>
 
     <!-- HEADER -->
-    <header class="absolute z-20 p-[5px]" id="header" role="banner">
+    <!-- <header class="absolute z-20 p-[5px]" id="header" role="banner">
       <nav
         id="nav"
         aria-label="Main navigation"
@@ -90,7 +92,8 @@ const { title } = Astro.props;
       >
         ☰
       </button>
-    </header>
+    </header> -->
+    <Header />
 
     <!-- Main Content -->
     <main id="main-content">
