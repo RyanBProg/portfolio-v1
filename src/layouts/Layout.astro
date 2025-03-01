@@ -25,74 +25,6 @@ const { title } = Astro.props;
     >
       Skip to main content
     </a>
-
-    <!-- HEADER -->
-    <!-- <header class="absolute z-20 p-[5px]" id="header" role="banner">
-      <nav
-        id="nav"
-        aria-label="Main navigation"
-        class="absolute top-[5px] left-[5px] rounded-sm pt-20 pb-10 px-10 bg-black origin-top-left scale-0"
-      >
-        <ul
-          id="nav-list"
-          class="grid gap-3 relative z-10 opacity-0"
-          role="menubar"
-        >
-          <li role="none">
-            <a
-              href="/"
-              class="text-xl text-white font-medium transition-colors hover:text-neutral-400"
-              id="home-nav-button"
-              role="menuitem"
-              aria-current={Astro.url.pathname === "/" ? "page" : undefined}
-              >Home</a
-            >
-          </li>
-          <li role="none">
-            <a
-              href="/about"
-              class="text-xl text-white font-medium transition-colors hover:text-neutral-400"
-              id="about-nav-button"
-              role="menuitem"
-              aria-current={Astro.url.pathname === "/about"
-                ? "page"
-                : undefined}>About</a
-            >
-          </li>
-          <li role="none">
-            <a
-              href="/projects"
-              class="text-xl text-white font-medium transition-colors hover:text-neutral-400"
-              id="projects-nav-button"
-              role="menuitem"
-              aria-current={Astro.url.pathname === "/projects"
-                ? "page"
-                : undefined}>Projects</a
-            >
-          </li>
-          <li role="none">
-            <a
-              href="/contact"
-              class="text-xl text-white font-medium transition-colors hover:text-neutral-400"
-              id="contact-nav-button"
-              role="menuitem"
-              aria-current={Astro.url.pathname === "/contact"
-                ? "page"
-                : undefined}>Contact</a
-            >
-          </li>
-        </ul>
-      </nav>
-      <button
-        aria-label="Open Mobile Navigation"
-        aria-expanded="false"
-        aria-controls="nav"
-        class="block w-10 h-10 text-2xl rounded-sm text-white bg-black border-none transition-colors translate-x-0 hover:cursor-pointer hover:text-neutral-400"
-        id="mobile-nav-btn"
-      >
-        ☰
-      </button>
-    </header> -->
     <Header />
 
     <!-- Main Content -->
@@ -139,6 +71,10 @@ const { title } = Astro.props;
 
   // Smooth scrolling
   const lenis = new Lenis();
+
+  // Make lenis available globally
+  window.lenis = lenis;
+
   function raf(time: number) {
     lenis.raf(time);
     requestAnimationFrame(raf);

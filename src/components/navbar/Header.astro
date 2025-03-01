@@ -5,7 +5,7 @@
       aria-expanded="false"
       aria-controls="nav-list"
       id="toggle-nav-btn"
-      class="relative z-20 bg-black p-3 transition-all duration-500 ease-out hover:rounded-xl hover:bg-pink-800 focus:outline-4 focus:outline-offset-4 focus:outline-pink-800"
+      class="relative z-20 p-3 transition-all duration-700 ease-out hover:rounded-xl focus:outline-4 focus:outline-offset-4 focus:outline-pink-800"
     >
       <div
         id="nav-button-icon"
@@ -18,57 +18,180 @@
       </div>
     </button>
 
-    <ul
+    <div
       id="nav-list"
-      class="z-10 absolute top-0 -translate-y-full inset-x-0 flex flex-col gap-5 bg-white/10 shadow backdrop-blur-sm text-black text-3xl font-medium tracking-tight p-10 pt-32 pb-20 transition-transform duration-500 ease-out"
-      role="menubar"
+      class="h-screen flex z-10 absolute top-0 -translate-y-full inset-x-0 bg-white/70 backdrop-blur-md transition-transform duration-500 ease-out"
     >
-      <li role="none">
-        <a
-          href="/"
-          id="nav-link"
-          tabindex="-1"
-          class="transition-colors duration-300 ease-out hover:text-rose-300"
-          role="menuitem"
-          aria-current={Astro.url.pathname === "/" ? "page" : undefined}
+      <div class="flex flex-col justify-between p-10 pt-32">
+        <!-- nav links list -->
+        <ul
+          class="group flex flex-col gap-4 text-black text-6xl font-bold tracking-tight"
+          role="menubar"
         >
-          Home</a
+          <li role="none">
+            <span class="overflow-x-hidden flex">
+              <a
+                href="/"
+                id="nav-link"
+                data-slide="home-slide"
+                tabindex="-1"
+                role="menuitem"
+                class={`${Astro.url.pathname === "/" ? "text-neutral-500" : "text-black -translate-x-10 hover:translate-x-0"} transition-all duration-500 ease-out flex gap-2 items-center`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-move-right"
+                  ><path d="M18 8L22 12L18 16"></path><path d="M2 12H22"
+                  ></path></svg
+                >
+                Home
+              </a>
+            </span>
+          </li>
+          <li role="none">
+            <span class="overflow-x-hidden flex">
+              <a
+                href="/about"
+                id="nav-link"
+                data-slide="about-slide"
+                tabindex="-1"
+                role="menuitem"
+                class={`${Astro.url.pathname === "/about" ? "text-neutral-500" : "text-black -translate-x-10 hover:translate-x-0"} transition-all duration-500 ease-out flex gap-2 items-center`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-move-right"
+                  ><path d="M18 8L22 12L18 16"></path><path d="M2 12H22"
+                  ></path></svg
+                >
+                About
+              </a>
+            </span>
+          </li>
+          <li role="none">
+            <span class="overflow-x-hidden flex">
+              <a
+                href="/projects"
+                id="nav-link"
+                data-slide="projects-slide"
+                tabindex="-1"
+                role="menuitem"
+                class={`${Astro.url.pathname === "/projects" ? "text-neutral-500" : "text-black -translate-x-10 hover:translate-x-0"}  transition-all duration-500 ease-out flex gap-2 items-center`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-move-right"
+                  ><path d="M18 8L22 12L18 16"></path><path d="M2 12H22"
+                  ></path></svg
+                >
+                Projects
+              </a>
+            </span>
+          </li>
+          <li role="none">
+            <span class="overflow-x-hidden flex">
+              <a
+                href="/contact"
+                id="nav-link"
+                data-slide="contact-slide"
+                tabindex="-1"
+                role="menuitem"
+                class={`${Astro.url.pathname === "/contact" ? "text-neutral-500" : "text-black -translate-x-10 hover:translate-x-0"} transition-all duration-500 ease-out flex gap-2 items-center`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-move-right"
+                  ><path d="M18 8L22 12L18 16"></path><path d="M2 12H22"
+                  ></path></svg
+                >
+                Contact
+              </a>
+            </span>
+          </li>
+        </ul>
+
+        <!-- links -->
+        <div class="grid gap-2 font-medium">
+          <div>
+            <a href="/" class="group relative">
+              <span>GitHub</span>
+              <span
+                class="absolute -bottom-1 left-0 h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+          </div>
+          <div>
+            <a href="/" class="group relative">
+              <span>LinkedIn</span>
+              <span
+                class="absolute -bottom-1 left-0 h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+          </div>
+          <p>ryanbprog@gmail.com</p>
+        </div>
+      </div>
+
+      <!-- gallery slider -->
+      <div class="relative h-full w-1/2 ml-auto">
+        <div
+          id="home-slide"
+          class={`${Astro.url.pathname === "/" ? "z-20" : "z-10"} absolute top-0 right-0 w-full h-full bg-blue-200 transition-transform duration-500 ease-out`}
         >
-      </li>
-      <li role="none">
-        <a
-          href="/about"
-          id="nav-link"
-          tabindex="-1"
-          class="transition-colors duration-300 ease-out hover:text-rose-300"
-          role="menuitem"
-          aria-current={Astro.url.pathname === "/about" ? "page" : undefined}
-          >About</a
+          <p>Home</p>
+        </div>
+        <div
+          id="about-slide"
+          class={`${Astro.url.pathname === "/about" ? "z-20" : "z-10"} absolute top-0 right-0 w-full h-full bg-red-200 transition-transform duration-500 ease-out`}
         >
-      </li>
-      <li role="none">
-        <a
-          href="/projects"
-          id="nav-link"
-          tabindex="-1"
-          class="transition-colors duration-300 ease-out hover:text-rose-300"
-          role="menuitem"
-          aria-current={Astro.url.pathname === "/projects" ? "page" : undefined}
-          >Projects</a
+          <p>About</p>
+        </div>
+        <div
+          id="projects-slide"
+          class={`${Astro.url.pathname === "/projects" ? "z-20" : "z-10"} absolute top-0 right-0 w-full h-full bg-yellow-200 transition-transform duration-500 ease-out`}
         >
-      </li>
-      <li role="none">
-        <a
-          href="/contact"
-          id="nav-link"
-          tabindex="-1"
-          class="transition-colors duration-300 ease-out hover:text-rose-300"
-          role="menuitem"
-          aria-current={Astro.url.pathname === "/contact" ? "page" : undefined}
-          >Contact</a
+          <p>Projects</p>
+        </div>
+        <div
+          id="contact-slide"
+          class={`${Astro.url.pathname === "/contact" ? "z-20" : "z-10"} absolute top-0 right-0 w-full h-full bg-purple-200 transition-transform duration-500 ease-out`}
         >
-      </li>
-    </ul>
+          <p>Contact</p>
+        </div>
+      </div>
+    </div>
   </nav>
 </header>
 
@@ -87,9 +210,9 @@
   #nav-button-icon span {
     display: block;
     position: absolute;
-    height: 3px;
+    height: 4px;
     width: 100%;
-    background-color: white;
+    background-color: black;
     opacity: 1;
     left: 0;
     -webkit-transform: rotate(0deg);
@@ -137,20 +260,31 @@
 </style>
 
 <script>
+  // Get Lenis instance from window
+  declare global {
+    interface Window {
+      lenis: any;
+    }
+  }
+
   const toggleNavButton = document.getElementById("toggle-nav-btn");
   const navButtonIcon = document.getElementById("nav-button-icon");
   const navList = document.getElementById("nav-list");
   const navLinks = document.querySelectorAll("#nav-link");
+  const slides = document.querySelectorAll("[id$='-slide']");
   let isNavOpen = false;
 
   // Handle clicks outside the menu
   const handleClickOutside = (event: MouseEvent) => {
+    // Type guard to ensure target is Element
+    const target = event.target as Element;
+
     if (
       isNavOpen &&
       navList &&
-      !navList.contains(event.target) &&
+      !navList.contains(target) &&
       toggleNavButton &&
-      !toggleNavButton.contains(event.target)
+      !toggleNavButton.contains(target)
     ) {
       closeNav();
     }
@@ -166,9 +300,11 @@
   // Close navigation function
   const closeNav = () => {
     isNavOpen = false;
+
+    // Re-enable scrolling with Lenis
+    window.lenis?.start();
+
     navButtonIcon?.classList.remove("open");
-    toggleNavButton?.classList.remove("bg-pink-800");
-    toggleNavButton?.classList.add("bg-black");
     navList?.classList.add("-translate-y-full");
     navList?.classList.remove("translate-y-0");
 
@@ -184,9 +320,16 @@
     isNavOpen = !isNavOpen;
 
     if (isNavOpen) {
+      // Scroll to top of screen
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+
+      // Stop Lenis scrolling
+      window.lenis?.stop();
+
       navButtonIcon?.classList.add("open");
-      toggleNavButton.classList.add("bg-pink-800");
-      toggleNavButton.classList.remove("bg-black");
       navList?.classList.add("translate-y-0");
       navList?.classList.remove("-translate-y-full");
     } else {
@@ -198,6 +341,56 @@
     });
 
     toggleNavButton.setAttribute("aria-expanded", isNavOpen ? "true" : "false");
+  });
+
+  // Nav gallery slider
+  navLinks.forEach((link) => {
+    link.addEventListener("mouseenter", () => {
+      const slideId = link.getAttribute("data-slide");
+      const slide = document.getElementById(slideId!);
+
+      // Reset all slides
+      slides.forEach((s) => s.classList.add("translate-x-full"));
+
+      // Show current slide
+      if (slide) {
+        slide.classList.remove("translate-x-full");
+      }
+    });
+  });
+
+  // Reset slides when mouse leaves navigation area
+  // navList?.addEventListener("mouseleave", () => {
+  //   slides.forEach((slide) => slide.classList.add("translate-x-full"));
+  // });
+
+  // Nav links hover color change
+  navLinks.forEach((hoverlink) => {
+    hoverlink.addEventListener("mouseenter", () => {
+      navLinks.forEach((link) => {
+        if (link === hoverlink) {
+          link.classList.remove("text-neutral-500");
+          link.classList.add("text-black");
+        } else {
+          link.classList.remove("text-black");
+          link.classList.add("text-neutral-500");
+        }
+      });
+    });
+
+    hoverlink.addEventListener("mouseleave", () => {
+      const currentPath = window.location.pathname;
+
+      navLinks.forEach((link) => {
+        if (link.getAttribute("href") === currentPath) {
+          link.classList.add("text-neutral-500");
+          link.classList.remove("text-black");
+        } else {
+          link.classList.remove("text-neutral-500");
+          link.classList.add("text-black");
+        }
+      });
+    });
   });
 
   // Add event listeners
