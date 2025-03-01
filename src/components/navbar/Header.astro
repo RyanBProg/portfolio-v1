@@ -20,9 +20,12 @@
 
     <div
       id="nav-list"
-      class="h-screen flex z-10 absolute top-0 -translate-y-full inset-x-0 bg-white/70 backdrop-blur-md transition-transform duration-500 ease-out"
+      class="h-screen flex z-10 absolute top-0 -translate-y-full inset-x-0 bg-white/70 backdrop-blur-md"
     >
-      <div class="flex flex-col justify-between p-10 pt-32">
+      <div
+        id="nav-content"
+        class="flex flex-col justify-between p-10 pt-32 opacity-0"
+      >
         <!-- nav links list -->
         <ul
           class="group flex flex-col gap-4 text-black text-6xl font-bold tracking-tight"
@@ -260,6 +263,8 @@
 </style>
 
 <script>
+  import { gsap } from "gsap";
+
   // Get Lenis instance from window
   declare global {
     interface Window {
@@ -304,14 +309,21 @@
     // Re-enable scrolling with Lenis
     window.lenis?.start();
 
-    navButtonIcon?.classList.remove("open");
-    navList?.classList.add("-translate-y-full");
-    navList?.classList.remove("translate-y-0");
+    const tl = gsap.timeline();
+    tl.to("#nav-content", {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power4.in",
+    }).to("#nav-list", {
+      y: "-100%",
+      duration: 0.5,
+      ease: "power4.in",
+    });
 
+    navButtonIcon?.classList.remove("open");
     navLinks.forEach((link) => {
       link.setAttribute("tabindex", "-1");
     });
-
     toggleNavButton?.setAttribute("aria-expanded", "false");
   };
 
@@ -320,18 +332,30 @@
     isNavOpen = !isNavOpen;
 
     if (isNavOpen) {
-      // Scroll to top of screen
+      // Scroll to top of screen and stop Lenis scrolling
       window.scrollTo({
         top: 0,
         behavior: "smooth",
       });
-
-      // Stop Lenis scrolling
       window.lenis?.stop();
 
+      // Open animation sequence
+      const tl = gsap.timeline();
+      tl.to("#nav-list", {
+        y: "0%",
+        duration: 0.8,
+        ease: "power4.inOut",
+      }).to(
+        "#nav-content",
+        {
+          opacity: 1,
+          duration: 0.8,
+          ease: "power4.inOut",
+        },
+        "-=0.1",
+      );
+
       navButtonIcon?.classList.add("open");
-      navList?.classList.add("translate-y-0");
-      navList?.classList.remove("-translate-y-full");
     } else {
       closeNav();
     }
@@ -339,7 +363,6 @@
     navLinks.forEach((link) => {
       link.setAttribute("tabindex", isNavOpen ? "0" : "-1");
     });
-
     toggleNavButton.setAttribute("aria-expanded", isNavOpen ? "true" : "false");
   });
 
@@ -402,7 +425,7 @@
 TODO:
 
 - Turn css into tailwind
-- Add gsap for text animations
-- Fix event ts errors
+- Add preview images to the menu
+- Refine easings
 
 -->
