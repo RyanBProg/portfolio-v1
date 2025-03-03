@@ -1,0 +1,177 @@
+---
+import TechBadge from "../TechBadge.astro";
+import badges from "../../collections/techBadges";
+
+interface Props {
+  articleId: string;
+  projectNotes: string[];
+  projectFeatures: string[];
+  techStack: string[];
+}
+
+const { articleId, projectNotes, projectFeatures, techStack } = Astro.props;
+
+const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
+---
+
+<div>
+  <div class="border-t">
+    <button
+      id={`tech-stack-btn-${articleId}`}
+      class="text-lg font-medium py-4 px-2 w-full flex justify-between items-center hover:bg-black hover:text-white transition-colors duration-500 ease-out"
+      ><span>TECH STACK</span><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-chevron-down inline-block ml-4"
+        ><path d="m6 9 6 6 6-6"></path></svg
+      ></button
+    >
+    <div
+      id={`tech-stack-content-${articleId}`}
+      class="h-0 overflow-hidden transition-[height] duration-300 ease-out"
+    >
+      <ul
+        id={`tech-stack-content-${articleId}`}
+        class="gap-2 flex-wrap py-2"
+        aria-label="Technologies used"
+      >
+        {
+          projectBadges.map((badge) => (
+            <li>
+              <TechBadge title={badge.title} img={badge.img} alt={badge.alt} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+  <div class="border-t">
+    <button
+      id={`features-btn-${articleId}`}
+      class="text-lg font-medium py-4 px-2 w-full flex justify-between items-center hover:bg-black hover:text-white transition-colors duration-500 ease-out"
+      ><span>FEATURES</span><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-chevron-down inline-block ml-4"
+        ><path d="m6 9 6 6 6-6"></path></svg
+      ></button
+    >
+    <div
+      id={`features-content-${articleId}`}
+      class="h-0 overflow-hidden transition-[height] duration-300 ease-out"
+    >
+      <p class="py-2">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae mollitia
+        distinctio recusandae odit? Optio esse porro delectus molestias. Eaque
+        ab praesentium sunt quasi, commodi id nulla soluta ullam asperiores in.
+      </p>
+    </div>
+  </div>
+  <div class="border-y">
+    <button
+      id={`notes-btn-${articleId}`}
+      class="text-lg font-medium py-4 px-2 w-full flex justify-between items-center hover:bg-black hover:text-white transition-colors duration-500 ease-out"
+      ><span>NOTES</span><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-chevron-down inline-block ml-4"
+        ><path d="m6 9 6 6 6-6"></path></svg
+      ></button
+    >
+    <div
+      id={`notes-content-${articleId}`}
+      class="h-0 overflow-hidden transition-[height] duration-300 ease-out"
+    >
+      <p class="py-2">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae mollitia
+        distinctio recusandae odit? Optio esse porro delectus molestias. Eaque
+        ab praesentium sunt quasi, commodi id nulla soluta ullam asperiores in.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ articleId }}>
+  const accordionButtons = [
+    document.getElementById(`tech-stack-btn-${articleId}`),
+    document.getElementById(`features-btn-${articleId}`),
+    document.getElementById(`notes-btn-${articleId}`),
+  ];
+
+  const accordionContents = [
+    document.getElementById(`tech-stack-content-${articleId}`),
+    document.getElementById(`features-content-${articleId}`),
+    document.getElementById(`notes-content-${articleId}`),
+  ];
+
+  let activeIndex = null;
+
+  const toggleAccordion = (index) => {
+    // Close currently open section if it exists
+    if (activeIndex !== null) {
+      const content = accordionContents[activeIndex];
+      content.style.height = "0";
+      accordionButtons[activeIndex]
+        ?.querySelector("svg")
+        ?.classList.remove("rotate-180");
+      accordionButtons[activeIndex]?.classList.remove("bg-black", "text-white");
+    }
+
+    // If clicking the same button, just close it
+    if (activeIndex === index) {
+      activeIndex = null;
+      return;
+    }
+
+    // Open new section
+    const content = accordionContents[index];
+    content.style.height = content.scrollHeight + "px";
+    accordionButtons[index]?.querySelector("svg")?.classList.add("rotate-180");
+    accordionButtons[index]?.classList.add("bg-black", "text-white");
+    activeIndex = index;
+  };
+
+  // Add click listeners to buttons
+  accordionButtons.forEach((button, index) => {
+    button?.addEventListener("click", () => toggleAccordion(index));
+  });
+
+  // Optional: Close accordion when clicking outside
+  document.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!target.closest("button")) {
+      if (activeIndex !== null) {
+        accordionContents[activeIndex]?.classList.add("hidden");
+        accordionButtons[activeIndex]
+          ?.querySelector("svg")
+          ?.classList.remove("rotate-180");
+        accordionButtons[activeIndex]?.classList.remove(
+          "bg-black",
+          "text-white",
+        );
+        activeIndex = null;
+      }
+    }
+  });
+</script>

@@ -5,10 +5,11 @@ const projectsCollection = defineCollection({
   loader: glob({ pattern: "*.md", base: "./src/collections/projects/" }),
   schema: ({ image }) =>
     z.object({
+      id: z.string(),
       title: z.string(),
       description: z.string(),
       techStack: z.array(z.string()),
-      projectUrl: z.string(),
+      siteUrl: z.string(),
       githubUrl: z.string(),
       slug: z.string(),
       image: image(),

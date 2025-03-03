@@ -1,0 +1,57 @@
+---
+import Accordian from "./Accordian.astro";
+
+type Project = {
+  title: string;
+  image: {
+    src: string;
+    width: number;
+    height: number;
+    format: "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "svg" | "avif";
+  };
+  description: string;
+  techStack: string[];
+  siteUrl: string;
+  githubUrl: string;
+  slug: string;
+  featured: boolean;
+};
+
+type Props = {
+  id: string;
+  project: Project;
+};
+
+const { id, project } = Astro.props;
+---
+
+<article
+  id={id}
+  class={`absolute inset-0 p-4 transition-all duration-300 ${
+    id === "article_1"
+      ? "opacity-100 z-30"
+      : "opacity-0 z-0 pointer-events-none"
+  }`}
+>
+  <h2 class="font-semibold text-3xl mb-5">{project.title}</h2>
+  <p class="">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
+    reprehenderit fugit iste explicabo ipsa culpa cumque velit deleniti sed
+    soluta, maiores aliquid suscipit iusto officia est maxime ratione error
+    esse!
+  </p>
+  <div class="flex mt-5 mb-10">
+    <a href={project.siteUrl} class="text-center w-full text-lg font-medium"
+      >Live Site</a
+    >
+    <a href={project.githubUrl} class="text-center w-full text-lg font-medium"
+      >GitHub Repo</a
+    >
+  </div>
+  <Accordian
+    articleId={id}
+    projectNotes={[""]}
+    projectFeatures={[""]}
+    techStack={project.techStack}
+  />
+</article>

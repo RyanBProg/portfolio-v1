@@ -1,10 +1,11 @@
 ---
-    title: My Portfolio
-    description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolorem doloribus cupiditate sint iste quam debitis sequi? Fuga, similique quos?
-    techStack: [ HTML, Typescript, Astro, Tailwind ]
-    projectUrl: "https://github.com"
+    id: "2736475"
+    title: "My Portfolio"
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolorem doloribus cupiditate sint iste quam debitis sequi? Fuga, similique quos?"
+    techStack: [ "HTML", "Typescript", "Astro", "Tailwind" ]
+    siteUrl: "https://github.com"
     githubUrl: "https://github.com/RyanBProg/my-portfolio"
-    slug: my-portfolio
+    slug: "my-portfolio"
     image: "../../assets/images/my-portfolio-cover.jpg"
     featured: false
 ---

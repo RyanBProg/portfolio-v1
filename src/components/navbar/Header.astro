@@ -20,7 +20,7 @@
 
     <div
       id="nav-list"
-      class="h-screen flex z-10 absolute top-0 -translate-y-full inset-x-0 bg-white/70 backdrop-blur-md"
+      class="h-screen flex z-90 absolute top-0 -translate-y-full inset-x-0 bg-white/70 backdrop-blur-md"
     >
       <div
         id="nav-content"
@@ -173,25 +173,49 @@
           id="home-slide"
           class={`${Astro.url.pathname === "/" ? "z-20" : "z-10"} absolute top-0 right-0 w-full h-full bg-blue-200 transition-transform duration-500 ease-out`}
         >
-          <p>Home</p>
+          <div class="relative w-full h-full">
+            <p
+              class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-4xl font-bold tracking-tight"
+            >
+              Home
+            </p>
+          </div>
         </div>
         <div
           id="about-slide"
           class={`${Astro.url.pathname === "/about" ? "z-20" : "z-10"} absolute top-0 right-0 w-full h-full bg-red-200 transition-transform duration-500 ease-out`}
         >
-          <p>About</p>
+          <div class="relative w-full h-full">
+            <p
+              class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-4xl font-bold tracking-tight"
+            >
+              About
+            </p>
+          </div>
         </div>
         <div
           id="projects-slide"
           class={`${Astro.url.pathname === "/projects" ? "z-20" : "z-10"} absolute top-0 right-0 w-full h-full bg-yellow-200 transition-transform duration-500 ease-out`}
         >
-          <p>Projects</p>
+          <div class="relative w-full h-full">
+            <p
+              class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-4xl font-bold tracking-tight"
+            >
+              Projects
+            </p>
+          </div>
         </div>
         <div
           id="contact-slide"
           class={`${Astro.url.pathname === "/contact" ? "z-20" : "z-10"} absolute top-0 right-0 w-full h-full bg-purple-200 transition-transform duration-500 ease-out`}
         >
-          <p>Contact</p>
+          <div class="relative w-full h-full">
+            <p
+              class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-4xl font-bold tracking-tight"
+            >
+              Contact
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -427,5 +451,10 @@ TODO:
 - Turn css into tailwind
 - Add preview images to the menu
 - Refine easings
+- Make it responsive
+- Gallery slider should be opacity 0 when closed (to fix mobile scroll issue)
+- Add menu link navigation by arrow keys
+- Current page text hightlighting  and arrow not working on mobile
+- Fix z-index so page content doesn't overlap
 
 -->

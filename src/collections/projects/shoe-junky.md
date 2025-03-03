@@ -1,10 +1,11 @@
 ---
-    title: Shoe Junky
-    description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolorem doloribus cupiditate sint iste quam debitis sequi? Fuga, similique quos?
-    techStack: [ React, Astro , Typescript, Express.js, MongoDB, CSS ]
-    projectUrl: "https://ryanbprog.com"
+    id: "5663285"
+    title: "Shoe Junky"
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolorem doloribus cupiditate sint iste quam debitis sequi? Fuga, similique quos?"
+    techStack: [ "React", "Astro" , "Typescript", "Express.js", "MongoDB", "CSS" ]
+    siteUrl: "https://ryanbprog.com"
     githubUrl: "https://github.com/RyanBProg/shoe-junky-ecom"
-    slug: shoe-junky
+    slug: "shoe-junky"
     image: "../../assets/images/better-spanish-cover.jpg"
     featured: true
 ---

@@ -3,38 +3,320 @@ import { getCollection } from "astro:content";
 const projects = await getCollection("projectsCollection");
 
 import Layout from "../../layouts/Layout.astro";
-import badges from "../../collections/techBadges";
-import ProjectArticle from "../../components/projects/ProjectArticle.astro";
+import Article from "../../components/projects/Article.astro";
+import { Image } from "astro:assets";
 ---
 
 <Layout title="Projects | Ryan Bowler">
-  <!-- WHITESPACE -->
-  <div class="h-[150px] sm:h-[200px]" role="presentation"></div>
+  <section class="h-fit lg:h-screen w-screen -mt-[86px]">
+    <div class="h-full w-full flex flex-col lg:flex-row">
+      <div
+        class="overflow-x-hidden w-full h-[calc(75vh)] min-h-[600px] lg:h-full relative"
+      >
+        <h1
+          class="absolute right-5 top-4 font-bold text-3xl tracking-tight text-neutral-600"
+        >
+          Projects
+        </h1>
+        <div class="w-full h-full text-center overflow-hidden relative">
+          <div
+            id="slider"
+            class="slider absolute z-10 inset-0 my-auto"
+            style="--quantity: 4"
+          >
+            <div
+              class="item border absolute inset-0 overflow-clip"
+              style="--position: 1"
+            >
+              <Image
+                src="/src/assets/images/better-spanish-cover.jpg"
+                alt=""
+                class="h-full w-full object-cover"
+                height={550}
+                width={500}
+              />
+            </div>
+            <div
+              class="item border absolute inset-0 overflow-clip"
+              style="--position: 2"
+            >
+              <Image
+                src="/src/assets/images/projects-preview.png"
+                alt=""
+                class="h-full w-full object-cover"
+                height={550}
+                width={500}
+              />
+            </div>
+            <div
+              class="item border absolute inset-0 overflow-clip"
+              style="--position: 3"
+            >
+              <Image
+                src="/src/assets/images/dev-trainer-cover.jpg"
+                alt=""
+                class="block h-full w-full object-cover"
+                height={550}
+                width={500}
+              />
+            </div>
+            <div
+              class="item border-2 absolute inset-0 overflow-clip"
+              style="--position: 4"
+            >
+              <Image
+                src="/src/assets/images/better-spanish-cover.jpg"
+                alt=""
+                class="h-full w-full object-cover"
+                height={550}
+                width={500}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="h-screen lg:h-full lg:border-l-2 border-black lg:w-1/2 flex flex-col-reverse lg:flex-col relative"
+      >
+        <div class="relative h-full w-full bg-white z-30 overflow-y-scroll">
+          <Article id="article_1" project={projects[0].data} />
+          <Article id="article_2" project={projects[1].data} />
+          <Article id="article_3" project={projects[2].data} />
+          <Article id="article_4" project={projects[3].data} />
+        </div>
+        <div
+          class="flex justify-between bg-white border-t-2 border-b-2 lg:border-b-0 border-black"
+        >
+          <button
+            id="prev_button"
+            class="px-3 py-3 bg-white text-black border-r-2 border-black hover:bg-black hover:text-white transition-colors duration-300 ease-out disabled:hover:bg-white disabled:hover:text-neutral-200 disabled:text-neutral-200"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-chevron-left"
+              ><path d="m15 18-6-6 6-6"></path></svg
+            ></button
+          >
+          <button
+            id="next_button"
+            class="px-3 py-3 bg-white text-black border-black border-l-2 hover:bg-black hover:text-white transition-colors duration-300 ease-out disabled:hover:bg-white disabled:hover:text-neutral-200 disabled:text-neutral-200"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-chevron-right"
+              ><path d="m9 18 6-6-6-6"></path></svg
+            ></button
+          >
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="container mx-auto px-5 sm:px-10">
-    <h1 class="font-bold text-7xl px-5 mb-20 tracking-tight sm:px-10">
-      Projects
-    </h1>
-  </div>
-
-  <ul class="container mx-auto px-5 sm:px-10 grid gap-36 sm:gap-52">
-    {
-      projects.map((project, index) => (
-        <li>
-          <ProjectArticle
-            projectTitle={project.data.title}
-            projectDescription={project.data.description}
-            projectImage={project.data.image}
-            leftAlign={index % 2 === 0}
-            techStack={project.data.techStack}
-            allBadges={badges}
-            slug={project.data.slug}
-          />
-        </li>
-      ))
+  <style>
+    .slider {
+      width: 500px;
+      height: 550px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) perspective(2000px) rotateY(0deg);
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease-out;
     }
-  </ul>
 
-  <!-- WHITESPACE -->
-  <div class="h-[150px] sm:h-[200px]" role="presentation"></div>
+    .slider .item {
+      transform: rotateY(
+          calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
+        )
+        translateZ(650px);
+    }
+
+    @media screen and (max-width: 1350px) {
+      .slider {
+        width: 400px;
+        height: 450px;
+      }
+
+      .slider .item {
+        transform: rotateY(
+            calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
+          )
+          translateZ(550px);
+      }
+    }
+
+    @media screen and (max-width: 639px) {
+      .slider {
+        width: 300px;
+        height: 350px;
+      }
+
+      .slider .item {
+        transform: rotateY(
+            calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
+          )
+          translateZ(400px);
+      }
+    }
+
+    @media screen and (max-width: 429px) {
+      .slider {
+        width: 250px;
+        height: 350px;
+      }
+
+      .slider .item {
+        transform: rotateY(
+            calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
+          )
+          translateZ(400px);
+      }
+    }
+  </style>
+
+  <script>
+    const nextButton = document.getElementById(
+      "next_button",
+    ) as HTMLButtonElement;
+    const prevButton = document.getElementById(
+      "prev_button",
+    ) as HTMLButtonElement;
+    const articles = [
+      document.getElementById("article_1"),
+      document.getElementById("article_2"),
+      document.getElementById("article_3"),
+      document.getElementById("article_4"),
+    ];
+    let currentIndex = 0;
+    const slider = document.getElementById("slider");
+
+    const updateArticles = (newIndex: number) => {
+      // Close all accordions in current article
+      const currentAccordions = articles[currentIndex]?.querySelectorAll(
+        '[id^="tech-stack-content-"], [id^="features-content-"], [id^="notes-content-"]',
+      );
+      currentAccordions?.forEach((elem) => {
+        const accordion = elem as HTMLDivElement;
+        accordion.style.height = "0";
+      });
+
+      // Reset all accordion buttons
+      const currentButtons =
+        articles[currentIndex]?.querySelectorAll('button[id$="-btn"]');
+      currentButtons?.forEach((button) => {
+        button.classList.remove("bg-black", "text-white");
+        button.querySelector("svg")?.classList.remove("rotate-180");
+      });
+
+      // Hide current article
+      articles[currentIndex]?.classList.remove("opacity-100", "z-30");
+      articles[currentIndex]?.classList.add(
+        "opacity-0",
+        "z-0",
+        "pointer-events-none",
+      );
+
+      // Update index
+      currentIndex = newIndex;
+
+      // Show new article
+      setTimeout(() => {
+        articles[currentIndex]?.classList.remove(
+          "opacity-0",
+          "z-0",
+          "pointer-events-none",
+        );
+        articles[currentIndex]?.classList.add("opacity-100", "z-30");
+        updateButtons(); // Update button states after transition
+      }, 300);
+    };
+
+    let currentRotation = 0;
+    const rotationStep = 360 / articles.length; // Amount to rotate for each click
+
+    const rotateSlider = (direction: "next" | "prev") => {
+      if (direction === "next") {
+        currentRotation -= rotationStep;
+      } else {
+        currentRotation += rotationStep;
+      }
+
+      slider!.style.transform = `translateX(-50%) perspective(2000px) rotateY(${currentRotation}deg)`;
+    };
+
+    nextButton?.addEventListener("click", () => {
+      const nextIndex = (currentIndex + 1) % articles.length;
+      updateArticles(nextIndex);
+      rotateSlider("next");
+    });
+
+    prevButton?.addEventListener("click", () => {
+      const prevIndex = (currentIndex - 1 + articles.length) % articles.length;
+      updateArticles(prevIndex);
+      rotateSlider("prev");
+    });
+
+    // Optional: Disable buttons when at start/end
+    const updateButtons = () => {
+      if (prevButton && nextButton) {
+        prevButton.disabled = currentIndex === 0;
+        nextButton.disabled = currentIndex === articles.length - 1;
+      }
+    };
+
+    // Initial button state
+    updateButtons();
+
+    // 3D IMAGE CAROUSEL
+    // keyboard navigation
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" && !nextButton?.disabled) {
+        nextButton?.click();
+      } else if (e.key === "ArrowLeft" && !prevButton?.disabled) {
+        prevButton?.click();
+      }
+    });
+
+    // touch swipe support
+    let touchStartX = 0;
+    slider?.addEventListener("touchstart", (e) => {
+      touchStartX = e.touches[0].clientX;
+    });
+
+    slider?.addEventListener("touchend", (e) => {
+      const touchEndX = e.changedTouches[0].clientX;
+      const difference = touchStartX - touchEndX;
+
+      if (Math.abs(difference) > 50) {
+        // Minimum swipe distance
+        if (difference > 0 && !nextButton?.disabled) {
+          nextButton?.click();
+        } else if (difference < 0 && !prevButton?.disabled) {
+          prevButton?.click();
+        }
+      }
+    });
+  </script>
 </Layout>
+
+<!--
+
+TODO:
+- Implement proper aspect ratio sizing for project images
+- Image alt tags
+
+
+-->
