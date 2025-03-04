@@ -14,6 +14,8 @@ const projectsCollection = defineCollection({
       slug: z.string(),
       image: image(),
       featured: z.boolean(),
+      features: z.array(z.string()),
+      futureOptimisations: z.array(z.string()),
     }),
 });
 
