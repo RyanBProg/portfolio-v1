@@ -19,59 +19,20 @@ import { Image } from "astro:assets";
           Projects
         </h1>
         <div class="w-full h-full text-center overflow-hidden relative">
-          <div
-            id="slider"
-            class="slider absolute z-10 inset-0 my-auto"
-            style="--quantity: 4"
-          >
-            <div
-              class="item border absolute inset-0 overflow-clip"
-              style="--position: 1"
-            >
-              <Image
-                src="/src/assets/images/better-spanish-cover.jpg"
-                alt=""
-                class="h-full w-full object-cover"
-                height={550}
-                width={500}
-              />
-            </div>
-            <div
-              class="item border absolute inset-0 overflow-clip"
-              style="--position: 2"
-            >
-              <Image
-                src="/src/assets/images/projects-preview.png"
-                alt=""
-                class="h-full w-full object-cover"
-                height={550}
-                width={500}
-              />
-            </div>
-            <div
-              class="item border absolute inset-0 overflow-clip"
-              style="--position: 3"
-            >
-              <Image
-                src="/src/assets/images/dev-trainer-cover.jpg"
-                alt=""
-                class="block h-full w-full object-cover"
-                height={550}
-                width={500}
-              />
-            </div>
-            <div
-              class="item border-2 absolute inset-0 overflow-clip"
-              style="--position: 4"
-            >
-              <Image
-                src="/src/assets/images/better-spanish-cover.jpg"
-                alt=""
-                class="h-full w-full object-cover"
-                height={550}
-                width={500}
-              />
-            </div>
+          <div id="slider" class="slider">
+            {
+              projects.map((project, index) => (
+                <div class="item" style={`--position: ${index + 1}`}>
+                  <Image
+                    src={project.data.image}
+                    alt=""
+                    class="h-full w-full object-cover"
+                    height={550}
+                    width={500}
+                  />
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>
@@ -128,16 +89,17 @@ import { Image } from "astro:assets";
 
   <style>
     .slider {
-      width: 500px;
-      height: 550px;
-      position: absolute;
-      left: 50%;
+      --quantity: 4;
+      @apply absolute left-1/2 z-10 inset-0 my-auto w-[500px] h-[550px];
+
       transform: translateX(-50%) perspective(2000px) rotateY(0deg);
       transform-style: preserve-3d;
       transition: transform 0.5s ease-out;
     }
 
     .slider .item {
+      @apply border absolute inset-0 overflow-clip;
+
       transform: rotateY(
           calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
         )
@@ -146,8 +108,7 @@ import { Image } from "astro:assets";
 
     @media screen and (max-width: 1350px) {
       .slider {
-        width: 400px;
-        height: 450px;
+        @apply w-[400px] h-[450px];
       }
 
       .slider .item {
@@ -160,8 +121,7 @@ import { Image } from "astro:assets";
 
     @media screen and (max-width: 639px) {
       .slider {
-        width: 300px;
-        height: 350px;
+        @apply w-[300px] h-[350px];
       }
 
       .slider .item {
@@ -174,8 +134,7 @@ import { Image } from "astro:assets";
 
     @media screen and (max-width: 429px) {
       .slider {
-        width: 250px;
-        height: 350px;
+        @apply w-[250px] h-[350px];
       }
 
       .slider .item {
@@ -316,7 +275,10 @@ import { Image } from "astro:assets";
 
 TODO:
 - Implement proper aspect ratio sizing for project images
+- Images need to be higher quality
 - Image alt tags
-
+- Make carousel accessable
+- Sort page width issue on mobile
+- Clean up styes and js
 
 -->

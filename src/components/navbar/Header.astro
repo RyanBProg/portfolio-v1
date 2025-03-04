@@ -1,4 +1,4 @@
-<header>
+<header class="relative z-[100]">
   <nav aria-label="primary navigation" class="p-4 relative">
     <button
       aria-label="toggle navigation"
@@ -10,17 +10,23 @@
       <div
         id="nav-button-icon"
         aria-hidden="true"
-        class="relative w-[30px] h-[30px]"
+        class="relative w-[30px] h-[30px] rotate-0 duration-500 ease-in-out"
       >
-        <span></span>
-        <span></span>
-        <span></span>
+        <span
+          class="top-0 block absolute h-1 w-full bg-black opacity-100 left-0 rotate-0 duration-300 ease-in-out"
+        ></span>
+        <span
+          class="top-[13px] block absolute h-1 w-full bg-black opacity-100 left-0 rotate-0 duration-300 ease-in-out"
+        ></span>
+        <span
+          class="top-[26px] block absolute h-1 w-full bg-black opacity-100 left-0 rotate-0 duration-300 ease-in-out"
+        ></span>
       </div>
     </button>
 
     <div
       id="nav-list"
-      class="h-screen flex z-90 absolute top-0 -translate-y-full inset-x-0 bg-white/70 backdrop-blur-md"
+      class="h-screen flex absolute top-0 -translate-y-full inset-x-0 bg-white/70 backdrop-blur-md"
     >
       <div
         id="nav-content"
@@ -168,7 +174,7 @@
       </div>
 
       <!-- gallery slider -->
-      <div class="relative h-full w-1/2 ml-auto">
+      <div class="relative h-full w-1/2 ml-auto hidden lg:block">
         <div
           id="home-slide"
           class={`${Astro.url.pathname === "/" ? "z-20" : "z-10"} absolute top-0 right-0 w-full h-full bg-blue-200 transition-transform duration-500 ease-out`}
@@ -223,66 +229,16 @@
 </header>
 
 <style>
-  #nav-button-icon {
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-    -webkit-transition: 0.5s ease-in-out;
-    -moz-transition: 0.5s ease-in-out;
-    -o-transition: 0.5s ease-in-out;
-    transition: 0.5s ease-in-out;
-  }
-
-  #nav-button-icon span {
-    display: block;
-    position: absolute;
-    height: 4px;
-    width: 100%;
-    background-color: black;
-    opacity: 1;
-    left: 0;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-    -webkit-transition: 0.25s ease-in-out;
-    -moz-transition: 0.25s ease-in-out;
-    -o-transition: 0.25s ease-in-out;
-    transition: 0.25s ease-in-out;
-  }
-
-  #nav-button-icon span:nth-child(1) {
-    top: 0px;
-  }
-
-  #nav-button-icon span:nth-child(2) {
-    top: 13px;
-  }
-
-  #nav-button-icon span:nth-child(3) {
-    top: 26px;
-  }
-
   #nav-button-icon.open span:nth-child(1) {
-    top: 13px;
-    -webkit-transform: rotate(135deg);
-    -moz-transform: rotate(135deg);
-    -o-transform: rotate(135deg);
-    transform: rotate(135deg);
+    @apply top-[13px] rotate-[135deg];
   }
 
   #nav-button-icon.open span:nth-child(2) {
-    opacity: 0;
-    left: -60px;
+    @apply opacity-0 -left-[60px];
   }
 
   #nav-button-icon.open span:nth-child(3) {
-    top: 13px;
-    -webkit-transform: rotate(-135deg);
-    -moz-transform: rotate(-135deg);
-    -o-transform: rotate(-135deg);
-    transform: rotate(-135deg);
+    @apply top-[13px] -rotate-[135deg];
   }
 </style>
 
@@ -448,13 +404,9 @@
 <!-- 
 TODO:
 
-- Turn css into tailwind
 - Add preview images to the menu
 - Refine easings
-- Make it responsive
-- Gallery slider should be opacity 0 when closed (to fix mobile scroll issue)
 - Add menu link navigation by arrow keys
-- Current page text hightlighting  and arrow not working on mobile
-- Fix z-index so page content doesn't overlap
+- Current page text hightlighting and arrow not working on mobile
 
 -->
