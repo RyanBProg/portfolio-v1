@@ -15,6 +15,8 @@ type Project = {
   githubUrl: string;
   slug: string;
   featured: boolean;
+  features: string[];
+  futureOptimisations: string[];
 };
 
 type Props = {
@@ -27,35 +29,65 @@ const { id, project } = Astro.props;
 
 <article
   id={id}
-  class={`absolute inset-0 p-4 transition-all duration-300 ${
+  class={`px-4 py-10 lg:p-4 transition-all duration-300 absolute inset-0 w-full ${
     id === "article_1"
-      ? "opacity-100 z-30"
+      ? "opacity-100 z-30 relative"
       : "opacity-0 z-0 pointer-events-none"
   }`}
 >
   <h2 class="font-semibold text-3xl mb-5">{project.title}</h2>
   <p class="">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
-    reprehenderit fugit iste explicabo ipsa culpa cumque velit deleniti sed
-    soluta, maiores aliquid suscipit iusto officia est maxime ratione error
-    esse!
+    {project.description}
   </p>
-  <div class="flex mt-5 mb-10">
-    <a
-      target="_blank"
-      href={project.siteUrl}
-      class="text-center w-full text-lg font-medium">Live Site</a
-    >
-    <a
-      target="_blank"
-      href={project.githubUrl}
-      class="text-center w-full text-lg font-medium">GitHub Repo</a
-    >
+  <div class="mt-10 mb-14">
+    <a href={project.siteUrl} class="block w-fit group relative mb-3">
+      <span class="flex gap-1 items-center">
+        <span>Live Site</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-move-up-right"
+          ><path d="M13 5H19V11"></path><path d="M19 5L5 19"></path></svg
+        >
+      </span>
+      <span
+        class="absolute -bottom-1 left-0 h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full"
+      ></span>
+    </a>
+    <a href={project.githubUrl} class="block w-fit group relative">
+      <span class="flex gap-1 items-center">
+        <span>GitHub Repo</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-move-up-right"
+          ><path d="M13 5H19V11"></path><path d="M19 5L5 19"></path></svg
+        >
+      </span>
+      <span
+        class="absolute -bottom-1 left-0 h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full"
+      ></span>
+    </a>
   </div>
+
   <Accordian
     articleId={id}
-    projectNotes={[""]}
-    projectFeatures={[""]}
+    features={project.features}
+    futureOptimisations={project.futureOptimisations}
     techStack={project.techStack}
   />
 </article>

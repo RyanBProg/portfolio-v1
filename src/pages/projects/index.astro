@@ -8,27 +8,32 @@ import { Image } from "astro:assets";
 ---
 
 <Layout title="Projects | Ryan Bowler">
-  <section class="h-fit lg:h-screen w-screen -mt-[86px]">
+  <section class="lg:h-screen w-screen -mt-[86px]">
     <div class="h-full w-full flex flex-col lg:flex-row">
-      <div
-        class="overflow-x-hidden w-full h-[calc(75vh)] min-h-[600px] lg:h-full relative"
-      >
+      <div class="slider-window">
         <h1
-          class="absolute right-5 top-4 font-bold text-3xl tracking-tight text-neutral-600"
+          class="absolute right-5 top-6 lg:top-4 font-bold text-3xl tracking-tight"
         >
           Projects
         </h1>
-        <div class="w-full h-full text-center overflow-hidden relative">
+        <div class="h-[86px]">
+          <!-- spacer for header -->
+        </div>
+        <div
+          class="grow w-full text-center overflow-hidden relative"
+          id="slider-container"
+        >
           <div id="slider" class="slider">
             {
               projects.map((project, index) => (
                 <div class="item" style={`--position: ${index + 1}`}>
                   <Image
                     src={project.data.image}
-                    alt=""
+                    alt={project.data.title}
                     class="h-full w-full object-cover"
-                    height={550}
-                    width={500}
+                    width={950}
+                    height={950}
+                    quality={90}
                   />
                 </div>
               ))
@@ -37,9 +42,9 @@ import { Image } from "astro:assets";
         </div>
       </div>
       <div
-        class="h-screen lg:h-full lg:border-l-2 border-black lg:w-1/2 flex flex-col-reverse lg:flex-col relative"
+        class="min-h-fit lg:h-full lg:border-l-2 border-black lg:w-1/2 flex flex-col-reverse lg:flex-col relative"
       >
-        <div class="relative h-full w-full bg-white z-30 overflow-y-scroll">
+        <div class="relative grow w-full bg-white z-30">
           <Article id="article_1" project={projects[0].data} />
           <Article id="article_2" project={projects[1].data} />
           <Article id="article_3" project={projects[2].data} />
@@ -88,9 +93,13 @@ import { Image } from "astro:assets";
   </section>
 
   <style>
+    .slider-window {
+      @apply overflow-x-hidden w-full lg:h-full relative flex flex-col;
+    }
+
     .slider {
       --quantity: 4;
-      @apply absolute left-1/2 z-10 inset-0 my-auto w-[500px] h-[550px];
+      @apply absolute left-1/2 z-10 inset-0 my-auto w-[500px] h-[500px];
 
       transform: translateX(-50%) perspective(2000px) rotateY(0deg);
       transform-style: preserve-3d;
@@ -108,7 +117,43 @@ import { Image } from "astro:assets";
 
     @media screen and (max-width: 1350px) {
       .slider {
-        @apply w-[400px] h-[450px];
+        @apply w-[450px] h-[450px];
+      }
+
+      .slider .item {
+        transform: rotateY(
+            calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
+          )
+          translateZ(550px);
+      }
+    }
+
+    /* things above this line need fixing */
+
+    @media screen and (max-width: 1023px) {
+      .slider-window {
+        @apply h-[900px];
+      }
+
+      .slider {
+        @apply w-[500px] h-[500px];
+      }
+
+      .slider .item {
+        transform: rotateY(
+            calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
+          )
+          translateZ(600px);
+      }
+    }
+
+    @media screen and (max-width: 749px) {
+      .slider-window {
+        @apply h-[800px];
+      }
+
+      .slider {
+        @apply w-[430px] h-[430px];
       }
 
       .slider .item {
@@ -120,8 +165,12 @@ import { Image } from "astro:assets";
     }
 
     @media screen and (max-width: 639px) {
+      .slider-window {
+        @apply h-[670px];
+      }
+
       .slider {
-        @apply w-[300px] h-[350px];
+        @apply w-[400px] h-[400px];
       }
 
       .slider .item {
@@ -132,16 +181,33 @@ import { Image } from "astro:assets";
       }
     }
 
-    @media screen and (max-width: 429px) {
-      .slider {
-        @apply w-[250px] h-[350px];
+    @media screen and (max-width: 549px) {
+      .slider-window {
+        @apply h-[600px];
       }
 
-      .slider .item {
-        transform: rotateY(
-            calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
-          )
-          translateZ(400px);
+      .slider {
+        @apply w-[320px] h-[320px];
+      }
+    }
+
+    @media screen and (max-width: 429px) {
+      .slider-window {
+        @apply h-[500px];
+      }
+
+      .slider {
+        @apply w-[270px] h-[270px];
+      }
+    }
+
+    @media screen and (max-width: 359px) {
+      .slider-window {
+        @apply h-[450px];
+      }
+
+      .slider {
+        @apply w-[220px] h-[220px];
       }
     }
   </style>
@@ -180,27 +246,22 @@ import { Image } from "astro:assets";
         button.querySelector("svg")?.classList.remove("rotate-180");
       });
 
-      // Hide current article
-      articles[currentIndex]?.classList.remove("opacity-100", "z-30");
-      articles[currentIndex]?.classList.add(
-        "opacity-0",
-        "z-0",
-        "pointer-events-none",
-      );
+      // Update articles immediately
+      articles.forEach((article, index) => {
+        if (index === newIndex) {
+          // New active article
+          article?.classList.remove("opacity-0", "z-0", "pointer-events-none");
+          article?.classList.add("opacity-100", "z-30", "relative");
+        } else {
+          // Inactive articles
+          article?.classList.remove("opacity-100", "z-30", "relative");
+          article?.classList.add("opacity-0", "z-0", "pointer-events-none");
+        }
+      });
 
-      // Update index
+      // Update index and buttons
       currentIndex = newIndex;
-
-      // Show new article
-      setTimeout(() => {
-        articles[currentIndex]?.classList.remove(
-          "opacity-0",
-          "z-0",
-          "pointer-events-none",
-        );
-        articles[currentIndex]?.classList.add("opacity-100", "z-30");
-        updateButtons(); // Update button states after transition
-      }, 300);
+      updateButtons();
     };
 
     let currentRotation = 0;
@@ -274,11 +335,9 @@ import { Image } from "astro:assets";
 <!--
 
 TODO:
-- Implement proper aspect ratio sizing for project images
-- Images need to be higher quality
-- Image alt tags
+
 - Make carousel accessable
-- Sort page width issue on mobile
 - Clean up styes and js
+- Add a "swipe me" overlay for the carousel on mobile
 
 -->

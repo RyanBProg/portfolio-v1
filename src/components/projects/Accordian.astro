@@ -4,18 +4,18 @@ import badges from "../../collections/techBadges";
 
 interface Props {
   articleId: string;
-  projectNotes: string[];
-  projectFeatures: string[];
+  features: string[];
+  futureOptimisations: string[];
   techStack: string[];
 }
 
-const { articleId, projectNotes, projectFeatures, techStack } = Astro.props;
+const { articleId, features, futureOptimisations, techStack } = Astro.props;
 
 const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
 ---
 
 <div>
-  <div class="border-t">
+  <div class="border-y">
     <button
       id={`tech-stack-btn-${articleId}`}
       class="text-lg font-medium py-4 px-2 w-full flex justify-between items-center hover:bg-black hover:text-white transition-colors duration-500 ease-out"
@@ -52,7 +52,7 @@ const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
       </ul>
     </div>
   </div>
-  <div class="border-t">
+  <div class="border-b">
     <button
       id={`features-btn-${articleId}`}
       class="text-lg font-medium py-4 px-2 w-full flex justify-between items-center hover:bg-black hover:text-white transition-colors duration-500 ease-out"
@@ -74,14 +74,22 @@ const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
       id={`features-content-${articleId}`}
       class="h-0 overflow-hidden transition-[height] duration-300 ease-out"
     >
-      <p class="py-2">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae mollitia
-        distinctio recusandae odit? Optio esse porro delectus molestias. Eaque
-        ab praesentium sunt quasi, commodi id nulla soluta ullam asperiores in.
-      </p>
+      <div class="py-2">
+        {
+          features.length > 0 ? (
+            <ul class="flex flex-col gap-1">
+              {features.map((feature) => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+          ) : (
+            "N/A"
+          )
+        }
+      </div>
     </div>
   </div>
-  <div class="border-y">
+  <div class="border-b">
     <button
       id={`notes-btn-${articleId}`}
       class="text-lg font-medium py-4 px-2 w-full flex justify-between items-center hover:bg-black hover:text-white transition-colors duration-500 ease-out"
@@ -103,11 +111,19 @@ const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
       id={`notes-content-${articleId}`}
       class="h-0 overflow-hidden transition-[height] duration-300 ease-out"
     >
-      <p class="py-2">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae mollitia
-        distinctio recusandae odit? Optio esse porro delectus molestias. Eaque
-        ab praesentium sunt quasi, commodi id nulla soluta ullam asperiores in.
-      </p>
+      <div class="py-2">
+        {
+          futureOptimisations.length > 0 ? (
+            <ul class="flex flex-col gap-1">
+              {futureOptimisations.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          ) : (
+            "N/A"
+          )
+        }
+      </div>
     </div>
   </div>
 </div>
