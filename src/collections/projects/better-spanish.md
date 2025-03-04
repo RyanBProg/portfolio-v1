@@ -3,7 +3,7 @@
     title: "Better Spanish"
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolorem doloribus cupiditate sint iste quam debitis sequi? Fuga, similique quos?"
     techStack: [ "React", "Next.js" , "Typescript", "Express.js", "MongoDB", "Tailwind" ]
-    siteUrl: "https://better-spanish.vercel.app"
+    siteUrl: "https://better-spanish-ryans-projects-197c1757.vercel.app/"
     githubUrl: "https://github.com/RyanBProg/better-spanish"
     slug: "better-spanish"
     image: "../../assets/images/better-spanish-cover.jpg"

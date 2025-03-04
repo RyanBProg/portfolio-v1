@@ -3,7 +3,7 @@
     title: "My Portfolio"
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolorem doloribus cupiditate sint iste quam debitis sequi? Fuga, similique quos?"
     techStack: [ "HTML", "Typescript", "Astro", "Tailwind" ]
-    siteUrl: "https://github.com"
+    siteUrl: "https://portfolio-v1-ryans-projects-197c1757.vercel.app/"
     githubUrl: "https://github.com/RyanBProg/my-portfolio"
     slug: "my-portfolio"
     image: "../../assets/images/my-portfolio-cover.jpg"
