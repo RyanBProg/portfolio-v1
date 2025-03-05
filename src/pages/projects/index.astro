@@ -12,7 +12,7 @@ import { Image } from "astro:assets";
     <div class="h-full w-full flex flex-col lg:flex-row">
       <div class="slider-window">
         <h1
-          class="absolute right-5 top-6 lg:top-4 font-bold text-3xl tracking-tight"
+          class="absolute left-[86px] top-[30px] font-semibold text-xl tracking-tight text-neutral-700"
         >
           Projects
         </h1>
@@ -42,7 +42,7 @@ import { Image } from "astro:assets";
         </div>
       </div>
       <div
-        class="min-h-fit lg:h-full lg:border-l-2 border-black lg:w-1/2 flex flex-col-reverse lg:flex-col relative"
+        class="min-h-fit lg:h-full lg:w-1/2 flex flex-col-reverse lg:flex-col relative"
       >
         <div class="relative grow w-full bg-white z-30">
           <Article id="article_1" project={projects[0].data} />
@@ -50,12 +50,10 @@ import { Image } from "astro:assets";
           <Article id="article_3" project={projects[2].data} />
           <Article id="article_4" project={projects[3].data} />
         </div>
-        <div
-          class="flex justify-between bg-white border-t-2 border-b-2 lg:border-b-0 border-black"
-        >
+        <div class="p-2 flex justify-between bg-white">
           <button
             id="prev_button"
-            class="px-3 py-3 bg-white text-black border-r-2 border-black hover:bg-black hover:text-white transition-colors duration-300 ease-out disabled:hover:bg-white disabled:hover:text-neutral-200 disabled:text-neutral-200"
+            class="p-2 rounded-lg bg-neutral-400 hover:bg-black hover:text-white transition-colors duration-300 ease-out disabled:hover:bg-neutral-400 disabled:hover:text-neutral-200 disabled:text-neutral-200"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"
@@ -72,7 +70,7 @@ import { Image } from "astro:assets";
           >
           <button
             id="next_button"
-            class="px-3 py-3 bg-white text-black border-black border-l-2 hover:bg-black hover:text-white transition-colors duration-300 ease-out disabled:hover:bg-white disabled:hover:text-neutral-200 disabled:text-neutral-200"
+            class="p-2 rounded-lg bg-neutral-400 hover:bg-black hover:text-white transition-colors duration-300 ease-out disabled:hover:bg-neutral-400 disabled:hover:text-neutral-200 disabled:text-neutral-200"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"
@@ -107,7 +105,7 @@ import { Image } from "astro:assets";
     }
 
     .slider .item {
-      @apply border absolute inset-0 overflow-clip;
+      @apply border absolute inset-0 overflow-clip rounded-md;
 
       transform: rotateY(
           calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
