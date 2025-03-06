@@ -25,4 +25,36 @@ import ContactForm from "../components/ContactForm.astro";
 
   <!-- WHITESPACE -->
   <div class="h-[150px] sm:h-[200px]"></div>
+  <form class="bg-rose-800 w-full flex flex-col gap-4 text-4xl px-4 py-10">
+    <h2>GET IN CONTACT</h2>
+    <div class="relative w-full">
+      <input
+        type="text"
+        placeholder="Name ..."
+        required
+        class="w-full py-2 px-4 bg-transparent rounded-md text-white placeholder:text-neutral-300"
+      /><span class="absolute right-2 top-0">*</span>
+    </div>
+    <div class="relative w-full">
+      <input
+        type="email"
+        placeholder="Email ..."
+        required
+        class="w-full py-2 px-4 bg-transparent rounded-md text-white placeholder:text-neutral-300"
+      /><span class="absolute right-2 top-0">*</span>
+    </div>
+    <div class="relative w-full">
+      <input
+        type="text"
+        placeholder="Message ..."
+        required
+        class="w-full py-2 px-4 bg-transparent rounded-md text-white placeholder:text-neutral-300"
+      /><span class="absolute right-2 top-0">*</span>
+    </div>
+    <button
+      type="submit"
+      class="mt-4 font-bold tracking-tight uppercase py-4 rounded-md text-black bg-white"
+      >Submit</button
+    >
+  </form>
 </Layout>
