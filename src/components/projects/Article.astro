@@ -40,7 +40,11 @@ const { id, project } = Astro.props;
     {project.description}
   </p>
   <div class="mt-10 mb-14">
-    <a href={project.siteUrl} class="block w-fit group relative mb-3">
+    <a
+      target="_blank"
+      href={project.siteUrl}
+      class="block w-fit group relative mb-3"
+    >
       <span class="flex gap-1 items-center">
         <span>Live Site</span>
         <svg
@@ -61,7 +65,11 @@ const { id, project } = Astro.props;
         class="absolute -bottom-1 left-0 h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full"
       ></span>
     </a>
-    <a href={project.githubUrl} class="block w-fit group relative">
+    <a
+      target="_blank"
+      href={project.githubUrl}
+      class="block w-fit group relative"
+    >
       <span class="flex gap-1 items-center">
         <span>GitHub Repo</span>
         <svg

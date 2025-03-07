@@ -44,15 +44,21 @@ import { Image } from "astro:assets";
       <div
         class="min-h-fit lg:h-full lg:w-1/2 flex flex-col-reverse lg:flex-col relative"
       >
-        <div class="relative grow w-full bg-white z-30">
+        <div class="relative grow w-full z-30">
           <Article id="article_1" project={projects[0].data} />
           <Article id="article_2" project={projects[1].data} />
           <Article id="article_3" project={projects[2].data} />
           <Article id="article_4" project={projects[3].data} />
         </div>
-        <div class="p-2 flex justify-between bg-white">
+        <div class="p-2 flex justify-between relative">
+          <span
+            id="prev_label"
+            class="absolute top-1/2 -translate-y-1/2 left-16 text-xs max-w-min"
+            >PREVIOUS PROJECT</span
+          >
           <button
             id="prev_button"
+            aria-labelledby="prev_label"
             class="p-2 rounded-lg bg-neutral-400 hover:bg-black hover:text-white transition-colors duration-300 ease-out disabled:hover:bg-neutral-400 disabled:hover:text-neutral-200 disabled:text-neutral-200"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
@@ -68,8 +74,14 @@ import { Image } from "astro:assets";
               ><path d="m15 18-6-6 6-6"></path></svg
             ></button
           >
+          <span
+            id="next_label"
+            class="absolute top-1/2 -translate-y-1/2 right-16 text-xs text-right max-w-min"
+            >NEXT PROJECT</span
+          >
           <button
             id="next_button"
+            aria-labelledby="next_label"
             class="p-2 rounded-lg bg-neutral-400 hover:bg-black hover:text-white transition-colors duration-300 ease-out disabled:hover:bg-neutral-400 disabled:hover:text-neutral-200 disabled:text-neutral-200"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
