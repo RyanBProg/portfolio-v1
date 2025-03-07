@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/home/Hero.astro";
 import ProjectsBanner from "../components/home/ProjectsBanner.astro";
+import ContactForm from "../components/ContactForm.astro";
 ---
 
 <Layout title="Portfolio | Ryan Bowler">
@@ -15,58 +16,5 @@ import ProjectsBanner from "../components/home/ProjectsBanner.astro";
   <!-- WHITESPACE -->
   <div class="h-[150px] sm:h-[200px]" role="presentation"></div>
 
-  <section class="bg-rose-800 sm:px-4 py-20">
-    <div class="px-4 sm:px-0">
-      <h2
-        class="font-semibold tracking-tight text-4xl sm:text-6xl text-white mb-5"
-      >
-        GET IN CONTACT
-      </h2>
-      <p class="max-w-[600px] text-base sm:text-xl text-rose-100">
-        I'm always excited to connect with others who are as passionate about
-        technology and building new projects as I am. If you think we can <span
-          class="font-semibold">build something great together</span
-        >, don't hesitate to reach out.
-      </p>
-    </div>
-    <form class="mt-14">
-      <div class="relative w-full">
-        <input
-          name="name"
-          id="name"
-          type="text"
-          placeholder="Name ..."
-          required
-          class="text-2xl sm:text-3xl w-full py-5 px-5 bg-rose-700 text-white transition-colors duration-300 placeholder:text-rose-300 focus:outline-2 focus:-outline-offset-2 focus:outline-white"
-        /><span class="absolute right-2 top-0 text-3xl">*</span>
-      </div>
-      <div class="relative w-full">
-        <input
-          name="email"
-          id="email"
-          type="email"
-          placeholder="Email ..."
-          required
-          class="text-2xl sm:text-3xl w-full py-5 px-5 bg-rose-600 text-white transition-colors duration-300 placeholder:text-rose-300 focus:outline-2 focus:-outline-offset-2 focus:outline-white"
-        /><span class="absolute right-2 top-0 text-3xl">*</span>
-      </div>
-      <div class="relative w-full">
-        <textarea
-          name="message"
-          id="message"
-          required
-          placeholder="Message ..."
-          rows="6"
-          class="text-2xl sm:text-3xl w-full py-5 px-5 bg-rose-500 text-white transition-colors duration-300 placeholder:text-rose-300 focus:outline-2 focus:-outline-offset-2 focus:outline-white"
-        ></textarea><span class="absolute right-2 top-0 text-3xl">*</span>
-      </div>
-      <div class="px-4 sm:px-0 w-full">
-        <button
-          type="submit"
-          class="text-2xl sm:text-3xl mt-4 font-bold tracking-tight uppercase py-4 w-full rounded-md text-black bg-white focus:outline-4 focus:-outline-offset-4 focus:outline-black"
-          >Submit</button
-        >
-      </div>
-    </form>
-  </section>
+  <ContactForm />
 </Layout>

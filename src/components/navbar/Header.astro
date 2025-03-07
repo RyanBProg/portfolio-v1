@@ -26,7 +26,7 @@
 
     <div
       id="nav-list"
-      class="h-screen flex absolute top-0 -translate-y-full inset-x-0 bg-white/70 backdrop-blur-md"
+      class="h-dvh flex absolute top-0 -translate-y-full inset-x-0 bg-white/70 backdrop-blur-md"
     >
       <div
         id="nav-content"
@@ -152,32 +152,61 @@
         </ul>
 
         <!-- links -->
-        <div class="grid gap-2 font-medium">
-          <div>
-            <a
-              href="https://github.com/RyanBProg"
-              target="_blank"
-              class="group relative"
-            >
-              <span>GitHub</span>
-              <span
-                class="absolute -bottom-1 left-0 h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full"
-              ></span>
-            </a>
+        <div class="mt-14 grid gap-3">
+          <div class="grid gap-0.5">
+            <span class="text-sm text-neutral-600">Email</span>
+            <p class="text-xl font-medium">ryanbprog@gmail.com</p>
           </div>
-          <div>
-            <a
-              href="https://www.linkedin.com/in/ryan-bowler-601919170/"
-              target="_blank"
-              class="group relative"
-            >
+          <a
+            href="https://www.linkedin.com/in/ryan-bowler-601919170/"
+            target="_blank"
+            class="block w-fit group relative text-xl font-medium focus:outline-2 focus:outline-black focus:outline-offset-4"
+          >
+            <span class="flex gap-1 items-center">
               <span>LinkedIn</span>
-              <span
-                class="absolute -bottom-1 left-0 h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full"
-              ></span>
-            </a>
-          </div>
-          <p>ryanbprog@gmail.com</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-move-up-right"
+                ><path d="M13 5H19V11"></path><path d="M19 5L5 19"></path></svg
+              >
+            </span>
+            <span
+              class="absolute -bottom-1 left-0 h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+          <a
+            href="https://github.com/RyanBProg"
+            target="_blank"
+            class="block w-fit group relative text-xl font-medium focus:outline-2 focus:outline-black focus:outline-offset-4"
+          >
+            <span class="flex gap-1 items-center">
+              <span>GitHub</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-move-up-right"
+                ><path d="M13 5H19V11"></path><path d="M19 5L5 19"></path></svg
+              >
+            </span>
+            <span
+              class="absolute -bottom-1 left-0 h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
         </div>
       </div>
 
@@ -417,5 +446,7 @@ TODO:
 - Add menu link navigation by arrow keys
 - Current page text hightlighting and arrow not working on mobile
 - Height overflows on mobile, should use dvh
+- Trap focus when the menu is open
+- Prevent focus when menu is closed
 
 -->
