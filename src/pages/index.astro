@@ -82,10 +82,7 @@ import badges from "../collections/techBadges";
           <div class="h-[300px] w-[300px] bg-red-500 rounded-sm"></div>
           <div class="h-[300px] w-[300px] bg-red-500 rounded-sm"></div>
         </div>
-        <div
-          class="absolute z-20 inset-0 bg-gradient-to-r from-black via-transparent to-black"
-        >
-        </div>
+        <div class="absolute z-20 inset-0 custom-gradient"></div>
       </div>
     </div>
     <a
@@ -117,3 +114,19 @@ import badges from "../collections/techBadges";
 
   <ContactForm />
 </Layout>
+
+<style>
+  .custom-gradient {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 1) 2%,
+      rgba(0, 0, 0, 0) 20%,
+      rgba(0, 0, 0, 0) 80%,
+      rgba(0, 0, 0, 1) 98%
+    );
+
+    @media screen and (max-width: 639px) {
+      background: none;
+    }
+  }
+</style>
