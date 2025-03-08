@@ -41,11 +41,10 @@
             <span class="overflow-x-hidden flex">
               <a
                 href="/"
-                id="nav-link"
                 data-slide="home-slide"
                 tabindex="-1"
                 role="menuitem"
-                class={`${Astro.url.pathname === "/" ? "text-neutral-500" : "text-black -translate-x-10 hover:translate-x-0"} transition-all duration-500 ease-out flex gap-2 items-center`}
+                class={`${Astro.url.pathname === "/" ? "text-neutral-500" : "text-black -translate-x-10 hover:translate-x-0"} transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -69,11 +68,10 @@
             <span class="overflow-x-hidden flex">
               <a
                 href="/about"
-                id="nav-link"
                 data-slide="about-slide"
                 tabindex="-1"
                 role="menuitem"
-                class={`${Astro.url.pathname === "/about" ? "text-neutral-500" : "text-black -translate-x-10 hover:translate-x-0"} transition-all duration-500 ease-out flex gap-2 items-center`}
+                class={`${Astro.url.pathname === "/about" ? "text-neutral-500" : "text-black -translate-x-10 hover:translate-x-0"} transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -97,11 +95,10 @@
             <span class="overflow-x-hidden flex">
               <a
                 href="/projects"
-                id="nav-link"
                 data-slide="projects-slide"
                 tabindex="-1"
                 role="menuitem"
-                class={`${Astro.url.pathname === "/projects" ? "text-neutral-500" : "text-black -translate-x-10 hover:translate-x-0"}  transition-all duration-500 ease-out flex gap-2 items-center`}
+                class={`${Astro.url.pathname === "/projects" ? "text-neutral-500" : "text-black -translate-x-10 hover:translate-x-0"} transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -125,11 +122,10 @@
             <span class="overflow-x-hidden flex">
               <a
                 href="/contact"
-                id="nav-link"
                 data-slide="contact-slide"
                 tabindex="-1"
                 role="menuitem"
-                class={`${Astro.url.pathname === "/contact" ? "text-neutral-500" : "text-black -translate-x-10 hover:translate-x-0"} transition-all duration-500 ease-out flex gap-2 items-center`}
+                class={`${Astro.url.pathname === "/contact" ? "text-neutral-500" : "text-black -translate-x-10 hover:translate-x-0"} nav-link transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -160,7 +156,8 @@
           <a
             href="https://www.linkedin.com/in/ryan-bowler-601919170/"
             target="_blank"
-            class="block w-fit group relative text-xl font-medium focus:outline-2 focus:outline-black focus:outline-offset-4"
+            tabindex="-1"
+            class="social-link block w-fit group relative text-xl font-medium focus:outline-2 focus:outline-black focus:outline-offset-4"
           >
             <span class="flex gap-1 items-center">
               <span>LinkedIn</span>
@@ -185,7 +182,8 @@
           <a
             href="https://github.com/RyanBProg"
             target="_blank"
-            class="block w-fit group relative text-xl font-medium focus:outline-2 focus:outline-black focus:outline-offset-4"
+            tabindex="-1"
+            class="social-link block w-fit group relative text-xl font-medium focus:outline-2 focus:outline-black focus:outline-offset-4"
           >
             <span class="flex gap-1 items-center">
               <span>GitHub</span>
@@ -292,7 +290,8 @@
   const toggleNavButton = document.getElementById("toggle-nav-btn");
   const navButtonIcon = document.getElementById("nav-button-icon");
   const navList = document.getElementById("nav-list");
-  const navLinks = document.querySelectorAll("#nav-link");
+  const navLinks = document.querySelectorAll("[role='menuitem']");
+  const socialLinks = document.querySelectorAll(".social-link");
   const slides = document.querySelectorAll("[id$='-slide']");
   let isNavOpen = false;
 
@@ -341,6 +340,9 @@
     navLinks.forEach((link) => {
       link.setAttribute("tabindex", "-1");
     });
+    socialLinks.forEach((link) => {
+      link.setAttribute("tabindex", "-1");
+    });
     toggleNavButton?.setAttribute("aria-expanded", "false");
   };
 
@@ -373,14 +375,16 @@
       );
 
       navButtonIcon?.classList.add("open");
+      navLinks.forEach((link) => {
+        link.setAttribute("tabindex", "0");
+      });
+      socialLinks.forEach((link) => {
+        link.setAttribute("tabindex", "0");
+      });
+      toggleNavButton?.setAttribute("aria-expanded", "true");
     } else {
       closeNav();
     }
-
-    navLinks.forEach((link) => {
-      link.setAttribute("tabindex", isNavOpen ? "0" : "-1");
-    });
-    toggleNavButton.setAttribute("aria-expanded", isNavOpen ? "true" : "false");
   });
 
   // Nav gallery slider

@@ -18,7 +18,7 @@ const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
   <div class="border-y">
     <button
       id={`tech-stack-btn-${articleId}`}
-      class="text-lg tracking-tight font-semibold py-4 px-2 w-full flex justify-between items-center hover:bg-black hover:text-white transition-colors duration-500 ease-out"
+      class="text-lg tracking-tight font-semibold py-4 px-2 w-full flex justify-between items-center hover:bg-black hover:text-white transition-colors duration-500 ease-out focus:outline-4 focus:-outline-offset-4 focus:outline-black"
       ><span>TECH STACK</span><svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
@@ -45,7 +45,12 @@ const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
         {
           projectBadges.map((badge) => (
             <li>
-              <TechBadge title={badge.title} img={badge.img} alt={badge.alt} />
+              <TechBadge
+                title={badge.title}
+                img={badge.img}
+                alt={badge.alt}
+                bgCol="bg-neutral-500/10"
+              />
             </li>
           ))
         }
@@ -55,7 +60,8 @@ const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
   <div class="border-b">
     <button
       id={`features-btn-${articleId}`}
-      class="text-lg tracking-tight font-semibold py-4 px-2 w-full flex justify-between items-center hover:bg-black hover:text-white transition-colors duration-500 ease-out"
+      class="text-lg tracking-tight font-semibold py-4 px-2 w-full flex justify-between items-center hover:bg-black hover:text-white transition-colors duration-500 ease-out focus:outline-4 focus:-outline-offset-4 focus:outline-black"
+      "
       ><span>FEATURES</span><svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
@@ -67,9 +73,10 @@ const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
         stroke-linecap="round"
         stroke-linejoin="round"
         class="lucide lucide-chevron-down inline-block ml-4"
-        ><path d="m6 9 6 6 6-6"></path></svg
-      ></button
-    >
+      >
+        <path d="m6 9 6 6 6-6"></path>
+      </svg>
+    </button>
     <div
       id={`features-content-${articleId}`}
       class="h-0 overflow-hidden transition-[height] duration-300 ease-out"
@@ -92,7 +99,7 @@ const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
   <div class="border-b">
     <button
       id={`notes-btn-${articleId}`}
-      class="text-lg tracking-tight font-semibold py-4 px-2 w-full flex justify-between items-center hover:bg-black hover:text-white transition-colors duration-500 ease-out"
+      class="text-lg tracking-tight font-semibold py-4 px-2 w-full flex justify-between items-center hover:bg-black hover:text-white transition-colors duration-500 ease-out focus:outline-4 focus:-outline-offset-4 focus:outline-black"
       ><span>NOTES</span><svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"

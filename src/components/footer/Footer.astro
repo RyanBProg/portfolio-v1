@@ -8,3 +8,15 @@
     >&uarr;</button
   >
 </footer>
+
+<script>
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const scrollButton = document.getElementById("scroll-button");
+  scrollButton?.addEventListener("click", scrollToTop);
+</script>

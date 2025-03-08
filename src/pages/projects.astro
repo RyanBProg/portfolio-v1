@@ -2,8 +2,8 @@
 import { getCollection } from "astro:content";
 const projects = await getCollection("projectsCollection");
 
-import Layout from "../../layouts/Layout.astro";
-import Article from "../../components/projects/Article.astro";
+import Layout from "../layouts/Layout.astro";
+import Article from "../components/projects/Article.astro";
 import { Image } from "astro:assets";
 ---
 
@@ -11,10 +11,8 @@ import { Image } from "astro:assets";
   <section class="lg:h-screen w-screen -mt-[86px]">
     <div class="h-full w-full flex flex-col lg:flex-row">
       <div class="slider-window">
-        <h1
-          class="absolute left-[86px] top-[30px] font-semibold text-xl tracking-tight text-neutral-700"
-        >
-          Projects
+        <h1 class="absolute left-[86px] top-[30px] text-lg tracking-tight">
+          PROJECTS
         </h1>
         <div class="h-[86px]">
           <!-- spacer for header -->
@@ -59,7 +57,7 @@ import { Image } from "astro:assets";
           <button
             id="prev_button"
             aria-labelledby="prev_label"
-            class="p-2 rounded-lg bg-neutral-400 hover:bg-black hover:text-white transition-colors duration-300 ease-out disabled:hover:bg-neutral-400 disabled:hover:text-neutral-200 disabled:text-neutral-200"
+            class="p-2 rounded-lg bg-neutral-400 hover:bg-black hover:text-white transition-colors duration-300 ease-out disabled:hover:bg-neutral-400 disabled:hover:text-neutral-200 disabled:text-neutral-200 focus:outline-4 focus:outline-offset-4 focus:outline-black"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"
@@ -82,7 +80,7 @@ import { Image } from "astro:assets";
           <button
             id="next_button"
             aria-labelledby="next_label"
-            class="p-2 rounded-lg bg-neutral-400 hover:bg-black hover:text-white transition-colors duration-300 ease-out disabled:hover:bg-neutral-400 disabled:hover:text-neutral-200 disabled:text-neutral-200"
+            class="p-2 rounded-lg bg-neutral-400 hover:bg-black hover:text-white transition-colors duration-300 ease-out disabled:hover:bg-neutral-400 disabled:hover:text-neutral-200 disabled:text-neutral-200 focus:outline-4 focus:outline-offset-4 focus:outline-black"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"
@@ -137,8 +135,6 @@ import { Image } from "astro:assets";
           translateZ(550px);
       }
     }
-
-    /* things above this line need fixing */
 
     @media screen and (max-width: 1023px) {
       .slider-window {

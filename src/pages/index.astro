@@ -1,20 +1,119 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/home/Hero.astro";
-import ProjectsBanner from "../components/home/ProjectsBanner.astro";
 import ContactForm from "../components/ContactForm.astro";
+import ProjectCarousel from "../components/home/ProjectCarousel.astro";
+import TechBadge from "../components/TechBadge.astro";
+import badges from "../collections/techBadges";
 ---
 
 <Layout title="Portfolio | Ryan Bowler">
   <Hero />
 
   <!-- WHITESPACE -->
-  <div class="h-[150px] sm:h-[200px]" role="presentation"></div>
+  <div class="h-[250px] sm:h-[400px]" role="presentation"></div>
 
-  <ProjectsBanner />
+  <ProjectCarousel />
 
   <!-- WHITESPACE -->
-  <div class="h-[150px] sm:h-[200px]" role="presentation"></div>
+  <div class="h-[150px] sm:h-[300px]" role="presentation"></div>
+
+  <section
+    class="bg-black h-screen text-white overflow-x-hidden flex flex-col gap-20 justify-center"
+  >
+    <div class="px-4 flex flex-col gap-5">
+      <h2 class="text-4xl sm:text-6xl tracking-tight font-semibold">
+        What I Love Using
+      </h2>
+      <ul class="flex flex-wrap gap-2" aria-label="Technologies used">
+        <li>
+          <TechBadge
+            title={badges[0].title}
+            img={badges[0].img}
+            alt={badges[0].alt}
+            bgCol="bg-white/10"
+          />
+        </li>
+        <li>
+          <TechBadge
+            title={badges[2].title}
+            img={badges[2].img}
+            alt={badges[2].alt}
+            bgCol="bg-white/10"
+          />
+        </li>
+        <li>
+          <TechBadge
+            title={badges[3].title}
+            img={badges[3].img}
+            alt={badges[3].alt}
+            bgCol="bg-white/10"
+          />
+        </li>
+        <li>
+          <TechBadge
+            title={badges[7].title}
+            img={badges[7].img}
+            alt={badges[7].alt}
+            bgCol="bg-white/10"
+          />
+        </li>
+        <li>
+          <TechBadge
+            title={badges[8].title}
+            img={badges[8].img}
+            alt={badges[8].alt}
+            bgCol="bg-white/10"
+          />
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="text-4xl sm:text-6xl tracking-tight font-semibold mb-10 px-4">
+        What I Love Doing
+      </h2>
+      <div class="flex justify-center relative w-screen">
+        <div class="w-fit flex justify-center gap-4">
+          <div class="h-[300px] w-[300px] bg-red-500 rounded-sm"></div>
+          <div class="h-[300px] w-[300px] bg-red-500 rounded-sm"></div>
+          <div class="h-[300px] w-[300px] bg-red-500 rounded-sm"></div>
+          <div class="h-[300px] w-[300px] bg-red-500 rounded-sm"></div>
+          <div class="h-[300px] w-[300px] bg-red-500 rounded-sm"></div>
+          <div class="h-[300px] w-[300px] bg-red-500 rounded-sm"></div>
+          <div class="h-[300px] w-[300px] bg-red-500 rounded-sm"></div>
+        </div>
+        <div
+          class="absolute z-20 inset-0 bg-gradient-to-r from-black via-transparent to-black"
+        >
+        </div>
+      </div>
+    </div>
+    <a
+      target="_blank"
+      href="/projects"
+      class="mx-4 block w-fit group relative mb-3 focus:outline-2 focus:outline-black focus:outline-offset-4"
+    >
+      <span class="flex gap-1 items-center">
+        <span>Go to About Page</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-move-up-right"
+          ><path d="M13 5H19V11"></path><path d="M19 5L5 19"></path></svg
+        >
+      </span>
+      <span
+        class="absolute -bottom-1 left-0 h-[1px] w-0 bg-white transition-all duration-300 group-hover:w-full"
+      ></span>
+    </a>
+  </section>
 
   <ContactForm />
 </Layout>

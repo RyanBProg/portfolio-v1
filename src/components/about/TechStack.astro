@@ -9,7 +9,12 @@ import badges from "../../collections/techBadges";
     {
       badges.map((badge) => (
         <li>
-          <TechBadge title={badge.title} img={badge.img} alt={badge.alt} />
+          <TechBadge
+            title={badge.title}
+            img={badge.img}
+            alt={badge.alt}
+            bgCol="bg-neutral-500/10"
+          />
         </li>
       ))
     }
