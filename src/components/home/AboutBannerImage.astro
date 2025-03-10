@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+
+type Props = {
+  img: ImageMetadata;
+  alt: string;
+};
+
+const { img, alt } = Astro.props;
+---
+
+<div
+  class="group relative h-[50vw] w-[50vw] sm:h-[30vw] sm:w-[30vw] lg:h-[25vw] lg:w-[25vw] xl:h-[20vw] xl:w-[20vw] rounded-sm overflow-clip"
+>
+  <Image
+    class="w-full h-full object-cover"
+    src={img}
+    alt={alt}
+    height={300}
+    width={300}
+    quality={90}
+  />
+  <div
+    class="opacity-0 group-hover:opacity-100 bg-white/75 absolute inset-0 transition-opacity duration-300 ease-in-out flex justify-center items-center"
+  >
+    <!-- figcaption? -->
+    <p class="text-black font-bold text-lg uppercase">{alt}</p>
+  </div>
+</div>

@@ -4,32 +4,34 @@ const projects = await getCollection("projectsCollection");
 import { Image } from "astro:assets";
 ---
 
-<section class="slider-window">
-  <div
-    class="absolute inset-x-0 -top-12 sm:-top-32 md:-top-52 mx-auto w-min flex flex-col items-center gap-10"
-  >
+<section class="min-h-screen py-20 flex flex-col justify-center items-center">
+  <div class="relative">
     <h2
-      class="text-[3.8rem] sm:text-[7rem] md:text-[8.5rem] font-bold tracking-tighter relative"
+      class="text-[3.8rem] sm:text-[7rem] md:text-[8.5rem] font-bold tracking-tighter leading-tight relative"
     >
-      <span class="absolute inset-x-0 text-center top-0 text-xl tracking-tight"
+      <span
+        class="absolute inset-x-0 text-center -top-4 sm:top-0 text-xl tracking-tight"
         >MY</span
       >
       PROJECTS
     </h2>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="h-[50px] w-[50px] sm:h-[100px] sm:w-[100px] md:h-[200px] md:w-[200px]"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="lucide lucide-move-down"
-      ><path d="M8 18L12 22L16 18"></path><path d="M12 2V22"></path></svg
-    >
+    <div class="absolute bottom-0 translate-y-full left-1/2 -translate-x-1/2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-[60px] w-[60px] sm:h-[100px] sm:w-[100px] md:h-[150px] md:w-[150px]"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-move-down"
+        ><path d="M8 18L12 22L16 18"></path><path d="M12 2V22"></path></svg
+      >
+    </div>
   </div>
-  <div class="w-full h-full text-center">
+
+  <div class="slider-window">
     <div class="slider">
       {
         projects.map((project, index) => (
@@ -47,38 +49,36 @@ import { Image } from "astro:assets";
       }
     </div>
   </div>
-  <div>
-    <a
-      target="_blank"
-      href="/projects"
-      class="mx-4 block w-fit group relative mb-3 focus:outline-2 focus:outline-black focus:outline-offset-4"
-    >
-      <span class="flex gap-1 items-center">
-        <span>Go to Projects</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="lucide lucide-move-up-right"
-          ><path d="M13 5H19V11"></path><path d="M19 5L5 19"></path></svg
-        >
-      </span>
-      <span
-        class="absolute -bottom-1 left-0 h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full"
-      ></span>
-    </a>
-  </div>
+  <a
+    target="_blank"
+    href="/projects"
+    class="block w-fit group relative mb-3 text-xl font-semibold focus:outline-2 focus:outline-black focus:outline-offset-4"
+  >
+    <span class="flex gap-1 items-center">
+      <span>Go to Projects</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-move-up-right"
+        ><path d="M13 5H19V11"></path><path d="M19 5L5 19"></path></svg
+      >
+    </span>
+    <span
+      class="absolute -bottom-1 left-0 h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full"
+    ></span>
+  </a>
 </section>
 
 <style>
   .slider-window {
-    @apply w-full h-screen relative text-center;
+    @apply w-full h-[820px] relative text-center;
   }
 
   .slider {
@@ -98,7 +98,7 @@ import { Image } from "astro:assets";
     transform: rotateY(
         calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
       )
-      translateZ(1000px);
+      translateZ(450px);
   }
 
   @keyframes autoRun {
@@ -114,7 +114,7 @@ import { Image } from "astro:assets";
 
   @media screen and (max-width: 767px) {
     .slider-window {
-      @apply h-[670px];
+      @apply h-[600px];
     }
 
     .slider {
@@ -125,13 +125,13 @@ import { Image } from "astro:assets";
       transform: rotateY(
           calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
         )
-        translateZ(650px);
+        translateZ(300px);
     }
   }
 
   @media screen and (max-width: 639px) {
     .slider-window {
-      @apply h-[500px];
+      @apply h-[400px];
     }
 
     .slider {
@@ -142,7 +142,7 @@ import { Image } from "astro:assets";
       transform: rotateY(
           calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
         )
-        translateZ(500px);
+        translateZ(220px);
     }
   }
 </style>

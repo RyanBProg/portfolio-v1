@@ -1,62 +1,37 @@
 ---
 import { Image } from "astro:assets";
-import githubIcon from "../../assets/icons/github-square.png";
-import linkedinIcon from "../../assets/icons/linkedin-square.png";
 import sendIcon from "../../assets/icons/send.png";
 ---
 
 <section
   aria-label="Introduction"
-  class="-mt-[86px] relative h-screen flex flex-col justify-center items-center px-5"
+  class="hero-section -mt-[86px] relative h-screen flex flex-col justify-center items-center px-5"
 >
   <h1
     class="font-bold text-8xl text-center tracking-tighter sm:text-9xl md:text-[10rem]"
   >
     <div class="overflow-hidden pb-2">
-      <span class="main-heading block">Ryan</span>
+      <span class="main-heading block opacity-0">Ryan</span>
     </div>
     <div class="overflow-hidden">
-      <span class="main-heading block">Bowler</span>
+      <span class="main-heading block opacity-0">Bowler</span>
     </div>
   </h1>
-  <p id="sub-text" class="text-base sm:text-xl mt-2 text-center">
+  <p id="sub-text" class="text-base sm:text-xl mt-2 text-center opacity-0">
     A passionate <span class="font-bold">Full Stack Developer</span> and
     <br />professional problem solver who loves to build things!
   </p>
-  <div id="stats" class="mt-16 flex gap-5 justify-center">
+  <div id="stats" class="mt-16 flex flex-col gap-5 justify-center opacity-0">
     <div class="text-center">
-      <h2 class="font-bold tracking-tight text-lg sm:text-xl">3+ Years</h2>
-      <p>Coding experience</p>
+      <h2 class="font-bold tracking-tight text-2xl sm:text-4xl">3+ Years</h2>
+      <p class="text-neutral-500">Coding experience</p>
     </div>
     <div class="text-center">
-      <h2 class="font-bold tracking-tight text-lg sm:text-xl">10+ Years</h2>
-      <p>Engineering experience</p>
+      <h2 class="font-bold tracking-tight text-2xl sm:text-4xl">10+ Years</h2>
+      <p class="text-neutral-500">Engineering experience</p>
     </div>
   </div>
-  <div
-    id="socials"
-    aria-label="Social media links"
-    class="flex gap-16 mt-6 justify-center"
-  >
-    <a
-      href="https://github.com/RyanBProg"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Visit my GitHub profile"
-      class="bg-white rounded-xl block h-14 w-14 transition-transform hover:-translate-y-1 hover:cursor-pointer"
-    >
-      <Image src={githubIcon} alt="github" height="56" width="56" />
-    </a>
-    <a
-      href="https://www.linkedin.com/in/ryan-bowler-601919170"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Visit my Linkedin profile"
-      class="bg-white rounded-xl block h-14 w-14 transition-transform hover:-translate-y-1 hover:cursor-pointer"
-    >
-      <Image src={linkedinIcon} alt="linkedin" height="56" width="56" />
-    </a>
-  </div>
+  <div class="grad-cover"></div>
 
   <!-- Download Button -->
   <a
@@ -69,6 +44,25 @@ import sendIcon from "../../assets/icons/send.png";
   </a>
 </section>
 
+<style>
+  .hero-section {
+    background-image: radial-gradient(#0000004a 1px, #ffffff 1px);
+    background-size: 40px 40px;
+  }
+
+  .grad-cover {
+    @apply absolute inset-0;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0) 80%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  }
+</style>
+
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -77,49 +71,32 @@ import sendIcon from "../../assets/icons/send.png";
   const mainHeading = document.querySelectorAll(".main-heading");
   const subText = document.getElementById("sub-text");
   const stats = document.getElementById("stats");
-  const socials = document.getElementById("socials");
-  const mobileButton = document.getElementById("mobile-nav-btn");
 
-  gsap.set([subText, stats, socials], { opacity: 0 });
+  gsap.set([subText, stats], { opacity: 0 });
   const tl = gsap.timeline();
   tl.fromTo(
-    mobileButton,
+    mainHeading,
     {
-      x: "-100%",
+      y: "100%",
       opacity: 0,
     },
     {
-      x: "0%",
+      y: "0%",
       opacity: 1,
-      duration: 0.8,
-      stagger: 1,
-      ease: "back.out",
+      duration: 1.2,
+      stagger: 0.8,
+      ease: "sine.inOut",
     },
-  )
-    .fromTo(
-      mainHeading,
-      {
-        y: "100%",
-        opacity: 0,
-      },
-      {
-        y: "0%",
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.8,
-        ease: "sine.inOut",
-      },
-      ">-0.6",
-    )
-    .fromTo(
-      [subText, stats, socials],
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        duration: 2,
-        ease: "sine.out",
-      },
-    );
+    ">-0.6",
+  ).fromTo(
+    [subText, stats],
+    {
+      opacity: 0,
+    },
+    {
+      opacity: 1,
+      duration: 2,
+      ease: "sine.out",
+    },
+  );
 </script>

@@ -1,0 +1,171 @@
+---
+import TechBadge from "../TechBadge.astro";
+import badges from "../../collections/techBadges";
+import { Image } from "astro:assets";
+
+import amazon from "../../assets/images/gallery/amazon.jpg";
+import newZealand from "../../assets/images/gallery/new-zealand.jpg";
+import bolivia from "../../assets/images/gallery/bolivia.jpg";
+import huacachina from "../../assets/images/gallery/huacachina.jpg";
+import machu from "../../assets/images/gallery/machu.jpg";
+import rio from "../../assets/images/gallery/rio.jpg";
+import patagonia from "../../assets/images/gallery/patagonia.jpg";
+import AboutBannerImage from "./AboutBannerImage.astro";
+---
+
+<section
+  class="bg-black min-h-screen py-20 text-white overflow-x-hidden flex flex-col gap-20 justify-center"
+>
+  <div class="px-4">
+    <h2 class="text-4xl sm:text-6xl tracking-tight font-semibold mb-10">
+      What I Love Using
+    </h2>
+    <ul class="flex flex-wrap gap-4" aria-label="Technologies i like using">
+      <li>
+        <TechBadge
+          title={badges[0].title}
+          img={badges[0].img}
+          alt={badges[0].alt}
+          bgCol="bg-white/10"
+        />
+      </li>
+      <li>
+        <TechBadge
+          title={badges[2].title}
+          img={badges[2].img}
+          alt={badges[2].alt}
+          bgCol="bg-white/10"
+        />
+      </li>
+      <li>
+        <TechBadge
+          title={badges[3].title}
+          img={badges[3].img}
+          alt={badges[3].alt}
+          bgCol="bg-white/10"
+        />
+      </li>
+      <li>
+        <TechBadge
+          title={badges[7].title}
+          img={badges[7].img}
+          alt={badges[7].alt}
+          bgCol="bg-white/10"
+        />
+      </li>
+      <li>
+        <TechBadge
+          title={badges[8].title}
+          img={badges[8].img}
+          alt={badges[8].alt}
+          bgCol="bg-white/10"
+        />
+      </li>
+    </ul>
+  </div>
+  <div id="image-container">
+    <h2 class="text-4xl sm:text-6xl tracking-tight font-semibold mb-10 px-4">
+      What I Love Doing
+    </h2>
+
+    <div class="flex justify-start overflow-hidden relative w-full">
+      <div id="image-banner" class="min-w-max flex gap-4 px-4 mb-4">
+        <AboutBannerImage img={amazon} alt="amazon rainforest" />
+        <AboutBannerImage img={huacachina} alt="huacachina" />
+        <AboutBannerImage img={machu} alt="machu picchu" />
+        <AboutBannerImage img={bolivia} alt="bolivia" />
+        <AboutBannerImage img={rio} alt="rio de janeiro" />
+        <AboutBannerImage img={newZealand} alt="new zealand" />
+        <AboutBannerImage img={patagonia} alt="patagonia" />
+      </div>
+    </div>
+
+    <div class="mx-auto w-fit mt-20">
+      <a
+        target="_blank"
+        href="/about"
+        class="block w-fit group relative mb-3 text-xl font-semibold focus:outline-2 focus:outline-black focus:outline-offset-4"
+      >
+        <span class="flex gap-1 items-center">
+          <span>Go to About</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-move-up-right"
+            ><path d="M13 5H19V11"></path><path d="M19 5L5 19"></path></svg
+          >
+        </span>
+        <span
+          class="absolute -bottom-1 left-0 h-[1px] w-0 bg-white transition-all duration-300 group-hover:w-full"
+        ></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const imageBannerContainer = document.getElementById(
+    "image-container",
+  ) as HTMLElement;
+  const imageBanner = document.getElementById("image-banner") as HTMLElement;
+  let scrollTriggerInstance: any; // We'll type this more specifically
+
+  const createAnimations = () => {
+    // Kill only this component's ScrollTrigger instance
+    if (scrollTriggerInstance) {
+      scrollTriggerInstance.kill();
+    }
+
+    // Get container padding
+    const containerStyles = window.getComputedStyle(imageBannerContainer);
+    const paddingLeft = parseInt(containerStyles.paddingLeft);
+    const paddingRight = parseInt(containerStyles.paddingRight);
+    const totalPadding = paddingLeft + paddingRight;
+
+    // Calculate offsets including padding
+    const offset1Val =
+      imageBanner.scrollWidth - window.innerWidth + totalPadding;
+
+    const tl = gsap.fromTo(
+      imageBanner,
+      { x: 0 },
+      {
+        x: -offset1Val,
+        scrollTrigger: {
+          trigger: imageBannerContainer,
+          start: "bottom bottom",
+          end: "top top",
+          scrub: 1,
+          id: "imageBannerScroll", // Add an ID for reference
+          onKill: () => {
+            scrollTriggerInstance = null;
+          },
+        },
+      },
+    );
+
+    // Store reference to the new ScrollTrigger instance
+    scrollTriggerInstance = tl.scrollTrigger;
+  };
+
+  // Initial creation
+  createAnimations();
+
+  // Update on resize with debounce
+  let resizeTimer: number;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(createAnimations, 250) as unknown as number;
+  });
+</script>
