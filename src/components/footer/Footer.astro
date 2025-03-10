@@ -15,8 +15,16 @@
       top: 0,
       behavior: "smooth",
     });
+
+    scrollButton?.blur();
+    toggleNavButton?.focus();
   };
 
-  const scrollButton = document.getElementById("scroll-button");
+  const toggleNavButton = document.getElementById(
+    "toggle-nav-btn",
+  ) as HTMLButtonElement;
+  const scrollButton = document.getElementById(
+    "scroll-button",
+  ) as HTMLButtonElement;
   scrollButton?.addEventListener("click", scrollToTop);
 </script>
