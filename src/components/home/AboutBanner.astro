@@ -1,7 +1,6 @@
 ---
 import TechBadge from "../TechBadge.astro";
 import badges from "../../collections/techBadges";
-import { Image } from "astro:assets";
 
 import amazon from "../../assets/images/gallery/amazon.jpg";
 import newZealand from "../../assets/images/gallery/new-zealand.jpg";
@@ -20,7 +19,7 @@ import AboutBannerImage from "./AboutBannerImage.astro";
     <h2 class="text-4xl sm:text-6xl tracking-tight font-semibold mb-10">
       What I Love Using
     </h2>
-    <ul class="flex flex-wrap gap-4" aria-label="Technologies i like using">
+    <ul class="flex flex-wrap gap-4">
       <li>
         <TechBadge
           title={badges[0].title}
@@ -69,7 +68,17 @@ import AboutBannerImage from "./AboutBannerImage.astro";
     </h2>
 
     <div class="flex justify-start overflow-hidden relative w-full">
-      <div id="image-banner" class="min-w-max flex gap-4 px-4 mb-4">
+      <div class="image-banner min-w-max flex gap-4 px-4 mb-4 animate-scroll">
+        <!-- First set of images -->
+        <AboutBannerImage img={amazon} alt="amazon rainforest" />
+        <AboutBannerImage img={huacachina} alt="huacachina" />
+        <AboutBannerImage img={machu} alt="machu picchu" />
+        <AboutBannerImage img={bolivia} alt="bolivia" />
+        <AboutBannerImage img={rio} alt="rio de janeiro" />
+        <AboutBannerImage img={newZealand} alt="new zealand" />
+        <AboutBannerImage img={patagonia} alt="patagonia" />
+
+        <!-- Duplicate set of images for seamless loop -->
         <AboutBannerImage img={amazon} alt="amazon rainforest" />
         <AboutBannerImage img={huacachina} alt="huacachina" />
         <AboutBannerImage img={machu} alt="machu picchu" />
@@ -110,62 +119,21 @@ import AboutBannerImage from "./AboutBannerImage.astro";
   </div>
 </section>
 
-<script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
+<style>
+  .image-banner {
+    animation: scroll 20s linear infinite;
+  }
 
-  const imageBannerContainer = document.getElementById(
-    "image-container",
-  ) as HTMLElement;
-  const imageBanner = document.getElementById("image-banner") as HTMLElement;
-  let scrollTriggerInstance: any; // We'll type this more specifically
+  .image-banner:hover {
+    animation-play-state: paused;
+  }
 
-  const createAnimations = () => {
-    // Kill only this component's ScrollTrigger instance
-    if (scrollTriggerInstance) {
-      scrollTriggerInstance.kill();
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
     }
-
-    // Get container padding
-    const containerStyles = window.getComputedStyle(imageBannerContainer);
-    const paddingLeft = parseInt(containerStyles.paddingLeft);
-    const paddingRight = parseInt(containerStyles.paddingRight);
-    const totalPadding = paddingLeft + paddingRight;
-
-    // Calculate offsets including padding
-    const offset1Val =
-      imageBanner.scrollWidth - window.innerWidth + totalPadding;
-
-    const tl = gsap.fromTo(
-      imageBanner,
-      { x: 0 },
-      {
-        x: -offset1Val,
-        scrollTrigger: {
-          trigger: imageBannerContainer,
-          start: "bottom bottom",
-          end: "top top",
-          scrub: 1,
-          id: "imageBannerScroll", // Add an ID for reference
-          onKill: () => {
-            scrollTriggerInstance = null;
-          },
-        },
-      },
-    );
-
-    // Store reference to the new ScrollTrigger instance
-    scrollTriggerInstance = tl.scrollTrigger;
-  };
-
-  // Initial creation
-  createAnimations();
-
-  // Update on resize with debounce
-  let resizeTimer: number;
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(createAnimations, 250) as unknown as number;
-  });
-</script>
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>
