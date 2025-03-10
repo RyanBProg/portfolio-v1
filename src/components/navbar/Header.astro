@@ -145,7 +145,8 @@ import NavArrow from "../svgs/NavArrow.astro";
       <div class="relative h-full w-1/2 ml-auto hidden lg:block">
         <div
           id="home-slide"
-          class={`${Astro.url.pathname === "/" ? "z-20" : "z-10"} absolute top-0 right-0 w-full h-full bg-blue-200 transition-transform duration-500 ease-out`}
+          data-path="/"
+          class="absolute top-0 right-0 w-full h-full bg-blue-200 transition-transform duration-500 ease-out"
         >
           <div class="relative w-full h-full">
             <p
@@ -157,7 +158,8 @@ import NavArrow from "../svgs/NavArrow.astro";
         </div>
         <div
           id="about-slide"
-          class={`${Astro.url.pathname === "/about" ? "z-20" : "z-10"} absolute top-0 right-0 w-full h-full bg-red-200 transition-transform duration-500 ease-out`}
+          data-path="/about"
+          class="absolute top-0 right-0 w-full h-full bg-red-200 transition-transform duration-500 ease-out"
         >
           <div class="relative w-full h-full">
             <p
@@ -169,7 +171,8 @@ import NavArrow from "../svgs/NavArrow.astro";
         </div>
         <div
           id="projects-slide"
-          class={`${Astro.url.pathname === "/projects" ? "z-20" : "z-10"} absolute top-0 right-0 w-full h-full bg-yellow-200 transition-transform duration-500 ease-out`}
+          data-path="/projects"
+          class="absolute top-0 right-0 w-full h-full bg-yellow-200 transition-transform duration-500 ease-out"
         >
           <div class="relative w-full h-full">
             <p
@@ -181,7 +184,8 @@ import NavArrow from "../svgs/NavArrow.astro";
         </div>
         <div
           id="contact-slide"
-          class={`${Astro.url.pathname === "/contact" ? "z-20" : "z-10"} absolute top-0 right-0 w-full h-full bg-purple-200 transition-transform duration-500 ease-out`}
+          data-path="/contact"
+          class="absolute top-0 right-0 w-full h-full bg-purple-200 transition-transform duration-500 ease-out"
         >
           <div class="relative w-full h-full">
             <p
@@ -220,6 +224,7 @@ import NavArrow from "../svgs/NavArrow.astro";
   const socialLinks = document.querySelectorAll(".social-link");
   const slides = document.querySelectorAll("[id$='-slide']");
   let isNavOpen = false;
+  const currentPath = window.location.pathname;
 
   // Handle clicks outside the menu
   const handleClickOutside = (event: MouseEvent) => {
@@ -364,11 +369,8 @@ import NavArrow from "../svgs/NavArrow.astro";
   document.addEventListener("mousedown", handleClickOutside);
   document.addEventListener("keydown", handleEscKeyPress);
 
-  // Set active link styles on load and after navigation
-  function setActiveLink() {
-    const currentPath = window.location.pathname;
-    const navLinks = document.querySelectorAll(".nav-link");
-
+  // Set active link styles
+  function setActiveLink(navLinks: NodeListOf<Element>, currentPath: string) {
     navLinks.forEach((link) => {
       const linkPath = link.getAttribute("data-path");
       if (linkPath === currentPath) {
@@ -381,9 +383,19 @@ import NavArrow from "../svgs/NavArrow.astro";
     });
   }
 
-  // Run on page load
-  setActiveLink();
+  // Set active slide styles
+  function setActiveSlider(slides: NodeListOf<Element>, currentPath: string) {
+    slides.forEach((link) => {
+      const slidePath = link.getAttribute("data-path");
+      if (slidePath === currentPath) {
+        link.classList.add("z-20");
+      } else {
+        link.classList.add("z-10");
+      }
+    });
+  }
 
-  // Run on client-side navigation if using View Transitions
-  document.addEventListener("astro:page-load", setActiveLink);
+  // Run on page load
+  setActiveLink(navLinks, currentPath);
+  setActiveSlider(slides, currentPath);
 </script>
