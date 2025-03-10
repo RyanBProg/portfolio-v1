@@ -43,14 +43,14 @@ import NavArrow from "../svgs/NavArrow.astro";
           role="menubar"
         >
           <li role="none">
-            <span class="overflow-x-hidden flex">
+            <span tabindex="-1" class="overflow-x-hidden flex">
               <a
                 href="/"
                 data-slide="home-slide"
                 data-path="/"
                 tabindex="-1"
                 role="menuitem"
-                class="nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500"
+                class="nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500 focus:translate-x-0"
               >
                 <NavArrow />
                 Home
@@ -58,14 +58,14 @@ import NavArrow from "../svgs/NavArrow.astro";
             </span>
           </li>
           <li role="none">
-            <span class="overflow-x-hidden flex">
+            <span tabindex="-1" class="overflow-x-hidden flex">
               <a
                 href="/about"
                 data-slide="about-slide"
                 data-path="/about"
                 tabindex="-1"
                 role="menuitem"
-                class="nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500"
+                class="nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500 focus:translate-x-0"
               >
                 <NavArrow />
                 About
@@ -73,14 +73,14 @@ import NavArrow from "../svgs/NavArrow.astro";
             </span>
           </li>
           <li role="none">
-            <span class="overflow-x-hidden flex">
+            <span tabindex="-1" class="overflow-x-hidden flex">
               <a
                 href="/projects"
                 data-slide="projects-slide"
                 data-path="/projects"
                 tabindex="-1"
                 role="menuitem"
-                class="nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500"
+                class="nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500 focus:translate-x-0"
               >
                 <NavArrow />
                 Projects
@@ -88,14 +88,14 @@ import NavArrow from "../svgs/NavArrow.astro";
             </span>
           </li>
           <li role="none">
-            <span class="overflow-x-hidden flex">
+            <span tabindex="-1" class="overflow-x-hidden flex">
               <a
                 href="/contact"
                 data-slide="contact-slide"
                 data-path="/contact"
                 tabindex="-1"
                 role="menuitem"
-                class="nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500"
+                class="group nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500 focus:translate-x-0"
               >
                 <NavArrow />
                 Contact
@@ -217,11 +217,17 @@ import NavArrow from "../svgs/NavArrow.astro";
 <script>
   import { gsap } from "gsap";
 
-  const toggleNavButton = document.getElementById("toggle-nav-btn");
+  const toggleNavButton = document.getElementById(
+    "toggle-nav-btn",
+  ) as HTMLButtonElement;
   const navButtonIcon = document.getElementById("nav-button-icon");
   const navList = document.getElementById("nav-list");
-  const navLinks = document.querySelectorAll("[role='menuitem']");
-  const socialLinks = document.querySelectorAll(".social-link");
+  const navLinks = document.querySelectorAll(
+    "[role='menuitem']",
+  ) as NodeListOf<HTMLAnchorElement>;
+  const socialLinks = document.querySelectorAll(
+    ".social-link",
+  ) as NodeListOf<HTMLAnchorElement>;
   const slides = document.querySelectorAll("[id$='-slide']");
   let isNavOpen = false;
   const currentPath = window.location.pathname;
@@ -249,12 +255,43 @@ import NavArrow from "../svgs/NavArrow.astro";
     }
   };
 
+  // focus trapping when nav is open
+  const handleTab = (event: KeyboardEvent) => {
+    if (!isNavOpen) {
+      return;
+    }
+
+    const focusElements = [toggleNavButton, ...navLinks, ...socialLinks];
+    const firstElement = focusElements[0];
+    const lastElement = focusElements[focusElements.length - 1];
+
+    if (event.key === "Tab") {
+      // Shift + Tab pressed on first element
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      }
+      // Tab pressed on last element
+      else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    }
+  };
+
   // Close navigation function
   const closeNav = () => {
     isNavOpen = false;
 
     // enable scrolling
     document.getElementsByTagName("body")[0].style.overflow = "visible";
+    // reset aria hidden for main content for screen readers
+    document
+      .getElementsByTagName("main")[0]
+      .setAttribute("aria-hidden", "false");
+    document
+      .getElementsByTagName("footer")[0]
+      .setAttribute("aria-hidden", "false");
 
     const tl = gsap.timeline();
     tl.to("#nav-content", {
@@ -290,6 +327,13 @@ import NavArrow from "../svgs/NavArrow.astro";
 
       // lock scrolling
       document.getElementsByTagName("body")[0].style.overflow = "hidden";
+      // aria hidden for main content for screen readers
+      document
+        .getElementsByTagName("main")[0]
+        .setAttribute("aria-hidden", "true");
+      document
+        .getElementsByTagName("footer")[0]
+        .setAttribute("aria-hidden", "true");
 
       // Open animation sequence
       const tl = gsap.timeline();
@@ -368,9 +412,13 @@ import NavArrow from "../svgs/NavArrow.astro";
   // Add event listeners
   document.addEventListener("mousedown", handleClickOutside);
   document.addEventListener("keydown", handleEscKeyPress);
+  document.addEventListener("keydown", handleTab);
 
   // Set active link styles
-  function setActiveLink(navLinks: NodeListOf<Element>, currentPath: string) {
+  function setActiveLink(
+    navLinks: NodeListOf<HTMLAnchorElement>,
+    currentPath: string,
+  ) {
     navLinks.forEach((link) => {
       const linkPath = link.getAttribute("data-path");
       if (linkPath === currentPath) {
