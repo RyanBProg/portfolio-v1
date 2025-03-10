@@ -280,13 +280,6 @@
 <script>
   import { gsap } from "gsap";
 
-  // Get Lenis instance from window
-  declare global {
-    interface Window {
-      lenis: any;
-    }
-  }
-
   const toggleNavButton = document.getElementById("toggle-nav-btn");
   const navButtonIcon = document.getElementById("nav-button-icon");
   const navList = document.getElementById("nav-list");
@@ -322,8 +315,8 @@
   const closeNav = () => {
     isNavOpen = false;
 
-    // Re-enable scrolling with Lenis
-    window.lenis?.start();
+    // enable scrolling
+    document.getElementsByTagName("body")[0].style.overflow = "visible";
 
     const tl = gsap.timeline();
     tl.to("#nav-content", {
@@ -351,12 +344,14 @@
     isNavOpen = !isNavOpen;
 
     if (isNavOpen) {
-      // Scroll to top of screen and stop Lenis scrolling
+      // Scroll to top of screen
       window.scrollTo({
         top: 0,
         behavior: "smooth",
       });
-      window.lenis?.stop();
+
+      // lock scrolling
+      document.getElementsByTagName("body")[0].style.overflow = "hidden";
 
       // Open animation sequence
       const tl = gsap.timeline();
@@ -402,11 +397,6 @@
       }
     });
   });
-
-  // Reset slides when mouse leaves navigation area
-  // navList?.addEventListener("mouseleave", () => {
-  //   slides.forEach((slide) => slide.classList.add("translate-x-full"));
-  // });
 
   // Nav links hover color change
   navLinks.forEach((hoverlink) => {

@@ -40,29 +40,3 @@ const { title } = Astro.props;
     font-display: swap;
   }
 </style>
-
-<script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import Lenis from "lenis";
-
-  // Smooth scrolling
-  const lenis = new Lenis();
-
-  // Make lenis available globally
-  window.lenis = lenis;
-
-  function raf(time: number) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-
-  // Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
-  lenis.on("scroll", ScrollTrigger.update);
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-  });
-  gsap.ticker.lagSmoothing(0);
-
-  requestAnimationFrame(raf);
-</script>
