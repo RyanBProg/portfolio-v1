@@ -1,3 +1,8 @@
+---
+import LinkArrow from "../svgs/LinkArrow.astro";
+import NavArrow from "../svgs/NavArrow.astro";
+---
+
 <header class="relative z-[100]">
   <nav aria-label="primary navigation" class="p-4 relative">
     <button
@@ -42,24 +47,12 @@
               <a
                 href="/"
                 data-slide="home-slide"
+                data-path="/"
                 tabindex="-1"
                 role="menuitem"
-                class={`${Astro.url.pathname === "/" ? "text-neutral-500" : "text-black -translate-x-10 hover:translate-x-0"} transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500`}
+                class="nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-move-right"
-                  ><path d="M18 8L22 12L18 16"></path><path d="M2 12H22"
-                  ></path></svg
-                >
+                <NavArrow />
                 Home
               </a>
             </span>
@@ -69,24 +62,12 @@
               <a
                 href="/about"
                 data-slide="about-slide"
+                data-path="/about"
                 tabindex="-1"
                 role="menuitem"
-                class={`${Astro.url.pathname === "/about" ? "text-neutral-500" : "text-black -translate-x-10 hover:translate-x-0"} transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500`}
+                class="nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-move-right"
-                  ><path d="M18 8L22 12L18 16"></path><path d="M2 12H22"
-                  ></path></svg
-                >
+                <NavArrow />
                 About
               </a>
             </span>
@@ -96,24 +77,12 @@
               <a
                 href="/projects"
                 data-slide="projects-slide"
+                data-path="/projects"
                 tabindex="-1"
                 role="menuitem"
-                class={`${Astro.url.pathname === "/projects" ? "text-neutral-500" : "text-black -translate-x-10 hover:translate-x-0"} transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500`}
+                class="nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-move-right"
-                  ><path d="M18 8L22 12L18 16"></path><path d="M2 12H22"
-                  ></path></svg
-                >
+                <NavArrow />
                 Projects
               </a>
             </span>
@@ -123,24 +92,12 @@
               <a
                 href="/contact"
                 data-slide="contact-slide"
+                data-path="/contact"
                 tabindex="-1"
                 role="menuitem"
-                class={`${Astro.url.pathname === "/contact" ? "text-neutral-500" : "text-black -translate-x-10 hover:translate-x-0"} nav-link transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500`}
+                class="nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-move-right"
-                  ><path d="M18 8L22 12L18 16"></path><path d="M2 12H22"
-                  ></path></svg
-                >
+                <NavArrow />
                 Contact
               </a>
             </span>
@@ -161,19 +118,7 @@
           >
             <span class="flex gap-1 items-center">
               <span>LinkedIn</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-move-up-right"
-                ><path d="M13 5H19V11"></path><path d="M19 5L5 19"></path></svg
-              >
+              <LinkArrow height="16" width="16" />
             </span>
             <span
               class="absolute -bottom-1 left-0 h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full"
@@ -187,19 +132,7 @@
           >
             <span class="flex gap-1 items-center">
               <span>GitHub</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-move-up-right"
-                ><path d="M13 5H19V11"></path><path d="M19 5L5 19"></path></svg
-              >
+              <LinkArrow height="16" width="16" />
             </span>
             <span
               class="absolute -bottom-1 left-0 h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full"
@@ -430,4 +363,27 @@
   // Add event listeners
   document.addEventListener("mousedown", handleClickOutside);
   document.addEventListener("keydown", handleEscKeyPress);
+
+  // Set active link styles on load and after navigation
+  function setActiveLink() {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach((link) => {
+      const linkPath = link.getAttribute("data-path");
+      if (linkPath === currentPath) {
+        link.classList.remove("-translate-x-10", "text-black");
+        link.classList.add("text-neutral-500");
+      } else {
+        link.classList.add("-translate-x-10", "text-black");
+        link.classList.remove("text-neutral-500");
+      }
+    });
+  }
+
+  // Run on page load
+  setActiveLink();
+
+  // Run on client-side navigation if using View Transitions
+  document.addEventListener("astro:page-load", setActiveLink);
 </script>

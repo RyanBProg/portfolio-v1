@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 const projects = await getCollection("projectsCollection");
 import { Image } from "astro:assets";
+import LinkArrow from "../svgs/LinkArrow.astro";
 ---
 
 <section class="min-h-screen flex flex-col justify-center items-center">
@@ -52,23 +53,11 @@ import { Image } from "astro:assets";
   <a
     target="_blank"
     href="/projects"
-    class="block w-fit group relative mb-3 text-xl font-semibold focus:outline-2 focus:outline-black focus:outline-offset-4"
+    class="block w-fit group relative mb-3 text-2xl font-semibold focus:outline-2 focus:outline-black focus:outline-offset-4"
   >
-    <span class="flex gap-1 items-center">
+    <span class="flex gap-2 items-center">
       <span>Go to Projects</span>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-move-up-right"
-        ><path d="M13 5H19V11"></path><path d="M19 5L5 19"></path></svg
-      >
+      <LinkArrow height="20" width="20" />
     </span>
     <span
       class="absolute -bottom-1 left-0 h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full"
