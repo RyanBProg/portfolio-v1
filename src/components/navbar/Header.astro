@@ -145,11 +145,7 @@ import NavArrow from "../svgs/NavArrow.astro";
           class="absolute top-0 right-0 w-full h-full bg-blue-200 transition-transform duration-500 ease-out"
         >
           <div class="relative w-full h-full">
-            <p
-              class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-4xl font-bold tracking-tight"
-            >
-              Home
-            </p>
+            <p class="slide-text">Home</p>
           </div>
         </div>
         <div
@@ -158,11 +154,7 @@ import NavArrow from "../svgs/NavArrow.astro";
           class="absolute top-0 right-0 w-full h-full bg-red-200 transition-transform duration-500 ease-out"
         >
           <div class="relative w-full h-full">
-            <p
-              class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-4xl font-bold tracking-tight"
-            >
-              About
-            </p>
+            <p class="slide-text">About</p>
           </div>
         </div>
         <div
@@ -171,11 +163,7 @@ import NavArrow from "../svgs/NavArrow.astro";
           class="absolute top-0 right-0 w-full h-full bg-yellow-200 transition-transform duration-500 ease-out"
         >
           <div class="relative w-full h-full">
-            <p
-              class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-4xl font-bold tracking-tight"
-            >
-              Projects
-            </p>
+            <p class="slide-text">Projects</p>
           </div>
         </div>
         <div
@@ -184,11 +172,7 @@ import NavArrow from "../svgs/NavArrow.astro";
           class="absolute top-0 right-0 w-full h-full bg-purple-200 transition-transform duration-500 ease-out"
         >
           <div class="relative w-full h-full">
-            <p
-              class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-4xl font-bold tracking-tight"
-            >
-              Contact
-            </p>
+            <p class="slide-text">Contact</p>
           </div>
         </div>
       </div>
@@ -207,6 +191,117 @@ import NavArrow from "../svgs/NavArrow.astro";
 
   #nav-button-icon.open span:nth-child(3) {
     @apply top-[13px] -rotate-[135deg];
+  }
+
+  .slide-text {
+    @apply absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-8xl font-extrabold tracking-tight;
+    color: #fb7185;
+    -webkit-text-fill-color: #fb7185; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 2.5px;
+    -webkit-text-stroke-color: white;
+  }
+
+  #home-slide {
+    background-color: #ffffff;
+    opacity: 1;
+    background-image: linear-gradient(
+        30deg,
+        #fb7185 12%,
+        transparent 12.5%,
+        transparent 87%,
+        #fb7185 87.5%,
+        #fb7185
+      ),
+      linear-gradient(
+        150deg,
+        #fb7185 12%,
+        transparent 12.5%,
+        transparent 87%,
+        #fb7185 87.5%,
+        #fb7185
+      ),
+      linear-gradient(
+        30deg,
+        #fb7185 12%,
+        transparent 12.5%,
+        transparent 87%,
+        #fb7185 87.5%,
+        #fb7185
+      ),
+      linear-gradient(
+        150deg,
+        #fb7185 12%,
+        transparent 12.5%,
+        transparent 87%,
+        #fb7185 87.5%,
+        #fb7185
+      ),
+      linear-gradient(
+        60deg,
+        #fb718577 25%,
+        transparent 25.5%,
+        transparent 75%,
+        #fb718577 75%,
+        #fb718577
+      ),
+      linear-gradient(
+        60deg,
+        #fb718577 25%,
+        transparent 25.5%,
+        transparent 75%,
+        #fb718577 75%,
+        #fb718577
+      );
+    background-size: 32px 56px;
+    background-position:
+      0 0,
+      0 0,
+      16px 28px,
+      16px 28px,
+      0 0,
+      16px 28px;
+  }
+
+  #about-slide {
+    background-color: #ffffff;
+    opacity: 1;
+    background-image: repeating-linear-gradient(
+        45deg,
+        #fb7185 25%,
+        transparent 25%,
+        transparent 75%,
+        #fb7185 75%,
+        #fb7185
+      ),
+      repeating-linear-gradient(
+        45deg,
+        #fb7185 25%,
+        #ffffff 25%,
+        #ffffff 75%,
+        #fb7185 75%,
+        #fb7185
+      );
+    background-position:
+      0 0,
+      16px 16px;
+    background-size: 32px 32px;
+  }
+
+  #projects-slide {
+    background-color: #ffffff;
+    opacity: 1;
+    background:
+      linear-gradient(135deg, #fb718555 25%, transparent 25%) -16px 0/ 32px 32px,
+      linear-gradient(225deg, #fb7185 25%, transparent 25%) -16px 0/ 32px 32px,
+      linear-gradient(315deg, #fb718555 25%, transparent 25%) 0px 0/ 32px 32px,
+      linear-gradient(45deg, #fb7185 25%, #ffffff 25%) 0px 0/ 32px 32px;
+  }
+
+  #contact-slide {
+    background-color: #ffffff;
+    opacity: 1;
+    background-image: linear-gradient(45deg, #fb7185 50%, #ffffff 50%);
+    background-size: 10px 10px;
   }
 </style>
 
