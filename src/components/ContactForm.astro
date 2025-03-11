@@ -12,7 +12,7 @@
         Enter your details below and I will get back to you as soon as possible.
       </p>
     </div>
-    <form class="mt-14" aria-label="contact form">
+    <form class="mt-14" aria-label="contact form" id="form">
       <div class="relative w-full">
         <input
           name="name"
@@ -53,3 +53,42 @@
     </form>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById("form") as HTMLFormElement;
+  const nameInput = document.getElementById("name") as HTMLInputElement;
+  const emailInput = document.getElementById("email") as HTMLInputElement;
+  const messageInput = document.getElementById(
+    "message",
+  ) as HTMLTextAreaElement;
+
+  form.addEventListener("submit", (e) => {
+    handleSubmit(e);
+  });
+
+  const handleSubmit = async (e: SubmitEvent) => {
+    e.preventDefault();
+
+    // check inputs
+    // santise inputs
+    // clear inputs
+    // show error or success message
+
+    try {
+      const res = await fetch("/api/sendEmail.json", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: nameInput.value,
+          email: emailInput.value,
+          message: messageInput.value,
+        }),
+      });
+      const data = await res.json();
+    } catch (e) {
+      console.error(e);
+    }
+  };
+</script>
