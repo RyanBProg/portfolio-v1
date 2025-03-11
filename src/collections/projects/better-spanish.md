@@ -1,26 +1,26 @@
 ---
     id: "8293843"
     title: "Better Spanish"
-    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci rerum quos perspiciatis ex vitae recusandae sequi corporis illum excepturi laborum ad fuga voluptas, cupiditate a."
-    techStack: [ "React", "Next.js" , "Typescript", "Express.js", "MongoDB", "Tailwind" ]
+    description: "TypeScript, React, Next.js, Tailwind, Drizzle - Master Spanish faster with a focus on high frequency words and spaced repetition. Features include verb conjugation practice, flashcards with spaced repetition algorithms and personalized progress tracking"
+    techStack: [ "React", "Next.js" , "TypeScript", "Drizzle", "Tailwind" ]
     siteUrl: "https://better-spanish-ryans-projects-197c1757.vercel.app/"
     githubUrl: "https://github.com/RyanBProg/better-spanish"
     slug: "better-spanish"
     image: "../../assets/images/better-spanish-cover-950x950.jpg"
     featured: true
     features: [
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit"
+        "Database Integration: PostgreSQL database with Drizzle ORM for robust data management",
+        "Authentication: Secure login with Kinde Auth integration",
+        "Progress Tracking: Track learning progress and review statistics",
+        "Spaced Repetition: Smart algorithm adjusts word frequency based on user performance",
+        "Mobile-first Responsive Design: Fully responsive across all device sizes"
     ]
     futureOptimisations: [
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit"
+        "Stripe integration with pro tier",
+        "Enhanced user account management",
+        "Advanced user statistics",
+        "Study reminders",
+        "Animations"
     ]
 ---
 

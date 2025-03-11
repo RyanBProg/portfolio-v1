@@ -11,6 +11,9 @@ import bootstrapIcon from "../assets/icons/bootstrap.svg";
 import htmlIcon from "../assets/icons/html.svg";
 import cssIcon from "../assets/icons/css.svg";
 import gitIcon from "../assets/icons/git.svg";
+import stripeIcon from "../assets/icons/stripe.svg";
+import sanityIcon from "../assets/icons/sanity.svg";
+import postgresql from "../assets/icons/postgresql.svg";
 import githubIcon from "../assets/icons/github-round.svg";
 
 export default [
@@ -28,4 +31,7 @@ export default [
   { title: "CSS", alt: "css", img: cssIcon },
   { title: "Git", alt: "git", img: gitIcon },
   { title: "GitHub", alt: "github", img: githubIcon },
+  { title: "Stripe", alt: "stripe", img: stripeIcon },
+  { title: "Drizzle", alt: "drizzle", img: postgresql },
+  { title: "Sanity", alt: "sanity", img: sanityIcon },
 ];
