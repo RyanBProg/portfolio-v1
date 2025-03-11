@@ -1,7 +1,41 @@
+---
+import LinkArrow from "../svgs/LinkArrow.astro";
+---
+
 <footer
   class="bg-black text-white px-5 sm:px-10 py-10 flex justify-between items-center gap-5 overflow-clip"
 >
-  <p>Built by Ryan Bowler using Typescript, Astro, HTML, Tailwind and GSAP</p>
+  <div>
+    <p>Built by Ryan Bowler using Typescript, Astro, HTML, Tailwind and GSAP</p>
+    <div class="mt-5 grid gap-3">
+      <a
+        href="https://www.linkedin.com/in/ryan-bowler-601919170/"
+        target="_blank"
+        class="block w-fit group relative text-lg font-medium focus:outline-2 focus:outline-white focus:outline-offset-4"
+      >
+        <span class="flex gap-1 items-center">
+          <span>LinkedIn</span>
+          <LinkArrow height="14" width="14" />
+        </span>
+        <span
+          class="absolute -bottom-1 left-0 h-[1px] w-0 bg-white transition-all duration-300 group-hover:w-full"
+        ></span>
+      </a>
+      <a
+        href="https://github.com/RyanBProg"
+        target="_blank"
+        class="block w-fit group relative text-lg font-medium focus:outline-2 focus:outline-white focus:outline-offset-4"
+      >
+        <span class="flex gap-1 items-center">
+          <span>GitHub</span>
+          <LinkArrow height="14" width="14" />
+        </span>
+        <span
+          class="absolute -bottom-1 left-0 h-[1px] w-0 bg-white transition-all duration-300 group-hover:w-full"
+        ></span>
+      </a>
+    </div>
+  </div>
   <button
     id="scroll-button"
     class="rounded-full min-w-10 h-10 transition-colors duration-300 bg-neutral-600 hover:bg-neutral-500 focus:outline-2 focus:outline-offset-4 focus:outline-neutral-600"
