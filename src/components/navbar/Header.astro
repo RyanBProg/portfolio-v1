@@ -1,16 +1,22 @@
 ---
 import LinkArrow from "../svgs/LinkArrow.astro";
 import NavArrow from "../svgs/NavArrow.astro";
+import { Image } from "astro:assets";
+import image1 from "../../assets/images/nav-image.jpg";
+import planet1 from "../../assets/images/planets/planet-1.png";
+import planet2 from "../../assets/images/planets/planet-2.png";
+import planet3 from "../../assets/images/planets/planet-3.png";
+import planet4 from "../../assets/images/planets/planet-4.png";
 ---
 
-<header class="relative z-[100]">
-  <nav aria-label="primary navigation" class="p-4 relative">
+<header class="relative z-[100] flex justify-between">
+  <nav aria-label="primary navigation" class="p-4 relative z-10">
     <button
       aria-label="toggle navigation"
       aria-expanded="false"
       aria-controls="nav-list"
       id="toggle-nav-btn"
-      class="relative z-20 p-3 transition-all duration-700 ease-out hover:bg-rose-300 hover:rounded-xl focus:outline-4 focus:outline-offset-4 focus:outline-pink-800"
+      class="relative z-20 p-3 rounded-md transition-all duration-700 ease-out hover:bg-rose-300 hover:rounded-xl focus:outline-4 focus:outline-offset-4 focus:outline-pink-800"
     >
       <div
         id="nav-button-icon"
@@ -30,73 +36,66 @@ import NavArrow from "../svgs/NavArrow.astro";
     </button>
 
     <div
-      id="nav-list"
-      class="h-dvh flex absolute top-0 -translate-y-full inset-x-0 bg-white/70 backdrop-blur-md"
+      id="nav-container"
+      class="h-dvh max-h-screen w-screen grid lg:grid-cols-2 absolute top-0 -translate-y-full inset-x-0 bg-white/70 backdrop-blur-md"
     >
-      <div
+      <!-- navigation -->
+      <section
         id="nav-content"
         class="flex flex-col justify-between p-10 pt-32 opacity-0"
       >
-        <!-- nav links list -->
+        <!-- nav links -->
         <ul
-          class="group flex flex-col gap-4 text-black text-6xl font-bold tracking-tight"
+          class="text-black text-6xl font-bold tracking-tight leading-tight overflow-x-hidden"
           role="menubar"
         >
           <li role="menuitem">
-            <span tabindex="-1" class="menu-item overflow-x-hidden flex">
-              <a
-                href="/"
-                data-path="/"
-                tabindex="-1"
-                class="nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500 focus:translate-x-0"
-              >
-                <NavArrow />
-                Home
-              </a>
-            </span>
+            <a
+              href="/"
+              data-path="/"
+              tabindex="-1"
+              class="nav-link w-fit m-1 text-black -translate-x-11 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-black focus:translate-x-0"
+            >
+              <NavArrow />
+              HOME
+            </a>
           </li>
           <li role="menuitem">
-            <span tabindex="-1" class="menu-item overflow-x-hidden flex">
-              <a
-                href="/about"
-                data-path="/about"
-                tabindex="-1"
-                class="nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500 focus:translate-x-0"
-              >
-                <NavArrow />
-                About
-              </a>
-            </span>
+            <a
+              href="/about"
+              data-path="/about"
+              tabindex="-1"
+              class="nav-link w-fit m-1 text-black -translate-x-11 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-black focus:translate-x-0"
+            >
+              <NavArrow />
+              ABOUT
+            </a>
           </li>
           <li role="menuitem">
-            <span tabindex="-1" class="menu-item overflow-x-hidden flex">
-              <a
-                href="/projects"
-                data-path="/projects"
-                tabindex="-1"
-                class="nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500 focus:translate-x-0"
-              >
-                <NavArrow />
-                Projects
-              </a>
-            </span>
+            <a
+              href="/projects"
+              data-path="/projects"
+              tabindex="-1"
+              class="nav-link w-fit m-1 text-black -translate-x-11 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-black focus:translate-x-0"
+            >
+              <NavArrow />
+              PROJECTS
+            </a>
           </li>
           <li role="menuitem">
-            <span tabindex="-1" class="menu-item overflow-x-hidden flex">
-              <a
-                href="/contact"
-                data-path="/contact"
-                tabindex="-1"
-                class="group nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500 focus:translate-x-0"
-              >
-                <NavArrow />
-                Contact
-              </a>
-            </span>
+            <a
+              href="/contact"
+              data-path="/contact"
+              tabindex="-1"
+              class="nav-link w-fit m-1 text-black -translate-x-11 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-black focus:translate-x-0"
+            >
+              <NavArrow />
+              CONTACT
+            </a>
           </li>
         </ul>
 
-        <!-- links -->
+        <!-- social links -->
         <div class="mt-14 grid gap-3">
           <div class="grid gap-0.5">
             <span class="text-sm text-neutral-600">Email</span>
@@ -131,52 +130,167 @@ import NavArrow from "../svgs/NavArrow.astro";
             ></span>
           </a>
         </div>
-      </div>
+      </section>
 
-      <!-- gallery slider -->
-      <div class="relative h-full w-1/2 ml-auto hidden lg:block">
-        <div
-          id="home-slide"
-          data-path="/"
-          class="absolute top-0 right-0 w-full h-full bg-blue-200 transition-transform duration-500 ease-out"
-        >
-          <div class="relative w-full h-full">
-            <p class="slide-text">Home</p>
+      <!-- space section -->
+      <section class="relative hidden lg:block h-full w-full max-h-screen">
+        <Image
+          src={image1}
+          alt="stars in space"
+          height={1000}
+          width={800}
+          quality={100}
+          class="h-full w-full object-cover"
+        />
+        <!-- home planet -->
+        <div id="home-planet" class="group absolute top-[15%] right-[15%]">
+          <div class="relative">
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            >
+              <a
+                href="/"
+                class="block h-20 w-20 rounded-full group-hover:h-24 group-hover:w-24 transition-all duration-500 ease-in-out"
+              >
+                <Image
+                  src={planet1}
+                  alt="stars in space"
+                  height={60}
+                  width={60}
+                  quality={100}
+                  class="h-full w-full object-cover"
+                />
+              </a>
+              <p
+                class="absolute bottom-0 translate-y-full left-1/2 -translate-x-1/2 text-white text-xs opacity-0 group-hover:opacity-100 transition-all duration-300 delay-[500ms] ease-in-out"
+              >
+                HOME
+              </p>
+            </div>
           </div>
         </div>
-        <div
-          id="about-slide"
-          data-path="/about"
-          class="absolute top-0 right-0 w-full h-full bg-red-200 transition-transform duration-500 ease-out"
-        >
-          <div class="relative w-full h-full">
-            <p class="slide-text">About</p>
+        <!-- about planet -->
+        <div id="about-planet" class="group absolute top-[30%] left-[25%]">
+          <div class="relative">
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            >
+              <a
+                href="/about"
+                class="block h-12 w-12 rounded-full group-hover:h-16 group-hover:w-16 transition-all duration-500 ease-in-out"
+              >
+                <Image
+                  src={planet2}
+                  alt="stars in space"
+                  height={50}
+                  width={50}
+                  quality={100}
+                  class="h-full w-full object-cover"
+                />
+              </a>
+              <p
+                class="absolute bottom-0 translate-y-full left-1/2 -translate-x-1/2 text-white text-xs opacity-0 group-hover:opacity-100 transition-all duration-300 delay-[500ms] ease-in-out"
+              >
+                ABOUT
+              </p>
+            </div>
           </div>
         </div>
+        <!-- projects planet -->
         <div
-          id="projects-slide"
-          data-path="/projects"
-          class="absolute top-0 right-0 w-full h-full bg-yellow-200 transition-transform duration-500 ease-out"
+          id="projects-planet"
+          class="group absolute bottom-[35%] right-[30%]"
         >
-          <div class="relative w-full h-full">
-            <p class="slide-text">Projects</p>
+          <div class="relative">
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            >
+              <a
+                href="/projects"
+                class="block h-28 w-28 rounded-full group-hover:h-32 group-hover:w-32 transition-all duration-500 ease-in-out"
+              >
+                <Image
+                  src={planet3}
+                  alt="stars in space"
+                  height={90}
+                  width={90}
+                  quality={100}
+                  class="h-full w-full object-cover"
+                />
+              </a>
+              <p
+                class="absolute bottom-0 translate-y-full left-1/2 -translate-x-1/2 text-white text-xs opacity-0 group-hover:opacity-100 transition-all duration-300 delay-[500ms] ease-in-out"
+              >
+                PROJECTS
+              </p>
+            </div>
           </div>
         </div>
-        <div
-          id="contact-slide"
-          data-path="/contact"
-          class="absolute top-0 right-0 w-full h-full bg-purple-200 transition-transform duration-500 ease-out"
-        >
-          <div class="relative w-full h-full">
-            <p class="slide-text">Contact</p>
+        <!-- contact planet -->
+        <div id="contact-planet" class="group absolute bottom-[15%] left-[12%]">
+          <div class="relative">
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            >
+              <a
+                href="/contact"
+                class="block h-10 w-10 rounded-full group-hover:h-14 group-hover:w-14 transition-all duration-500 ease-in-out"
+              >
+                <Image
+                  src={planet4}
+                  alt="stars in space"
+                  height={30}
+                  width={30}
+                  quality={100}
+                  class="h-full w-full object-cover"
+                />
+              </a>
+              <p
+                class="absolute bottom-0 translate-y-full left-1/2 -translate-x-1/2 text-white text-xs opacity-0 group-hover:opacity-100 transition-all duration-300 delay-[500ms] ease-in-out"
+              >
+                CONTACT
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+
+        <!-- shooting star -->
+        <div class="star star-1"></div>
+        <!-- shooting star -->
+        <div class="star star-2"></div>
+        <!-- shooting star -->
+        <div class="star star-3"></div>
+      </section>
     </div>
   </nav>
+
+  <!-- download resume button -->
+  <a
+    href="/ryan-bowler-cv.pdf"
+    download="Ryan-Bowler-CV"
+    class="absolute top-5 right-5 flex gap-2 items-center p-2 rounded-md transition-all duration-700 ease-out hover:bg-rose-300 hover:rounded-xl focus:outline-4 focus:outline-offset-4 focus:outline-pink-800"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="lucide lucide-send"
+      ><path
+        d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"
+      ></path><path d="m21.854 2.147-10.94 10.939"></path></svg
+    >
+    Download Resume
+  </a>
 </header>
 
 <style>
+  /* nav button */
   #nav-button-icon.open span:nth-child(1) {
     @apply top-[13px] rotate-[135deg];
   }
@@ -189,115 +303,125 @@ import NavArrow from "../svgs/NavArrow.astro";
     @apply top-[13px] -rotate-[135deg];
   }
 
-  .slide-text {
-    @apply absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-8xl font-extrabold tracking-tight;
-    color: #fb7185;
-    -webkit-text-fill-color: #fb7185; /* Will override color (regardless of order) */
-    -webkit-text-stroke-width: 2.5px;
-    -webkit-text-stroke-color: white;
+  /* planets */
+  #home-planet.hover .h-20 {
+    height: 6rem;
+    width: 6rem;
   }
 
-  #home-slide {
-    background-color: #ffffff;
-    opacity: 1;
-    background-image: linear-gradient(
-        30deg,
-        #fb7185 12%,
-        transparent 12.5%,
-        transparent 87%,
-        #fb7185 87.5%,
-        #fb7185
-      ),
-      linear-gradient(
-        150deg,
-        #fb7185 12%,
-        transparent 12.5%,
-        transparent 87%,
-        #fb7185 87.5%,
-        #fb7185
-      ),
-      linear-gradient(
-        30deg,
-        #fb7185 12%,
-        transparent 12.5%,
-        transparent 87%,
-        #fb7185 87.5%,
-        #fb7185
-      ),
-      linear-gradient(
-        150deg,
-        #fb7185 12%,
-        transparent 12.5%,
-        transparent 87%,
-        #fb7185 87.5%,
-        #fb7185
-      ),
-      linear-gradient(
-        60deg,
-        #fb718577 25%,
-        transparent 25.5%,
-        transparent 75%,
-        #fb718577 75%,
-        #fb718577
-      ),
-      linear-gradient(
-        60deg,
-        #fb718577 25%,
-        transparent 25.5%,
-        transparent 75%,
-        #fb718577 75%,
-        #fb718577
-      );
-    background-size: 32px 56px;
-    background-position:
-      0 0,
-      0 0,
-      16px 28px,
-      16px 28px,
-      0 0,
-      16px 28px;
+  #about-planet.hover .h-12 {
+    height: 4rem;
+    width: 4rem;
   }
 
-  #about-slide {
-    background-color: #ffffff;
-    opacity: 1;
-    background-image: repeating-linear-gradient(
-        45deg,
-        #fb7185 25%,
-        transparent 25%,
-        transparent 75%,
-        #fb7185 75%,
-        #fb7185
-      ),
-      repeating-linear-gradient(
-        45deg,
-        #fb7185 25%,
-        #ffffff 25%,
-        #ffffff 75%,
-        #fb7185 75%,
-        #fb7185
-      );
-    background-position:
-      0 0,
-      16px 16px;
-    background-size: 32px 32px;
+  #projects-planet.hover .h-28 {
+    height: 8rem;
+    width: 8rem;
   }
 
-  #projects-slide {
-    background-color: #ffffff;
-    opacity: 1;
-    background:
-      linear-gradient(135deg, #fb718555 25%, transparent 25%) -16px 0/ 32px 32px,
-      linear-gradient(225deg, #fb7185 25%, transparent 25%) -16px 0/ 32px 32px,
-      linear-gradient(315deg, #fb718555 25%, transparent 25%) 0px 0/ 32px 32px,
-      linear-gradient(45deg, #fb7185 25%, #ffffff 25%) 0px 0/ 32px 32px;
+  #contact-planet.hover .h-10 {
+    height: 3.5rem;
+    width: 3.5rem;
   }
 
-  #contact-slide {
-    background-color: #ffffff;
+  [id$="-planet"].hover p {
     opacity: 1;
-    background-image: linear-gradient(45deg, #fb7185 50%, #ffffff 50%);
-    background-size: 10px 10px;
+  }
+
+  /* stars */
+  .star {
+    @apply absolute w-1 h-1 rounded-full bg-white opacity-0;
+
+    box-shadow: 0 0 10px 5px rgb(255, 255, 255);
+    animation: shooting-star 10s linear infinite;
+  }
+
+  .star-1 {
+    @apply top-[25%] right-[50%];
+
+    box-shadow: 0 0 10px 5px rgb(255, 255, 255);
+    animation: shooting-star-1 10s linear infinite;
+  }
+
+  .star-2 {
+    @apply top-[50%] left-[20%];
+
+    box-shadow: 0 0 5px 2px rgb(255, 255, 255);
+    animation: shooting-star-2 5s linear 7s infinite;
+  }
+
+  .star-3 {
+    @apply bottom-[25%] right-0;
+
+    box-shadow: 0 0 10px 4px rgb(255, 255, 255);
+    animation: shooting-star-3 5s linear 3.5s infinite;
+  }
+
+  .star::before {
+    @apply absolute top-1/2 -translate-y-1/2 w-44 h-px;
+
+    content: "";
+    background: linear-gradient(90deg, #fff, transparent);
+  }
+
+  @keyframes shooting-star-1 {
+    0% {
+      opacity: 0;
+    }
+    40% {
+      transform: rotate(20deg) translateX(0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    60% {
+      transform: rotate(20deg) translateX(-700px);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes shooting-star-2 {
+    0% {
+      opacity: 0;
+    }
+    40% {
+      transform: rotate(140deg) translateX(0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    60% {
+      transform: rotate(140deg) translateX(-500px);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes shooting-star-3 {
+    0% {
+      opacity: 0;
+    }
+    40% {
+      transform: rotate(340deg) translateX(0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    60% {
+      transform: rotate(340deg) translateX(-800px);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
   }
 </style>
 
@@ -307,27 +431,29 @@ import NavArrow from "../svgs/NavArrow.astro";
   const toggleNavButton = document.getElementById(
     "toggle-nav-btn",
   ) as HTMLButtonElement;
-  const navButtonIcon = document.getElementById("nav-button-icon");
-  const navList = document.getElementById("nav-list");
+  const navButtonIcon = document.getElementById(
+    "nav-button-icon",
+  ) as HTMLDivElement;
+  const navContainer = document.getElementById(
+    "nav-container",
+  ) as HTMLDivElement;
   const navLinks = document.querySelectorAll(
-    ".menu-item",
+    ".nav-link",
   ) as NodeListOf<HTMLAnchorElement>;
   const socialLinks = document.querySelectorAll(
     ".social-link",
   ) as NodeListOf<HTMLAnchorElement>;
-  const slides = document.querySelectorAll("[id$='-slide']");
   let isNavOpen = false;
   const currentPath = window.location.pathname;
 
-  // Handle clicks outside the menu
+  // close the menu when clicking outside
   const handleClickOutside = (event: MouseEvent) => {
-    // Type guard to ensure target is Element
     const target = event.target as Element;
 
     if (
       isNavOpen &&
-      navList &&
-      !navList.contains(target) &&
+      navContainer &&
+      !navContainer.contains(target) &&
       toggleNavButton &&
       !toggleNavButton.contains(target)
     ) {
@@ -335,7 +461,7 @@ import NavArrow from "../svgs/NavArrow.astro";
     }
   };
 
-  // Handle Escape key press
+  // close menu when esc key is pressed
   const handleEscKeyPress = (event: KeyboardEvent) => {
     if (event.key === "Escape" && isNavOpen) {
       closeNav();
@@ -366,7 +492,7 @@ import NavArrow from "../svgs/NavArrow.astro";
     }
   };
 
-  // Close navigation function
+  // close navigation function
   const closeNav = () => {
     isNavOpen = false;
 
@@ -385,7 +511,7 @@ import NavArrow from "../svgs/NavArrow.astro";
       opacity: 0,
       duration: 0.5,
       ease: "power4.in",
-    }).to("#nav-list", {
+    }).to("#nav-container", {
       y: "-100%",
       duration: 0.5,
       ease: "power4.in",
@@ -401,105 +527,118 @@ import NavArrow from "../svgs/NavArrow.astro";
     toggleNavButton?.setAttribute("aria-expanded", "false");
   };
 
-  // Toggle navigation function
-  toggleNavButton?.addEventListener("click", () => {
-    isNavOpen = !isNavOpen;
+  // open navigation function
+  const openNav = () => {
+    isNavOpen = true;
 
-    if (isNavOpen) {
-      // Scroll to top of screen
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+    // Scroll to top of screen
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
 
-      // lock scrolling
-      document.getElementsByTagName("body")[0].style.overflow = "hidden";
-      // aria hidden for main content for screen readers
-      document
-        .getElementsByTagName("main")[0]
-        .setAttribute("aria-hidden", "true");
-      document
-        .getElementsByTagName("footer")[0]
-        .setAttribute("aria-hidden", "true");
+    // lock scrolling
+    document.getElementsByTagName("body")[0].style.overflow = "hidden";
+    // aria hidden for main content for screen readers
+    document
+      .getElementsByTagName("main")[0]
+      .setAttribute("aria-hidden", "true");
+    document
+      .getElementsByTagName("footer")[0]
+      .setAttribute("aria-hidden", "true");
 
-      // Open animation sequence
-      const tl = gsap.timeline();
-      tl.to("#nav-list", {
-        y: "0%",
+    // Open animation sequence
+    const tl = gsap.timeline();
+    tl.to("#nav-container", {
+      y: "0%",
+      duration: 0.8,
+      ease: "power4.inOut",
+    }).to(
+      "#nav-content",
+      {
+        opacity: 1,
         duration: 0.8,
         ease: "power4.inOut",
-      }).to(
-        "#nav-content",
-        {
-          opacity: 1,
-          duration: 0.8,
-          ease: "power4.inOut",
-        },
-        "-=0.1",
-      );
+      },
+      "-=0.1",
+    );
 
-      navButtonIcon?.classList.add("open");
-      navLinks.forEach((link) => {
-        link.setAttribute("tabindex", "0");
-      });
-      socialLinks.forEach((link) => {
-        link.setAttribute("tabindex", "0");
-      });
-      toggleNavButton?.setAttribute("aria-expanded", "true");
-    } else {
+    navButtonIcon?.classList.add("open");
+    navLinks.forEach((link) => {
+      link.setAttribute("tabindex", "0");
+    });
+    socialLinks.forEach((link) => {
+      link.setAttribute("tabindex", "0");
+    });
+    toggleNavButton?.setAttribute("aria-expanded", "true");
+  };
+
+  // toggle navigation function
+  toggleNavButton?.addEventListener("click", () => {
+    if (isNavOpen) {
       closeNav();
+    } else {
+      openNav();
     }
   });
 
-  // Nav gallery slider
+  // nav link hover effects
+  navLinks.forEach((link) => {
+    const updateLinkColors = (hoveredLink: HTMLAnchorElement | null = null) => {
+      navLinks.forEach((navLink) => {
+        const isCurrentPath =
+          navLink.getAttribute("href") === window.location.pathname;
+        const isHovered = hoveredLink === navLink;
+
+        if (hoveredLink) {
+          // when a link is being hovered
+          if (isHovered) {
+            navLink.classList.add("text-black");
+            navLink.classList.remove("text-neutral-500");
+          } else {
+            navLink.classList.add("text-neutral-500");
+            navLink.classList.remove("text-black");
+          }
+        } else {
+          // when no link is being hovered (default state)
+          if (isCurrentPath) {
+            navLink.classList.add("text-neutral-500");
+            navLink.classList.remove("text-black");
+          } else {
+            navLink.classList.add("text-black");
+            navLink.classList.remove("text-neutral-500");
+          }
+        }
+      });
+    };
+
+    link.addEventListener("mouseenter", () => updateLinkColors(link));
+    link.addEventListener("mouseleave", () => updateLinkColors());
+  });
+
+  // highlight planet on link hover
   navLinks.forEach((link) => {
     link.addEventListener("mouseenter", () => {
-      const slideId = link.getAttribute("data-slide");
-      const slide = document.getElementById(slideId!);
+      const path = link.getAttribute("href");
+      const planetId = path === "/" ? "home" : path!.replace("/", "");
+      const matchingPlanet = document.getElementById(`${planetId}-planet`);
 
-      // Reset all slides
-      slides.forEach((s) => s.classList.add("translate-x-full"));
+      // add hover class without removing group hover
+      if (matchingPlanet) {
+        matchingPlanet.classList.add("hover");
+      }
+    });
 
-      // Show current slide
-      if (slide) {
-        slide.classList.remove("translate-x-full");
+    link.addEventListener("mouseleave", () => {
+      const path = link.getAttribute("href");
+      const planetId = path === "/" ? "home" : path!.replace("/", "");
+      const matchingPlanet = document.getElementById(`${planetId}-planet`);
+
+      if (matchingPlanet) {
+        matchingPlanet.classList.remove("hover");
       }
     });
   });
-
-  // Nav links hover color change
-  navLinks.forEach((hoverlink) => {
-    hoverlink.addEventListener("mouseenter", () => {
-      navLinks.forEach((link) => {
-        if (link === hoverlink) {
-          link.classList.remove("text-neutral-500");
-          link.classList.add("text-black");
-        } else {
-          link.classList.remove("text-black");
-          link.classList.add("text-neutral-500");
-        }
-      });
-    });
-
-    hoverlink.addEventListener("mouseleave", () => {
-      const currentPath = window.location.pathname;
-
-      navLinks.forEach((link) => {
-        if (link.getAttribute("href") === currentPath) {
-          link.classList.add("text-neutral-500");
-          link.classList.remove("text-black");
-        } else {
-          link.classList.remove("text-neutral-500");
-          link.classList.add("text-black");
-        }
-      });
-    });
-  });
-
-  // Add event listeners
-  document.addEventListener("mousedown", handleClickOutside);
-  document.addEventListener("keydown", handleEscKeyPress);
-  document.addEventListener("keydown", handleTab);
 
   // Set active link styles
   function setActiveLink(
@@ -509,28 +648,20 @@ import NavArrow from "../svgs/NavArrow.astro";
     navLinks.forEach((link) => {
       const linkPath = link.getAttribute("data-path");
       if (linkPath === currentPath) {
-        link.classList.remove("-translate-x-10", "text-black");
+        link.classList.remove("-translate-x-11", "text-black");
         link.classList.add("text-neutral-500");
       } else {
-        link.classList.add("-translate-x-10", "text-black");
+        link.classList.add("-translate-x-11", "text-black");
         link.classList.remove("text-neutral-500");
-      }
-    });
-  }
-
-  // Set active slide styles
-  function setActiveSlider(slides: NodeListOf<Element>, currentPath: string) {
-    slides.forEach((link) => {
-      const slidePath = link.getAttribute("data-path");
-      if (slidePath === currentPath) {
-        link.classList.add("z-20");
-      } else {
-        link.classList.add("z-10");
       }
     });
   }
 
   // Run on page load
   setActiveLink(navLinks, currentPath);
-  setActiveSlider(slides, currentPath);
+
+  // Add event listeners
+  document.addEventListener("mousedown", handleClickOutside);
+  document.addEventListener("keydown", handleEscKeyPress);
+  document.addEventListener("keydown", handleTab);
 </script>
