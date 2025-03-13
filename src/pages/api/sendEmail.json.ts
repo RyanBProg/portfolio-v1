@@ -10,23 +10,32 @@ export const POST: APIRoute = async ({ request }) => {
   const { name, email, message } = body;
 
   if (!name || !email || !message) {
-    return new Response(null, {
-      status: 404,
-      statusText: "Did not provide the right data",
-    });
+    return new Response(
+      JSON.stringify({
+        message: "A Form Input Field Is Missing",
+      }),
+      {
+        status: 404, // correct code?
+        statusText: "Did not provide the right data",
+      },
+    );
   }
 
+  // check inputs
+  // santise inputs
+
   const { data, error } = await resend.emails.send({
-    from: "Acme <onboarding@resend.dev>",
+    from: "Portfolio <onboarding@resend.dev>",
     to: ["ryanbprog@gmail.com"],
-    subject: "Portfolio - Contact Form Submission",
+    subject: "Contact Form Submission",
     html: contactEmail(name, email, message),
   });
 
   if (data) {
     return new Response(
       JSON.stringify({
-        message: data,
+        message: "Email Sent Successfully",
+        data: data,
       }),
       {
         status: 200,
@@ -36,7 +45,8 @@ export const POST: APIRoute = async ({ request }) => {
   } else {
     return new Response(
       JSON.stringify({
-        message: error,
+        message: "Email Server Failed",
+        error: error,
       }),
       {
         status: 500,

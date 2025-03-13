@@ -1,0 +1,630 @@
+---
+import LinkArrow from "../svgs/LinkArrow.astro";
+import NavArrow from "../svgs/NavArrow.astro";
+import { Image } from "astro:assets";
+import image1 from "../../assets/images/nav-image.jpg";
+import planet1 from "../../assets/images/planets/planet-1.png";
+import planet2 from "../../assets/images/planets/planet-2.png";
+import planet3 from "../../assets/images/planets/planet-3.png";
+import planet4 from "../../assets/images/planets/planet-4.png";
+---
+
+<header class="relative z-[100]">
+  <nav aria-label="primary navigation" class="p-4 relative">
+    <button
+      aria-label="toggle navigation"
+      aria-expanded="false"
+      aria-controls="nav-list"
+      id="toggle-nav-btn"
+      class="relative z-20 p-3 transition-all duration-700 ease-out hover:bg-rose-300 hover:rounded-xl focus:outline-4 focus:outline-offset-4 focus:outline-pink-800"
+    >
+      <div
+        id="nav-button-icon"
+        aria-hidden="true"
+        class="relative w-[30px] h-[30px] rotate-0 duration-500 ease-in-out"
+      >
+        <span
+          class="top-0 block absolute h-1 w-full bg-black opacity-100 left-0 rotate-0 duration-300 ease-in-out"
+        ></span>
+        <span
+          class="top-[13px] block absolute h-1 w-full bg-black opacity-100 left-0 rotate-0 duration-300 ease-in-out"
+        ></span>
+        <span
+          class="top-[26px] block absolute h-1 w-full bg-black opacity-100 left-0 rotate-0 duration-300 ease-in-out"
+        ></span>
+      </div>
+    </button>
+
+    <div
+      id="nav-container"
+      class="h-dvh max-h-screen grid lg:grid-cols-2 absolute top-0 -translate-y-full inset-x-0 bg-white/70 backdrop-blur-md"
+    >
+      <!-- navigation -->
+      <section
+        id="nav-content"
+        class="flex flex-col justify-between p-10 pt-32 opacity-0"
+      >
+        <!-- nav links -->
+        <ul
+          class="text-black text-6xl font-bold tracking-tight leading-tight overflow-x-hidden"
+          role="menubar"
+        >
+          <li role="menuitem">
+            <a
+              href="/"
+              data-path="/"
+              tabindex="-1"
+              class="nav-link w-fit m-1 text-black -translate-x-11 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-black focus:translate-x-0"
+            >
+              <NavArrow />
+              Home
+            </a>
+          </li>
+          <li role="menuitem">
+            <a
+              href="/about"
+              data-path="/about"
+              tabindex="-1"
+              class="nav-link w-fit m-1 text-black -translate-x-11 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-black focus:translate-x-0"
+            >
+              <NavArrow />
+              About
+            </a>
+          </li>
+          <li role="menuitem">
+            <a
+              href="/projects"
+              data-path="/projects"
+              tabindex="-1"
+              class="nav-link w-fit m-1 text-black -translate-x-11 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-black focus:translate-x-0"
+            >
+              <NavArrow />
+              Projects
+            </a>
+          </li>
+          <li role="menuitem">
+            <a
+              href="/contact"
+              data-path="/contact"
+              tabindex="-1"
+              class="nav-link w-fit m-1 text-black -translate-x-11 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-black focus:translate-x-0"
+            >
+              <NavArrow />
+              Contact
+            </a>
+          </li>
+        </ul>
+
+        <!-- social links -->
+        <div class="mt-14 grid gap-3">
+          <div class="grid gap-0.5">
+            <span class="text-sm text-neutral-600">Email</span>
+            <p class="text-xl font-medium">ryanbprog@gmail.com</p>
+          </div>
+          <a
+            href="https://www.linkedin.com/in/ryan-bowler-601919170/"
+            target="_blank"
+            tabindex="-1"
+            class="social-link block w-fit group relative text-xl font-medium focus:outline-2 focus:outline-black focus:outline-offset-4"
+          >
+            <span class="flex gap-1 items-center">
+              <span>LinkedIn</span>
+              <LinkArrow height="16" width="16" />
+            </span>
+            <span
+              class="absolute -bottom-1 left-0 h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+          <a
+            href="https://github.com/RyanBProg"
+            target="_blank"
+            tabindex="-1"
+            class="social-link block w-fit group relative text-xl font-medium focus:outline-2 focus:outline-black focus:outline-offset-4"
+          >
+            <span class="flex gap-1 items-center">
+              <span>GitHub</span>
+              <LinkArrow height="16" width="16" />
+            </span>
+            <span
+              class="absolute -bottom-1 left-0 h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+        </div>
+      </section>
+
+      <!-- gallery slider -->
+      <section class="relative hidden lg:block h-full w-full max-h-screen">
+        <Image
+          src={image1}
+          alt="stars in space"
+          height={1000}
+          width={800}
+          quality={100}
+          class="h-full w-full object-cover"
+        />
+        <!-- home star -->
+        <div class="group absolute top-[15%] right-[15%]">
+          <div class="relative">
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            >
+              <div
+                class="h-14 w-14 rounded-full group-hover:h-16 group-hover:w-16 transition-all duration-500 ease-in-out"
+              >
+                <Image
+                  src={planet1}
+                  alt="stars in space"
+                  height={60}
+                  width={60}
+                  quality={100}
+                  class="h-full w-full object-cover"
+                />
+              </div>
+              <p
+                class="absolute bottom-0 translate-y-full left-1/2 -translate-x-1/2 text-white text-xs opacity-0 group-hover:opacity-100 transition-all duration-300 delay-[500ms] ease-in-out"
+              >
+                HOME
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- about star -->
+        <div class="group absolute top-[30%] left-[25%]">
+          <div class="relative">
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            >
+              <div
+                class="h-10 w-10 rounded-full group-hover:h-12 group-hover:w-12 transition-all duration-500 ease-in-out"
+              >
+                <Image
+                  src={planet2}
+                  alt="stars in space"
+                  height={50}
+                  width={50}
+                  quality={100}
+                  class="h-full w-full object-cover"
+                />
+              </div>
+              <p
+                class="absolute bottom-0 translate-y-full left-1/2 -translate-x-1/2 text-white text-xs opacity-0 group-hover:opacity-100 transition-all duration-300 delay-[500ms] ease-in-out"
+              >
+                ABOUT
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- projects star -->
+        <div class="group absolute bottom-[35%] right-[30%]">
+          <div class="relative">
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            >
+              <div
+                class="h-20 w-20 rounded-full group-hover:h-24 group-hover:w-24 transition-all duration-500 ease-in-out"
+              >
+                <Image
+                  src={planet3}
+                  alt="stars in space"
+                  height={90}
+                  width={90}
+                  quality={100}
+                  class="h-full w-full object-cover"
+                />
+              </div>
+              <p
+                class="absolute bottom-0 translate-y-full left-1/2 -translate-x-1/2 text-white text-xs opacity-0 group-hover:opacity-100 transition-all duration-300 delay-[500ms] ease-in-out"
+              >
+                PROJECTS
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- contact star -->
+        <div class="group absolute bottom-[15%] left-[12%]">
+          <div class="relative">
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            >
+              <div
+                class="h-6 w-6 rounded-full group-hover:h-8 group-hover:w-8 transition-all duration-500 ease-in-out"
+              >
+                <Image
+                  src={planet4}
+                  alt="stars in space"
+                  height={30}
+                  width={30}
+                  quality={100}
+                  class="h-full w-full object-cover"
+                />
+              </div>
+              <p
+                class="absolute bottom-0 translate-y-full left-1/2 -translate-x-1/2 text-white text-xs opacity-0 group-hover:opacity-100 transition-all duration-300 delay-[500ms] ease-in-out"
+              >
+                CONTACT
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </nav>
+
+  <style>
+    #nav-button-icon.open span:nth-child(1) {
+      @apply top-[13px] rotate-[135deg];
+    }
+
+    #nav-button-icon.open span:nth-child(2) {
+      @apply opacity-0 -left-[60px];
+    }
+
+    #nav-button-icon.open span:nth-child(3) {
+      @apply top-[13px] -rotate-[135deg];
+    }
+
+    .slide-text {
+      @apply absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-8xl font-extrabold tracking-tight;
+      color: #fb7185;
+      -webkit-text-fill-color: #fb7185; /* Will override color (regardless of order) */
+      -webkit-text-stroke-width: 2.5px;
+      -webkit-text-stroke-color: white;
+    }
+
+    #home-slide {
+      background-color: #ffffff;
+      opacity: 1;
+      background-image: linear-gradient(
+          30deg,
+          #fb7185 12%,
+          transparent 12.5%,
+          transparent 87%,
+          #fb7185 87.5%,
+          #fb7185
+        ),
+        linear-gradient(
+          150deg,
+          #fb7185 12%,
+          transparent 12.5%,
+          transparent 87%,
+          #fb7185 87.5%,
+          #fb7185
+        ),
+        linear-gradient(
+          30deg,
+          #fb7185 12%,
+          transparent 12.5%,
+          transparent 87%,
+          #fb7185 87.5%,
+          #fb7185
+        ),
+        linear-gradient(
+          150deg,
+          #fb7185 12%,
+          transparent 12.5%,
+          transparent 87%,
+          #fb7185 87.5%,
+          #fb7185
+        ),
+        linear-gradient(
+          60deg,
+          #fb718577 25%,
+          transparent 25.5%,
+          transparent 75%,
+          #fb718577 75%,
+          #fb718577
+        ),
+        linear-gradient(
+          60deg,
+          #fb718577 25%,
+          transparent 25.5%,
+          transparent 75%,
+          #fb718577 75%,
+          #fb718577
+        );
+      background-size: 32px 56px;
+      background-position:
+        0 0,
+        0 0,
+        16px 28px,
+        16px 28px,
+        0 0,
+        16px 28px;
+    }
+
+    #about-slide {
+      background-color: #ffffff;
+      opacity: 1;
+      background-image: repeating-linear-gradient(
+          45deg,
+          #fb7185 25%,
+          transparent 25%,
+          transparent 75%,
+          #fb7185 75%,
+          #fb7185
+        ),
+        repeating-linear-gradient(
+          45deg,
+          #fb7185 25%,
+          #ffffff 25%,
+          #ffffff 75%,
+          #fb7185 75%,
+          #fb7185
+        );
+      background-position:
+        0 0,
+        16px 16px;
+      background-size: 32px 32px;
+    }
+
+    #projects-slide {
+      background-color: #ffffff;
+      opacity: 1;
+      background:
+        linear-gradient(135deg, #fb718555 25%, transparent 25%) -16px 0/ 32px
+          32px,
+        linear-gradient(225deg, #fb7185 25%, transparent 25%) -16px 0/ 32px 32px,
+        linear-gradient(315deg, #fb718555 25%, transparent 25%) 0px 0/ 32px 32px,
+        linear-gradient(45deg, #fb7185 25%, #ffffff 25%) 0px 0/ 32px 32px;
+    }
+
+    #contact-slide {
+      background-color: #ffffff;
+      opacity: 1;
+      background-image: linear-gradient(45deg, #fb7185 50%, #ffffff 50%);
+      background-size: 10px 10px;
+    }
+
+    .star {
+      box-shadow: 0 0 50px 10px rgba(255, 255, 255, 0.817);
+    }
+  </style>
+
+  <script>
+    import { gsap } from "gsap";
+
+    const toggleNavButton = document.getElementById(
+      "toggle-nav-btn",
+    ) as HTMLButtonElement;
+    const navButtonIcon = document.getElementById(
+      "nav-button-icon",
+    ) as HTMLDivElement;
+    const navContainer = document.getElementById(
+      "nav-container",
+    ) as HTMLDivElement;
+    const navLinks = document.querySelectorAll(
+      ".nav-link",
+    ) as NodeListOf<HTMLAnchorElement>;
+    const socialLinks = document.querySelectorAll(
+      ".social-link",
+    ) as NodeListOf<HTMLAnchorElement>;
+    const slides = document.querySelectorAll(
+      "[id$='-slide']",
+    ) as NodeListOf<HTMLDivElement>;
+    let isNavOpen = false;
+    const currentPath = window.location.pathname;
+
+    // close the menu when clicking outside
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+
+      if (
+        isNavOpen &&
+        navContainer &&
+        !navContainer.contains(target) &&
+        toggleNavButton &&
+        !toggleNavButton.contains(target)
+      ) {
+        closeNav();
+      }
+    };
+
+    // close menu when esc key is pressed
+    const handleEscKeyPress = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isNavOpen) {
+        closeNav();
+      }
+    };
+
+    // focus trapping when nav is open
+    const handleTab = (event: KeyboardEvent) => {
+      if (!isNavOpen) {
+        return;
+      }
+
+      const focusElements = [toggleNavButton, ...navLinks, ...socialLinks];
+      const firstElement = focusElements[0];
+      const lastElement = focusElements[focusElements.length - 1];
+
+      if (event.key === "Tab") {
+        // Shift + Tab pressed on first element
+        if (event.shiftKey && document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        }
+        // Tab pressed on last element
+        else if (!event.shiftKey && document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+      }
+    };
+
+    // close navigation function
+    const closeNav = () => {
+      isNavOpen = false;
+
+      // enable scrolling
+      document.getElementsByTagName("body")[0].style.overflow = "visible";
+      // reset aria hidden for main content for screen readers
+      document
+        .getElementsByTagName("main")[0]
+        .setAttribute("aria-hidden", "false");
+      document
+        .getElementsByTagName("footer")[0]
+        .setAttribute("aria-hidden", "false");
+
+      const tl = gsap.timeline();
+      tl.to("#nav-content", {
+        opacity: 0,
+        duration: 0.5,
+        ease: "power4.in",
+      }).to("#nav-container", {
+        y: "-100%",
+        duration: 0.5,
+        ease: "power4.in",
+      });
+
+      navButtonIcon?.classList.remove("open");
+      navLinks.forEach((link) => {
+        link.setAttribute("tabindex", "-1");
+      });
+      socialLinks.forEach((link) => {
+        link.setAttribute("tabindex", "-1");
+      });
+      toggleNavButton?.setAttribute("aria-expanded", "false");
+    };
+
+    // open navigation function
+    const openNav = () => {
+      isNavOpen = true;
+
+      // Scroll to top of screen
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+
+      // lock scrolling
+      document.getElementsByTagName("body")[0].style.overflow = "hidden";
+      // aria hidden for main content for screen readers
+      document
+        .getElementsByTagName("main")[0]
+        .setAttribute("aria-hidden", "true");
+      document
+        .getElementsByTagName("footer")[0]
+        .setAttribute("aria-hidden", "true");
+
+      // Open animation sequence
+      const tl = gsap.timeline();
+      tl.to("#nav-container", {
+        y: "0%",
+        duration: 0.8,
+        ease: "power4.inOut",
+      }).to(
+        "#nav-content",
+        {
+          opacity: 1,
+          duration: 0.8,
+          ease: "power4.inOut",
+        },
+        "-=0.1",
+      );
+
+      navButtonIcon?.classList.add("open");
+      navLinks.forEach((link) => {
+        link.setAttribute("tabindex", "0");
+      });
+      socialLinks.forEach((link) => {
+        link.setAttribute("tabindex", "0");
+      });
+      toggleNavButton?.setAttribute("aria-expanded", "true");
+    };
+
+    // toggle navigation function
+    toggleNavButton?.addEventListener("click", () => {
+      if (isNavOpen) {
+        closeNav();
+      } else {
+        openNav();
+      }
+    });
+
+    // toggle gallery slider on hover
+    navLinks.forEach((link) => {
+      link.addEventListener("mouseenter", () => {
+        const path = link.getAttribute("href");
+
+        // search slides for slide where data-path === path
+        const slide = Array.from(slides).find(
+          (slide) => slide.getAttribute("data-path") === path,
+        );
+
+        // Reset all slides
+        slides.forEach((s) => s.classList.add("translate-x-full"));
+
+        // Show current slide
+        if (slide) {
+          slide.classList.remove("translate-x-full");
+        }
+      });
+    });
+
+    // nav links hover color change
+    navLinks.forEach((hoverlink) => {
+      hoverlink.addEventListener("mouseenter", () => {
+        navLinks.forEach((link) => {
+          if (link === hoverlink) {
+            link.classList.remove("text-neutral-500");
+            link.classList.add("text-black");
+          } else {
+            link.classList.remove("text-black");
+            link.classList.add("text-neutral-500");
+          }
+        });
+      });
+
+      hoverlink.addEventListener("mouseleave", () => {
+        const currentPath = window.location.pathname;
+
+        navLinks.forEach((link) => {
+          if (link.getAttribute("href") === currentPath) {
+            link.classList.add("text-neutral-500");
+            link.classList.remove("text-black");
+          } else {
+            link.classList.remove("text-neutral-500");
+            link.classList.add("text-black");
+          }
+        });
+      });
+    });
+
+    // Add event listeners
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscKeyPress);
+    document.addEventListener("keydown", handleTab);
+
+    // Set active link styles
+    function setActiveLink(
+      navLinks: NodeListOf<HTMLAnchorElement>,
+      currentPath: string,
+    ) {
+      navLinks.forEach((link) => {
+        const linkPath = link.getAttribute("data-path");
+        if (linkPath === currentPath) {
+          link.classList.remove("-translate-x-11", "text-black");
+          link.classList.add("text-neutral-500");
+        } else {
+          link.classList.add("-translate-x-11", "text-black");
+          link.classList.remove("text-neutral-500");
+        }
+      });
+    }
+
+    // Set active slide styles
+    function setActiveSlider(slides: NodeListOf<Element>, currentPath: string) {
+      slides.forEach((link) => {
+        const slidePath = link.getAttribute("data-path");
+        if (slidePath === currentPath) {
+          link.classList.add("z-20");
+        } else {
+          link.classList.add("z-10");
+        }
+      });
+    }
+
+    // Run on page load
+    setActiveLink(navLinks, currentPath);
+    setActiveSlider(slides, currentPath);
+  </script>
+</header>

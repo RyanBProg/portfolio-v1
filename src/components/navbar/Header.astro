@@ -43,10 +43,9 @@ import NavArrow from "../svgs/NavArrow.astro";
           role="menubar"
         >
           <li role="menuitem">
-            <span tabindex="-1" class="overflow-x-hidden flex">
+            <span tabindex="-1" class="menu-item overflow-x-hidden flex">
               <a
                 href="/"
-                data-slide="home-slide"
                 data-path="/"
                 tabindex="-1"
                 class="nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500 focus:translate-x-0"
@@ -57,10 +56,9 @@ import NavArrow from "../svgs/NavArrow.astro";
             </span>
           </li>
           <li role="menuitem">
-            <span tabindex="-1" class="overflow-x-hidden flex">
+            <span tabindex="-1" class="menu-item overflow-x-hidden flex">
               <a
                 href="/about"
-                data-slide="about-slide"
                 data-path="/about"
                 tabindex="-1"
                 class="nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500 focus:translate-x-0"
@@ -71,10 +69,9 @@ import NavArrow from "../svgs/NavArrow.astro";
             </span>
           </li>
           <li role="menuitem">
-            <span tabindex="-1" class="overflow-x-hidden flex">
+            <span tabindex="-1" class="menu-item overflow-x-hidden flex">
               <a
                 href="/projects"
-                data-slide="projects-slide"
                 data-path="/projects"
                 tabindex="-1"
                 class="nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500 focus:translate-x-0"
@@ -85,10 +82,9 @@ import NavArrow from "../svgs/NavArrow.astro";
             </span>
           </li>
           <li role="menuitem">
-            <span tabindex="-1" class="overflow-x-hidden flex">
+            <span tabindex="-1" class="menu-item overflow-x-hidden flex">
               <a
                 href="/contact"
-                data-slide="contact-slide"
                 data-path="/contact"
                 tabindex="-1"
                 class="group nav-link text-black -translate-x-10 hover:translate-x-0 transition-all duration-500 ease-out flex gap-2 items-center focus:outline-none focus:text-rose-500 focus:translate-x-0"
@@ -314,7 +310,7 @@ import NavArrow from "../svgs/NavArrow.astro";
   const navButtonIcon = document.getElementById("nav-button-icon");
   const navList = document.getElementById("nav-list");
   const navLinks = document.querySelectorAll(
-    "[role='menuitem']",
+    ".menu-item",
   ) as NodeListOf<HTMLAnchorElement>;
   const socialLinks = document.querySelectorAll(
     ".social-link",
