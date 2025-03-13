@@ -259,13 +259,17 @@ import { Image } from "astro:assets";
       // Update articles immediately
       articles.forEach((article, index) => {
         if (index === newIndex) {
-          // New active article
+          // activate new article
           article?.classList.remove("opacity-0", "z-0", "pointer-events-none");
           article?.classList.add("opacity-100", "z-30", "relative");
+          article?.setAttribute("aria-hidden", "false");
+          article?.removeAttribute("inert");
         } else {
           // Inactive articles
           article?.classList.remove("opacity-100", "z-30", "relative");
           article?.classList.add("opacity-0", "z-0", "pointer-events-none");
+          article?.setAttribute("aria-hidden", "true");
+          article?.setAttribute("inert", "true");
         }
       });
 
@@ -275,7 +279,7 @@ import { Image } from "astro:assets";
     };
 
     let currentRotation = 0;
-    const rotationStep = 360 / articles.length; // Amount to rotate for each click
+    const rotationStep = 360 / articles.length;
 
     const rotateSlider = (direction: "next" | "prev") => {
       if (direction === "next") {
@@ -299,7 +303,7 @@ import { Image } from "astro:assets";
       rotateSlider("prev");
     });
 
-    // Optional: Disable buttons when at start/end
+    // disable buttons when at start/end
     const updateButtons = () => {
       if (prevButton && nextButton) {
         prevButton.disabled = currentIndex === 0;
@@ -341,13 +345,3 @@ import { Image } from "astro:assets";
     });
   </script>
 </Layout>
-
-<!--
-
-TODO:
-
-- Make carousel accessable
-- Clean up styes and js
-- Add a "swipe me" overlay for the carousel on mobile
-
--->

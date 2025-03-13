@@ -34,6 +34,8 @@ const { id, project } = Astro.props;
       ? "opacity-100 z-30 relative"
       : "opacity-0 z-0 pointer-events-none"
   }`}
+  aria-hidden={id !== "article_1" ? "true" : "false"}
+  inert={id !== "article_1" ? "true" : null}
 >
   <h2 class="font-bold text-4xl tracking-tight mb-5">{project.title}</h2>
   <p class="">
