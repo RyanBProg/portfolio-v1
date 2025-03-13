@@ -19,6 +19,8 @@
           id="name"
           type="text"
           placeholder="Name ..."
+          minlength="2"
+          maxlength="50"
           required
           class="text-2xl sm:text-3xl w-full py-5 px-5 bg-rose-700 text-white transition-colors duration-300 placeholder:text-rose-300 focus:outline-2 focus:-outline-offset-2 focus:outline-white disabled:bg-neutral-400 disabled:placeholder:text-neutral-100"
         /><span class="absolute right-2 top-1 text-3xl">*</span>
@@ -37,6 +39,8 @@
         <textarea
           name="message"
           id="message"
+          minlength="10"
+          maxlength="300"
           required
           placeholder="Message ..."
           rows="6"
@@ -53,6 +57,77 @@
       </div>
     </form>
   </div>
+  <dialog
+    id="form-dialog"
+    class="p-4 rounded-md bg-green-200 min-w-[300px] overflow-clip backdrop:bg-black/50"
+  >
+    <div class="flex justify-between items-center">
+      <p class="font-semibold">Form Submission</p>
+      <form method="dialog">
+        <button
+          class="font-bold p-1 rounded-md transition-colors duration-300 hover:bg-white/80"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-x"
+            ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
+          >
+        </button>
+      </form>
+    </div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="120"
+      height="120"
+      class="absolute -bottom-5 -right-5"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#86efac"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="lucide lucide-circle-check"
+      ><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"
+      ></path></svg
+    >
+    <p class="mt-5 mb-10 relative z-10">Message Sent Successfully</p>
+  </dialog>
+  <dialog
+    id="form-dialog-failed"
+    class="p-4 rounded-md bg-red-300 min-w-[300px] backdrop:bg-black/50"
+  >
+    <div class="flex justify-between items-center">
+      <p class="font-semibold">Form Submission</p>
+      <form method="dialog">
+        <button
+          class="font-bold p-1 rounded-md transition-colors duration-300 hover:bg-white/80"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-x"
+            ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
+          >
+        </button>
+      </form>
+    </div>
+    <p class="mt-5 mb-10 relative">Submission Failed</p>
+  </dialog>
 </section>
 
 <script>
@@ -65,20 +140,53 @@
   const messageInput = document.getElementById(
     "message",
   ) as HTMLTextAreaElement;
+  const formDialog = document.getElementById(
+    "form-dialog",
+  ) as HTMLDialogElement;
+  const formDialogFailed = document.getElementById(
+    "form-dialog-failed",
+  ) as HTMLDialogElement;
   let formDisabled = false;
 
-  form.addEventListener("submit", (e) => {
-    handleSubmit(e);
-  });
-
-  const handleSubmit = async (e: SubmitEvent) => {
-    e.preventDefault();
-    if (formDisabled) {
-      return;
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      formDialogFailed.querySelector("p")!.textContent =
+        "Please enter a valid email address";
+      formDialogFailed.showModal();
+      return false;
     }
 
-    // check inputs
-    // santise inputs
+    return true;
+  };
+
+  // input sanitising function
+  const sanitiseInputs = (name: string, email: string, message: string) => {
+    // remove HTML tags and trim whitespace
+    const sanitizedName = name.replace(/<[^>]*>/g, "").trim();
+    const sanitizedEmail = email.replace(/<[^>]*>/g, "").trim();
+    const sanitizedMessage = message.replace(/<[^>]*>/g, "").trim();
+
+    return {
+      name: sanitizedName,
+      email: sanitizedEmail,
+      message: sanitizedMessage,
+    };
+  };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (formDisabled) return;
+
+    const name = nameInput.value;
+    const email = emailInput.value;
+    const message = messageInput.value;
+
+    // validate email
+    if (!validateEmail(email)) return;
+
+    // sanitise inputs
+    const sanitisedInputs = sanitiseInputs(name, email, message);
 
     try {
       const res = await fetch("/api/sendEmail.json", {
@@ -86,14 +194,12 @@
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name: nameInput.value,
-          email: emailInput.value,
-          message: messageInput.value,
-        }),
+        body: JSON.stringify(sanitisedInputs),
       });
+
       const data = await res.json();
-      if (data.message) {
+
+      if (res.ok) {
         nameInput.value = "";
         emailInput.value = "";
         messageInput.value = "";
@@ -101,13 +207,20 @@
         emailInput.disabled = true;
         messageInput.disabled = true;
         formButton.disabled = true;
+        formDisabled = true;
+        form.setAttribute("inert", "true");
         formButton.innerText = "Submitted";
-        alert("Submission Successful!"); // display returned message
+        formDialog.showModal();
       } else {
-        alert("Submission Failed"); // display returned message
+        // show error message from backend
+        formDialogFailed.querySelector("p")!.textContent = data.message;
+        formDialogFailed.showModal();
       }
     } catch (e) {
       console.error(e);
+      formDialogFailed.querySelector("p")!.textContent =
+        "An error occurred. Please try again.";
+      formDialogFailed.showModal();
     }
-  };
+  });
 </script>
