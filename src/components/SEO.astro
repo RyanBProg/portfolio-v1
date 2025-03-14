@@ -1,0 +1,37 @@
+---
+type Props = {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalURL?: string;
+  type?: string;
+};
+
+const {
+  title,
+  description,
+  image = "../assets/images/my-portfolio-cover-950x950.jpg",
+  canonicalURL = Astro.url.href,
+  type = "website",
+} = Astro.props;
+---
+
+<!-- Basic Meta -->
+<title>{title}</title>
+<meta name="description" content={description} />
+
+<!-- Open Graph / Social -->
+<meta property="og:type" content={type} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+<meta property="og:url" content={canonicalURL} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+
+<!-- Canonical -->
+<link rel="canonical" href={canonicalURL} />

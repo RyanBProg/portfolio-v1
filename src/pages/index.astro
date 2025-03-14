@@ -5,9 +5,17 @@ import ContactForm from "../components/ContactForm.astro";
 import ProjectCarousel from "../components/home/ProjectCarousel.astro";
 import TextBanner from "../components/home/TextBanner.astro";
 import AboutBanner from "../components/home/AboutBanner.astro";
+
+const seo = {
+  title: "Portfolio | Ryan Bowler",
+  description:
+    "A full stack web developer portfolio of projects built and maintained by me (Ryan Bowler). Browse through carefully crafted applications that showcase expertise in front-end design, back-end architecture, and modern development practices.",
+  image: "../assets/images/my-portfolio-cover-950x950.jpg",
+  type: "website",
+};
 ---
 
-<Layout title="Portfolio | Ryan Bowler">
+<Layout {seo}>
   <Hero />
 
   <!-- WHITESPACE -->

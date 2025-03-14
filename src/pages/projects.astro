@@ -5,9 +5,17 @@ const projects = await getCollection("projectsCollection");
 import Layout from "../layouts/Layout.astro";
 import Article from "../components/projects/Article.astro";
 import { Image } from "astro:assets";
+
+const seo = {
+  title: "Projects | Ryan Bowler",
+  description:
+    "Projects built and maintained by me (Ryan Bowler). Browse through carefully crafted applications that showcase expertise in front-end design, back-end architecture, and modern development practices.",
+  image: "../assets/images/my-portfolio-cover-950x950.jpg",
+  type: "website",
+};
 ---
 
-<Layout title="Projects | Ryan Bowler">
+<Layout {seo}>
   <section class="lg:h-screen w-screen -mt-[86px]">
     <div class="h-full w-full flex flex-col lg:flex-row">
       <div class="slider-window">

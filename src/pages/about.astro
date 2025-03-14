@@ -2,9 +2,17 @@
 import Gallery from "../components/about/Gallery.astro";
 import TechStack from "../components/about/TechStack.astro";
 import Layout from "../layouts/Layout.astro";
+
+const seo = {
+  title: "About | Ryan Bowler",
+  description:
+    "Learn more about my journey from mechanical engineering to full-stack development and how I combine my engineering expertise with coding to build solutions. Discover more about my passions outside of work and what else I love to do.",
+  image: "../assets/images/my-portfolio-cover-950x950.jpg",
+  type: "website",
+};
 ---
 
-<Layout title="About | Ryan Bowler">
+<Layout {seo}>
   <div class="overflow-x-clip">
     <!-- WHITESPACE -->
     <div class="h-[150px] sm:h-[200px]" role="presentation"></div>
