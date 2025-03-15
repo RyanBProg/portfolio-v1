@@ -18,6 +18,9 @@ const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
   <div class="border-y">
     <button
       id={`tech-stack-btn-${articleId}`}
+      aria-label="toggle tech stack accordian"
+      aria-expanded="false"
+      aria-controls={`tech-stack-content-${articleId}`}
       class="text-lg tracking-tight font-semibold py-4 px-2 w-full flex justify-between items-center hover:bg-black hover:text-white transition-colors duration-500 ease-out focus:outline-4 focus:-outline-offset-4 focus:outline-black"
       ><span>TECH STACK</span><svg
         xmlns="http://www.w3.org/2000/svg"
@@ -35,6 +38,7 @@ const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
     >
     <div
       id={`tech-stack-content-${articleId}`}
+      aria-hidden="true"
       class="h-0 overflow-hidden transition-[height] duration-300 ease-out"
     >
       <ul
@@ -60,6 +64,9 @@ const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
   <div class="border-b">
     <button
       id={`features-btn-${articleId}`}
+      aria-label="toggle features accordian"
+      aria-expanded="false"
+      aria-controls={`features-content-${articleId}`}
       class="text-lg tracking-tight font-semibold py-4 px-2 w-full flex justify-between items-center hover:bg-black hover:text-white transition-colors duration-500 ease-out focus:outline-4 focus:-outline-offset-4 focus:outline-black"
       ><span>FEATURES</span><svg
         xmlns="http://www.w3.org/2000/svg"
@@ -78,6 +85,7 @@ const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
     </button>
     <div
       id={`features-content-${articleId}`}
+      aria-hidden="true"
       class="h-0 overflow-hidden transition-[height] duration-300 ease-out"
     >
       <div class="py-2">
@@ -97,7 +105,10 @@ const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
   </div>
   <div class="border-b">
     <button
-      id={`notes-btn-${articleId}`}
+      id={`future-btn-${articleId}`}
+      aria-label="toggle future optimisations accordian"
+      aria-expanded="false"
+      aria-controls={`future-content-${articleId}`}
       class="text-lg tracking-tight font-semibold py-4 px-2 w-full flex justify-between items-center hover:bg-black hover:text-white transition-colors duration-500 ease-out focus:outline-4 focus:-outline-offset-4 focus:outline-black"
       ><span>FUTURE OPTIMISATIONS</span><svg
         xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +125,8 @@ const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
       ></button
     >
     <div
-      id={`notes-content-${articleId}`}
+      id={`future-content-${articleId}`}
+      aria-hidden="true"
       class="h-0 overflow-hidden transition-[height] duration-300 ease-out"
     >
       <div class="py-2">
@@ -138,62 +150,56 @@ const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
   const accordionButtons = [
     document.getElementById(`tech-stack-btn-${articleId}`),
     document.getElementById(`features-btn-${articleId}`),
-    document.getElementById(`notes-btn-${articleId}`),
+    document.getElementById(`future-btn-${articleId}`),
   ];
 
   const accordionContents = [
     document.getElementById(`tech-stack-content-${articleId}`),
     document.getElementById(`features-content-${articleId}`),
-    document.getElementById(`notes-content-${articleId}`),
+    document.getElementById(`future-content-${articleId}`),
   ];
 
   let activeIndex = null;
 
+  const closeAccordian = (index) => {
+    const button = accordionButtons[index];
+    button.setAttribute("aria-expanded", "false");
+    button.querySelector("svg").classList.remove("rotate-180");
+    button.classList.remove("bg-black", "text-white");
+    const content = accordionContents[index];
+    content.setAttribute("aria-hidden", "true");
+    content.style.height = "0";
+  };
+
+  const openAccordian = (index) => {
+    const button = accordionButtons[index];
+    button.setAttribute("aria-expanded", "true");
+    button.querySelector("svg").classList.add("rotate-180");
+    button.classList.add("bg-black", "text-white");
+    const content = accordionContents[index];
+    content.setAttribute("aria-hidden", "false");
+    content.style.height = content.scrollHeight + "px";
+  };
+
   const toggleAccordion = (index) => {
-    // Close currently open section if it exists
+    // close currently open section if it exists
     if (activeIndex !== null) {
-      const content = accordionContents[activeIndex];
-      content.style.height = "0";
-      accordionButtons[activeIndex]
-        ?.querySelector("svg")
-        ?.classList.remove("rotate-180");
-      accordionButtons[activeIndex]?.classList.remove("bg-black", "text-white");
+      closeAccordian(activeIndex);
     }
 
-    // If clicking the same button, just close it
+    // if clicking the same button, just close it
     if (activeIndex === index) {
       activeIndex = null;
       return;
     }
 
-    // Open new section
-    const content = accordionContents[index];
-    content.style.height = content.scrollHeight + "px";
-    accordionButtons[index]?.querySelector("svg")?.classList.add("rotate-180");
-    accordionButtons[index]?.classList.add("bg-black", "text-white");
+    // open new section
+    openAccordian(index);
     activeIndex = index;
   };
 
-  // Add click listeners to buttons
+  // add click listeners to buttons
   accordionButtons.forEach((button, index) => {
     button?.addEventListener("click", () => toggleAccordion(index));
-  });
-
-  // Optional: Close accordion when clicking outside
-  document.addEventListener("click", (e) => {
-    const target = e.target;
-    if (!target.closest("button")) {
-      if (activeIndex !== null) {
-        accordionContents[activeIndex]?.classList.add("hidden");
-        accordionButtons[activeIndex]
-          ?.querySelector("svg")
-          ?.classList.remove("rotate-180");
-        accordionButtons[activeIndex]?.classList.remove(
-          "bg-black",
-          "text-white",
-        );
-        activeIndex = null;
-      }
-    }
   });
 </script>

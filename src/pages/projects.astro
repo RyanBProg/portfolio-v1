@@ -247,23 +247,6 @@ const seo = {
     const slider = document.getElementById("slider");
 
     const updateArticles = (newIndex: number) => {
-      // Close all accordions in current article
-      const currentAccordions = articles[currentIndex]?.querySelectorAll(
-        '[id^="tech-stack-content-"], [id^="features-content-"], [id^="notes-content-"]',
-      );
-      currentAccordions?.forEach((elem) => {
-        const accordion = elem as HTMLDivElement;
-        accordion.style.height = "0";
-      });
-
-      // Reset all accordion buttons
-      const currentButtons =
-        articles[currentIndex]?.querySelectorAll('button[id$="-btn"]');
-      currentButtons?.forEach((button) => {
-        button.classList.remove("bg-black", "text-white");
-        button.querySelector("svg")?.classList.remove("rotate-180");
-      });
-
       // Update articles immediately
       articles.forEach((article, index) => {
         if (index === newIndex) {
