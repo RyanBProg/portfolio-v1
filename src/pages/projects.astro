@@ -16,7 +16,7 @@ const seo = {
 ---
 
 <Layout {seo}>
-  <section class="lg:h-screen w-screen -mt-[86px]">
+  <section class="w-screen -mt-[86px]">
     <div class="h-full w-full flex flex-col lg:flex-row">
       <div class="slider-window">
         <h1
@@ -28,7 +28,7 @@ const seo = {
           <!-- spacer for header -->
         </div>
         <div
-          class="grow w-full text-center overflow-hidden relative"
+          class="grow w-full lg:min-h-[900px] text-center overflow-hidden relative"
           id="slider-container"
         >
           <div id="slider" class="slider">
@@ -50,7 +50,7 @@ const seo = {
         </div>
       </div>
       <div
-        class="min-h-fit lg:h-full lg:w-1/2 flex flex-col-reverse lg:flex-col relative"
+        class="min-h-fit lg:min-h-screen lg:w-1/2 flex flex-col-reverse lg:flex-col relative"
       >
         <div class="relative grow w-full z-30">
           <Article id="article_1" project={projects[0].data} />
@@ -58,7 +58,7 @@ const seo = {
           <Article id="article_3" project={projects[2].data} />
           <Article id="article_4" project={projects[3].data} />
         </div>
-        <div class="p-2 flex justify-between relative">
+        <div class="p-2 flex justify-between relative lg:mt-auto">
           <span
             id="prev_label"
             class="absolute top-1/2 -translate-y-1/2 left-16 text-xs max-w-min"
@@ -114,7 +114,7 @@ const seo = {
 
   <style>
     .slider-window {
-      @apply overflow-x-hidden w-full lg:h-full relative flex flex-col;
+      @apply overflow-x-hidden w-full h-full lg:min-h-screen relative flex flex-col;
     }
 
     .slider {
