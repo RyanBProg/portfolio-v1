@@ -91,9 +91,25 @@ const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
       <div class="py-2">
         {
           features.length > 0 ? (
-            <ul class="flex flex-col gap-1">
+            <ul class="flex flex-col gap-2">
               {features.map((feature) => (
-                <li>{feature}</li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-check inline text-green-600"
+                  >
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                  {feature}
+                </li>
               ))}
             </ul>
           ) : (
@@ -132,9 +148,25 @@ const projectBadges = badges.filter((badge) => techStack.includes(badge.title));
       <div class="py-2">
         {
           futureOptimisations.length > 0 ? (
-            <ul class="flex flex-col gap-1">
+            <ul class="flex flex-col gap-2">
               {futureOptimisations.map((item) => (
-                <li>{item}</li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-circle-small inline"
+                  >
+                    <circle cx="12" cy="12" r="6" />
+                  </svg>
+                  {item}
+                </li>
               ))}
             </ul>
           ) : (
