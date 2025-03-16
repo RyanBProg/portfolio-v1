@@ -44,11 +44,11 @@ import planet4 from "../../assets/images/planets/planet-4.png";
       <!-- navigation -->
       <section
         id="nav-content"
-        class="flex flex-col justify-between p-10 pt-32 opacity-0"
+        class="flex flex-col gap-6 justify-between p-10 pt-32 opacity-0"
       >
         <!-- nav links -->
         <ul
-          class="text-black text-6xl font-bold tracking-tight leading-tight overflow-x-hidden"
+          class="nav-link-list text-black text-6xl font-bold tracking-tight leading-tight overflow-x-hidden"
           role="menubar"
         >
           <li role="menuitem">
@@ -94,10 +94,10 @@ import planet4 from "../../assets/images/planets/planet-4.png";
         </ul>
 
         <!-- social links -->
-        <div class="mt-14 grid gap-3">
+        <div class="grid gap-3">
           <div class="grid gap-0.5">
             <span class="text-sm text-neutral-600">Email</span>
-            <p class="text-xl font-medium">ryanbprog@gmail.com</p>
+            <p class="email-text text-xl font-medium">ryanbprog@gmail.com</p>
           </div>
           <a
             href="https://www.linkedin.com/in/ryan-bowler-601919170/"
@@ -421,6 +421,24 @@ import planet4 from "../../assets/images/planets/planet-4.png";
     }
     100% {
       opacity: 0;
+    }
+  }
+
+  @media screen and (max-height: 650px) {
+    #nav-content {
+      @apply pt-20;
+    }
+
+    .nav-link-list {
+      @apply text-3xl;
+    }
+
+    .social-link {
+      @apply text-lg;
+    }
+
+    .email-text {
+      @apply text-lg;
     }
   }
 </style>
