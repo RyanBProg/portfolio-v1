@@ -331,9 +331,6 @@ import planet4 from "../../assets/images/planets/planet-4.png";
   /* stars */
   .star {
     @apply absolute w-1 h-1 rounded-full bg-white opacity-0;
-
-    box-shadow: 0 0 10px 5px rgb(255, 255, 255);
-    animation: shooting-star 10s linear infinite;
   }
 
   .star-1 {
@@ -341,6 +338,7 @@ import planet4 from "../../assets/images/planets/planet-4.png";
 
     box-shadow: 0 0 10px 5px rgb(255, 255, 255);
     animation: shooting-star-1 10s linear infinite;
+    animation-play-state: paused;
   }
 
   .star-2 {
@@ -348,6 +346,7 @@ import planet4 from "../../assets/images/planets/planet-4.png";
 
     box-shadow: 0 0 5px 2px rgb(255, 255, 255);
     animation: shooting-star-2 5s linear 7s infinite;
+    animation-play-state: paused;
   }
 
   .star-3 {
@@ -355,6 +354,7 @@ import planet4 from "../../assets/images/planets/planet-4.png";
 
     box-shadow: 0 0 10px 4px rgb(255, 255, 255);
     animation: shooting-star-3 5s linear 3.5s infinite;
+    animation-play-state: paused;
   }
 
   .star::before {
@@ -443,6 +443,7 @@ import planet4 from "../../assets/images/planets/planet-4.png";
   const socialLinks = document.querySelectorAll(
     ".social-link",
   ) as NodeListOf<HTMLAnchorElement>;
+  const stars = document.querySelectorAll(".star") as NodeListOf<HTMLElement>;
   let isNavOpen = false;
   const currentPath = window.location.pathname;
 
@@ -521,6 +522,9 @@ import planet4 from "../../assets/images/planets/planet-4.png";
     navContainer.setAttribute("inert", "");
     navContainer.setAttribute("aria-hidden", "true");
     toggleNavButton?.setAttribute("aria-expanded", "false");
+    stars.forEach((star) => {
+      star.style.animationPlayState = "paused";
+    });
   };
 
   // open navigation function
@@ -563,6 +567,9 @@ import planet4 from "../../assets/images/planets/planet-4.png";
     navContainer.removeAttribute("inert");
     navContainer.setAttribute("aria-hidden", "false");
     toggleNavButton?.setAttribute("aria-expanded", "true");
+    stars.forEach((star) => {
+      star.style.animationPlayState = "running";
+    });
   };
 
   // toggle navigation function
