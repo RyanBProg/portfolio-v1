@@ -11,12 +11,12 @@ A modern, responsive portfolio website showcasing my work as a Full Stack Develo
 - **Performance Optimized**: Built with Astro for fast page loads and static site generation
 - **Mobile-first Responsive Design**: Fully responsive across all device sizes
 - **Custom GSAP Animations**: Custom animations using GSAP for enhanced user experience
-- **Dynamic Project Gallery**: Interactive project showcase with dynamic routing
-- **Accessibility**: ARIA labels and semantic HTML for better accessibility
+- **Accessibility**: Use of ARIA labels and semantic HTML for better accessibility
 - **Optimization Asset Loading**: Automatic image optimization through Astro's image components
-- **Type Safety**: Full TypeScript integration for robust code
+- **Type Safety**: TypeScript integration for robust code
 - **Dynamic project pages using Astro collections**: Content-driven pages with automatic routing and type-safe schemas
 - **SEO-friendly meta tags**: Optimized meta descriptions and dynamic titles for better search engine visibility
+- **Contact Form**: Contact form integration using Resend
 
 ### 🛠️ Technologies Used
 
@@ -24,17 +24,13 @@ A modern, responsive portfolio website showcasing my work as a Full Stack Develo
 - **TypeScript**: Type safety
 - **Tailwind CSS**: Styling
 - **GSAP**: Animations
-- **Lenis**: Smooth scrolling
 
 ### 🎯 Future Improvements
 
-<input disabled="" type="checkbox"> Add form functionality with reCAPTCHA integration<br>
-<input disabled="" type="checkbox"> Enhance animations across all pages<br>
-<input disabled="" type="checkbox"> Add more interactive elements<br>
-<input disabled="" type="checkbox"> Add blog section<br>
+<input disabled="" type="checkbox"> Add form reCAPTCHA integration<br>
+<input disabled="" type="checkbox"> Add blog sections<br>
+<input disabled="" type="checkbox"> Make use of Astro's actions feature<br>
 <input disabled="" type="checkbox"> Implement light/dark mode<br>
-<input disabled="" type="checkbox"> Add unit tests<br>
-<input disabled="" type="checkbox"> Add CI/CD pipeline<br>
 
 ### 📁 Project Structure
 
@@ -44,6 +40,7 @@ A modern, responsive portfolio website showcasing my work as a Full Stack Develo
 │ ├── assets/ # Images and icons
 │ ├── collections/ # Content collections and tech badges
 │ ├── components/ # Reusable UI components
+│ ├── emailTemplates/ # email template components
 │ ├── layouts/ # Page layouts
 │ └── pages/ # Route pages
 ├── public/ # Static assets
