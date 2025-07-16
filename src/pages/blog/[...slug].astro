@@ -1,0 +1,39 @@
+---
+import { getCollection, render } from "astro:content";
+import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
+import { Image } from "astro:assets";
+
+// Create the static blog pages
+export async function getStaticPaths() {
+  const allPosts = await getCollection("blogPostsCollection");
+  return allPosts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+// Get the requested post
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const seo = {
+  title: post.data.title,
+  description: post.data.description,
+  image: post.data.imageUrl,
+  type: "website",
+};
+---
+
+<BlogPostLayout {seo}>
+  <article aria-labelledby={post.data.title}>
+    <Image
+      src={post.data.imageUrl}
+      alt={post.data.imageAlt}
+      class="h-72 w-72 md:h-96 md:w-96 object-cover mx-auto my-20"
+      width={450}
+      height={450}
+      quality={90}
+    />
+    <Content />
+  </article>
+</BlogPostLayout>

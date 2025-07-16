@@ -9,6 +9,9 @@ import huacachina from "../../assets/images/gallery/huacachina.jpg";
 import machu from "../../assets/images/gallery/machu.jpg";
 import rio from "../../assets/images/gallery/rio.jpg";
 import patagonia from "../../assets/images/gallery/patagonia.jpg";
+import france from "../../assets/images/gallery/france.jpg";
+import switzerland from "../../assets/images/gallery/switzerland.jpg";
+
 import AboutBannerImage from "./AboutBannerImage.astro";
 import LinkArrow from "../svgs/LinkArrow.astro";
 ---
@@ -47,17 +50,25 @@ import LinkArrow from "../svgs/LinkArrow.astro";
       </li>
       <li>
         <TechBadge
-          title={badges[7].title}
-          img={badges[7].img}
-          alt={`${badges[7].alt} icon`}
+          title={badges[6].title}
+          img={badges[6].img}
+          alt={`${badges[6].alt} icon`}
           bgCol="bg-white/10"
         />
       </li>
       <li>
         <TechBadge
-          title={badges[8].title}
-          img={badges[8].img}
-          alt={`${badges[8].alt} icon`}
+          title={badges[10].title}
+          img={badges[10].img}
+          alt={`${badges[10].alt} icon`}
+          bgCol="bg-white/10"
+        />
+      </li>
+      <li>
+        <TechBadge
+          title={badges[9].title}
+          img={badges[9].img}
+          alt={`${badges[9].alt} icon`}
           bgCol="bg-white/10"
         />
       </li>
@@ -74,18 +85,22 @@ import LinkArrow from "../svgs/LinkArrow.astro";
         <AboutBannerImage img={amazon} alt="amazon rainforest" />
         <AboutBannerImage img={huacachina} alt="huacachina" />
         <AboutBannerImage img={machu} alt="machu picchu" />
+        <AboutBannerImage img={switzerland} alt="switzerland" />
         <AboutBannerImage img={bolivia} alt="bolivia" />
         <AboutBannerImage img={rio} alt="rio de janeiro" />
         <AboutBannerImage img={newZealand} alt="new zealand" />
+        <AboutBannerImage img={france} alt="france" />
         <AboutBannerImage img={patagonia} alt="patagonia" />
 
         <!-- Duplicate set of images for seamless loop -->
         <AboutBannerImage img={amazon} alt="amazon rainforest" />
         <AboutBannerImage img={huacachina} alt="huacachina" />
         <AboutBannerImage img={machu} alt="machu picchu" />
+        <AboutBannerImage img={switzerland} alt="switzerland" />
         <AboutBannerImage img={bolivia} alt="bolivia" />
         <AboutBannerImage img={rio} alt="rio de janeiro" />
         <AboutBannerImage img={newZealand} alt="new zealand" />
+        <AboutBannerImage img={france} alt="france" />
         <AboutBannerImage img={patagonia} alt="patagonia" />
       </div>
     </div>

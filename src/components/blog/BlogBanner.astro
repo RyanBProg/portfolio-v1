@@ -1,0 +1,75 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import LinkArrow from "../svgs/LinkArrow.astro";
+
+type Props = {
+  post: CollectionEntry<"blogPostsCollection">;
+};
+
+const { post } = Astro.props;
+---
+
+<article
+  aria-labelledby={post.data.title}
+  class="w-full py-4 flex gap-5 items-center"
+>
+  <Image
+    src={post.data.imageUrl}
+    alt={post.data.imageAlt}
+    class="hidden sm:block h-44 w-44 object-cover rounded"
+    width={250}
+    height={250}
+    quality={90}
+  />
+  <div class="flex flex-col gap-3 text-base sm:text-lg">
+    <!-- title -->
+    <a
+      id={post.data.title}
+      class="text-2xl lg:text-3xl font-semibold text-black transition-opacity duration-300 hover:opacity-60"
+      href={`/blog/${post.id}`}
+      aria-label={`Read more about ${post.data.title}`}
+    >
+      {post.data.title}
+    </a>
+
+    <!-- description -->
+    <p class="text-neutral-700 text-base">{post.data.description}</p>
+
+    <div class="flex divide-x flex-wrap gap-3">
+      <!-- date -->
+      <div class="flex gap-1 items-center text-neutral-700">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-calendar-icon lucide-calendar"
+          ><path d="M8 2v4"></path><path d="M16 2v4"></path><rect
+            width="18"
+            height="18"
+            x="3"
+            y="4"
+            rx="2"></rect><path d="M3 10h18"></path></svg
+        >
+        <p class="text-sm">{post.data.pubDate}</p>
+      </div>
+
+      <!-- tags -->
+      <div class="pl-3 flex gap-2">
+        {
+          post.data.tags.map((tag) => (
+            <span class="px-1.5 py-0.5 border bg-neutral-700 rounded text-sm text-white">
+              {tag}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</article>

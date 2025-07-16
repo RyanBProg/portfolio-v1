@@ -15,6 +15,8 @@ import stripeIcon from "../assets/icons/stripe.svg";
 import sanityIcon from "../assets/icons/sanity.svg";
 import postgresql from "../assets/icons/postgresql.svg";
 import githubIcon from "../assets/icons/github-round.svg";
+import pythonIcon from "../assets/icons/python.svg";
+import jestIcon from "../assets/icons/jest.svg";
 
 export default [
   { title: "TypeScript", alt: "typescript icon", img: typescriptIcon },
@@ -24,7 +26,10 @@ export default [
   { title: "Astro", alt: "astro icon", img: astroIcon },
   { title: "Node.js", alt: "node.js icon", img: nodeJSIcon },
   { title: "Express.js", alt: "express.js icon", img: expressJSIcon },
+  { title: "Python", alt: "python icon", img: pythonIcon },
+  { title: "Jest", alt: "jest icon", img: jestIcon },
   { title: "Tailwind", alt: "tailwind icon", img: tailwindIcon },
+  { title: "Drizzle", alt: "drizzle icon", img: postgresql },
   { title: "MongoDB", alt: "mongo db icon", img: mongoDBIcon },
   { title: "Bootstrap", alt: "bootstrap icon", img: bootstrapIcon },
   { title: "HTML", alt: "html icon", img: htmlIcon },
@@ -32,6 +37,5 @@ export default [
   { title: "Git", alt: "git icon", img: gitIcon },
   { title: "GitHub", alt: "github icon", img: githubIcon },
   { title: "Stripe", alt: "stripe icon", img: stripeIcon },
-  { title: "Drizzle", alt: "drizzle icon", img: postgresql },
   { title: "Sanity", alt: "sanity icon", img: sanityIcon },
 ];
