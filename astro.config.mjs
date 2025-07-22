@@ -9,4 +9,9 @@ export default defineConfig({
   site: "https://portfolio-v1-ryans-projects-197c1757.vercel.app/",
   integrations: [tailwind(), sitemap()],
   adapter: vercel(),
+  markdown: {
+    shikiConfig: {
+      theme: "dracula",
+    },
+  },
 });

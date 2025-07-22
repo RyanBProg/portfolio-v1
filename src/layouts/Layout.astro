@@ -22,11 +22,11 @@ const { seo } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
   </head>
-  <body class="min-h-screen">
+  <body class="min-h-screen flex flex-col">
     <Header />
 
     <!-- Main Content -->
-    <main id="main-content">
+    <main id="main-content" class="grow">
       <slot />
     </main>
 

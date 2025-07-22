@@ -4,7 +4,7 @@ A modern, responsive portfolio website showcasing my work as a Full Stack Develo
 
 ### 🚀 Live Demo
 
-- [View Live Site](https://portfolio-v1-ryans-projects-197c1757.vercel.app/)
+- [View Live Site](https://www.ryanbprog.com/)
 
 ### 🌟 Key Features Implemented
 
@@ -28,9 +28,7 @@ A modern, responsive portfolio website showcasing my work as a Full Stack Develo
 ### 🎯 Future Improvements
 
 <input disabled="" type="checkbox"> Add form reCAPTCHA integration<br>
-<input disabled="" type="checkbox"> Add blog sections<br>
 <input disabled="" type="checkbox"> Make use of Astro's actions feature<br>
-<input disabled="" type="checkbox"> Implement light/dark mode<br>
 
 ### 📁 Project Structure
 

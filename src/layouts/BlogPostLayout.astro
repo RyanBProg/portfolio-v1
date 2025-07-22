@@ -1,0 +1,42 @@
+---
+import Prose from "../components/Prose.astro";
+import Layout from "./Layout.astro";
+const { seo } = Astro.props;
+---
+
+<Layout {seo}>
+  <div
+    class="mx-auto px-4 lg:px-20 max-w-[900px] mt-[20px] sm:mt-[50px] mb-[100px] lg:mb-[150px]"
+  >
+    <!-- go back link -->
+    <a
+      href="/blog"
+      class="block w-fit group relative focus:outline-2 focus:outline-black focus:outline-offset-4"
+    >
+      <span class="flex gap-1 items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-move-up-left-icon lucide-move-up-left"
+          ><path d="M5 11V5H11"></path><path d="M5 5L19 19"></path></svg
+        >
+        <span>Go Back</span>
+      </span>
+      <span
+        class="absolute -bottom-1 left-0 h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full"
+      ></span>
+    </a>
+
+    <!-- content -->
+    <Prose>
+      <slot />
+    </Prose>
+  </div>
+</Layout>

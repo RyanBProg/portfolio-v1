@@ -1,0 +1,43 @@
+---
+import BlogBanner from "../../components/blog/BlogBanner.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+const allPosts = await getCollection("blogPostsCollection");
+
+const seo = {
+  title: "Blog | Ryan Bowler",
+  description:
+    "Explore my blog and latest insights on tech. Stay informed and inspired with regularly updated blog posts.",
+  image: "/assets/images/my-portfolio-cover-950x950.jpg",
+  type: "website",
+};
+---
+
+<Layout {seo}>
+  <div
+    class="overflow-x-clip h-full mt-[100px] sm:mt-[150px] mb-[200px] lg:mb-[350px]"
+  >
+    <div class="px-4 lg:px-20">
+      <h1
+        id="blog-heading"
+        class="text-5xl sm:text-7xl font-bold mb-20 tracking-tight text-center"
+      >
+        Blog Articles
+      </h1>
+    </div>
+    <section
+      aria-labelledby="blog-heading"
+      class="mx-auto px-4 lg:px-20 flex max-w-[900px]"
+    >
+      <ul class="border-y w-full divide-y flex flex-col">
+        {
+          allPosts.map((post) => (
+            <li>
+              <BlogBanner post={post} />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</Layout>
