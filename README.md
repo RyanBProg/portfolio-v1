@@ -33,7 +33,7 @@ A modern, responsive portfolio website showcasing my work as a Full Stack Develo
 ### 📁 Project Structure
 
 ```bash
-.<br>
+.
 ├── src/
 │ ├── assets/ # Images and icons
 │ ├── collections/ # Content collections and tech badges
