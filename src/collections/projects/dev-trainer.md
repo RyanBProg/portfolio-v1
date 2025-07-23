@@ -3,7 +3,7 @@
     title: "Dev Trainer"
     description: "Typescript, React, Next.js, Node.js, Express.js, MongoDB, Tailwind - An application for developers to master keyboard shortcuts through personalized lists. Features include custom shortcut organization, and an admin panel for content management."
     techStack: [ "React", "Next.js" , "TypeScript", "Express.js", "MongoDB", "Tailwind", "Node.js" ]
-    siteUrl: "https://dev-trainer-frontend-ryans-projects-197c1757.vercel.app/"
+    siteUrl: "https://www.devtrainer.net/"
     githubUrl: "https://github.com/RyanBProg/dev-trainer"
     slug: "dev-trainer"
     image: "../../assets/images/dev-trainer-cover-950x950.jpg"

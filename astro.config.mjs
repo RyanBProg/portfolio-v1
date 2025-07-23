@@ -1,17 +1,22 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel";
 import sitemap from "@astrojs/sitemap";
+import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://portfolio-v1-ryans-projects-197c1757.vercel.app/",
+  site: "https://ryanbprog.com/",
   integrations: [tailwind(), sitemap()],
-  adapter: vercel(),
   markdown: {
     shikiConfig: {
       theme: "dracula",
     },
+  },
+  adapter: node({
+    mode: "standalone",
+  }),
+  experimental: {
+    session: true,
   },
 });
