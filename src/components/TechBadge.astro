@@ -13,6 +13,13 @@ const { title, img, alt, bgCol } = Astro.props;
 ---
 
 <span class={`p-2 rounded-lg ${bgCol} flex gap-2 items-center`}>
-  <Image class="h-5 w-5" src={img} alt={alt} height="20" width="20" />
+  <Image
+    quality={50}
+    class="h-5 w-5"
+    src={img}
+    alt={alt}
+    height="20"
+    width="20"
+  />
   {title}
 </span>
