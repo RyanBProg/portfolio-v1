@@ -20,7 +20,7 @@
   <div id="stats" class="mt-16 flex flex-col gap-5 justify-center opacity-0">
     <div class="text-center">
       <h2 class="font-bold tracking-tight text-2xl sm:text-4xl">3+ Years</h2>
-      <p class="text-neutral-500">Coding experience</p>
+      <p class="text-neutral-500">Programming experience</p>
     </div>
     <div class="text-center">
       <h2 class="font-bold tracking-tight text-2xl sm:text-4xl">10+ Years</h2>
@@ -59,7 +59,7 @@
   const stats = document.getElementById("stats");
 
   gsap.set([subText, stats], { opacity: 0 });
-  const tl = gsap.timeline();
+  const tl = gsap.timeline({ delay: 0.5 });
   tl.fromTo(
     mainHeading,
     {
