@@ -2,7 +2,7 @@
     id: "2756397"
     title: "Dev Trainer"
     description: "Typescript, React, Next.js, Node.js, Express.js, MongoDB, Tailwind - An application for developers to master keyboard shortcuts through personalized lists. Features include custom shortcut organization, and an admin panel for content management."
-    techStack: [ "React", "Next.js" , "TypeScript", "Express.js", "MongoDB", "Tailwind", "Node.js" ]
+    techStack: [ "React", "Next.js" , "TypeScript", "Express.js", "MongoDB", "Tailwind", "Node.js", "Gemini" ]
     siteUrl: "https://www.devtrainer.net/"
     githubUrl: "https://github.com/RyanBProg/dev-trainer"
     slug: "dev-trainer"
@@ -13,7 +13,8 @@
         "Database Integration: MongoDB for robust and scalable data storage",
         "Admin Panel: Admin panel for managing data available to users",
         "Performance Optimized: Built with Next.js for fast page loads and static site generation",
-        "Fetch Enhancements: Comprehensive error handling, toast flags, redirects for invalid tokens, and caching"
+        "Fetch Enhancements: Comprehensive error handling, toast flags, redirects for invalid tokens, and caching",
+        "AI Code Snippets: Generate code snippets using Google's Gemini"
     ]
     futureOptimisations: [
         "Allow for more complex shortuct key combinations",

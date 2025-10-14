@@ -17,6 +17,9 @@ import postgresql from "../assets/icons/postgresql.svg";
 import githubIcon from "../assets/icons/github-round.svg";
 import pythonIcon from "../assets/icons/python.svg";
 import jestIcon from "../assets/icons/jest.svg";
+import geminiIcon from "../assets/icons/gemini.svg";
+import awsIcon from "../assets/icons/aws.svg";
+import awsS3Icon from "../assets/icons/aws-s3.svg";
 
 export default [
   { title: "TypeScript", alt: "typescript icon", img: typescriptIcon },
@@ -32,6 +35,9 @@ export default [
   { title: "Drizzle", alt: "drizzle icon", img: postgresql },
   { title: "MongoDB", alt: "mongo db icon", img: mongoDBIcon },
   { title: "Bootstrap", alt: "bootstrap icon", img: bootstrapIcon },
+  { title: "Gemini", alt: "gemini icon", img: geminiIcon },
+  { title: "AWS", alt: "aws icon", img: awsIcon },
+  { title: "AWS S3", alt: "aws s3 icon", img: awsS3Icon },
   { title: "HTML", alt: "html icon", img: htmlIcon },
   { title: "CSS", alt: "css icon", img: cssIcon },
   { title: "Git", alt: "git icon", img: gitIcon },
