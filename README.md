@@ -9,13 +9,14 @@ A modern, responsive portfolio website showcasing my work as a Full Stack Develo
 ### 🌟 Key Features Implemented
 
 - **Performance Optimized**: Built with Astro for fast page loads and static site generation
-- **Mobile-first Responsive Design**: Fully responsive across all device sizes
+- **VPS + CI/CD**: Deployed to a VPS with automated deployment through github actions
+- **Type Safety**: TypeScript integration for robust code
 - **Custom GSAP Animations**: Custom animations using GSAP for enhanced user experience
 - **Accessibility**: Use of ARIA labels and semantic HTML for better accessibility
-- **Optimization Asset Loading**: Automatic image optimization through Astro's image components
-- **Type Safety**: TypeScript integration for robust code
+- **Mobile-first Responsive Design**: Fully responsive across all device sizes
+- **Optimization Asset Loading**: Automatic image optimisation through Astro's image components
 - **Dynamic project pages using Astro collections**: Content-driven pages with automatic routing and type-safe schemas
-- **SEO-friendly meta tags**: Optimized meta descriptions and dynamic titles for better search engine visibility
+- **SEO-friendly meta tags**: Optimised meta descriptions and dynamic titles for better search engine visibility
 - **Contact Form**: Contact form integration using Resend
 
 ### 🛠️ Technologies Used

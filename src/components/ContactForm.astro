@@ -133,6 +133,9 @@
 </section>
 
 <script>
+  import sanitiseInput from "../utils/sanitiseInput";
+  import validEmail from "../utils/validEmail";
+
   const form = document.getElementById("form") as HTMLFormElement;
   const formButton = document.getElementById(
     "form-button",
@@ -150,45 +153,40 @@
   ) as HTMLDialogElement;
   let formDisabled = false;
 
-  const validateEmail = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      formDialogFailed.querySelector("p")!.textContent =
-        "Please enter a valid email address";
-      formDialogFailed.showModal();
-      return false;
-    }
-
-    return true;
-  };
-
-  // input sanitising function
-  const sanitiseInputs = (name: string, email: string, message: string) => {
-    // remove HTML tags and trim whitespace
-    const sanitizedName = name.replace(/<[^>]*>/g, "").trim();
-    const sanitizedEmail = email.replace(/<[^>]*>/g, "").trim();
-    const sanitizedMessage = message.replace(/<[^>]*>/g, "").trim();
-
-    return {
-      name: sanitizedName,
-      email: sanitizedEmail,
-      message: sanitizedMessage,
-    };
-  };
-
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (formDisabled) return;
 
-    const name = nameInput.value;
-    const email = emailInput.value;
-    const message = messageInput.value;
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const message = messageInput.value.trim();
 
-    // validate email
-    if (!validateEmail(email)) return;
+    if (!name) {
+      formDialogFailed.querySelector("p")!.textContent = "Please enter a name";
+      formDialogFailed.showModal();
+      return;
+    }
+
+    if (!validEmail(email)) {
+      formDialogFailed.querySelector("p")!.textContent =
+        "Please enter a valid email address";
+      formDialogFailed.showModal();
+      return;
+    }
+
+    if (!message) {
+      formDialogFailed.querySelector("p")!.textContent =
+        "Please enter a message";
+      formDialogFailed.showModal();
+      return;
+    }
 
     // sanitise inputs
-    const sanitisedInputs = sanitiseInputs(name, email, message);
+    const sanitisedInputs = {
+      name: sanitiseInput(name),
+      email: sanitiseInput(email),
+      message: sanitiseInput(message),
+    };
 
     try {
       const res = await fetch("/api/sendEmail.json", {
