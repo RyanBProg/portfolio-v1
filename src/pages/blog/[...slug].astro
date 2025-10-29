@@ -16,10 +16,13 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
+const imageSrc = new URL(post.data.imageUrl.src, Astro.site ?? Astro.url).href;
+console.log(imageSrc);
+
 const seo = {
   title: post.data.title,
   description: post.data.description,
-  image: post.data.imageUrl,
+  image: imageSrc,
   type: "website",
 };
 ---
