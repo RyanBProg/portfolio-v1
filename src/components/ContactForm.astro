@@ -133,8 +133,7 @@
 </section>
 
 <script>
-  import sanitiseInput from "../utils/sanitiseInput";
-  import validEmail from "../utils/validEmail";
+  import handleContactSubmit from "../utils/contact-form/handleContactSubmit";
 
   const form = document.getElementById("form") as HTMLFormElement;
   const formButton = document.getElementById(
@@ -153,74 +152,17 @@
   ) as HTMLDialogElement;
   let formDisabled = false;
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    if (formDisabled) return;
-
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const message = messageInput.value.trim();
-
-    if (!name) {
-      formDialogFailed.querySelector("p")!.textContent = "Please enter a name";
-      formDialogFailed.showModal();
-      return;
-    }
-
-    if (!validEmail(email)) {
-      formDialogFailed.querySelector("p")!.textContent =
-        "Please enter a valid email address";
-      formDialogFailed.showModal();
-      return;
-    }
-
-    if (!message) {
-      formDialogFailed.querySelector("p")!.textContent =
-        "Please enter a message";
-      formDialogFailed.showModal();
-      return;
-    }
-
-    // sanitise inputs
-    const sanitisedInputs = {
-      name: sanitiseInput(name),
-      email: sanitiseInput(email),
-      message: sanitiseInput(message),
-    };
-
-    try {
-      const res = await fetch("/api/sendEmail.json", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(sanitisedInputs),
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        nameInput.value = "";
-        emailInput.value = "";
-        messageInput.value = "";
-        nameInput.disabled = true;
-        emailInput.disabled = true;
-        messageInput.disabled = true;
-        formButton.disabled = true;
-        formDisabled = true;
-        form.setAttribute("inert", "true");
-        formButton.innerText = "Submitted";
-        formDialog.showModal();
-      } else {
-        // show error message from backend
-        formDialogFailed.querySelector("p")!.textContent = data.message;
-        formDialogFailed.showModal();
-      }
-    } catch (e) {
-      console.error(e);
-      formDialogFailed.querySelector("p")!.textContent =
-        "An error occurred. Please try again.";
-      formDialogFailed.showModal();
-    }
+  form.addEventListener("submit", async (event) => {
+    handleContactSubmit({
+      event,
+      form,
+      nameInput,
+      emailInput,
+      messageInput,
+      formButton,
+      formDisabled,
+      successDialog: formDialog,
+      errorDialog: formDialogFailed,
+    });
   });
 </script>

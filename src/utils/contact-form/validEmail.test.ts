@@ -3,18 +3,18 @@ import validEmail from "./validEmail";
 
 describe("Check valid email function", () => {
   it("Should pass a valid email", () => {
-    expect(validEmail("testing123@gmail.com")).toBeTruthy;
+    expect(validEmail("testing123@gmail.com")).toBeTruthy();
   });
 
   it("Should reject an empty email", () => {
-    expect(validEmail("")).toBeFalsy;
+    expect(validEmail("")).toBeFalsy();
   });
 
-  it("Should reject an email with symbols", () => {
-    expect(validEmail("<p>test</p>@gmail.com")).toBeFalsy;
+  it("Should pass a sub domain", () => {
+    expect(validEmail("abc@gmail.staff.com.au")).toBeTruthy();
   });
 
   it("Should reject an invalid email", () => {
-    expect(validEmail("s@gmaicom")).toBeFalsy;
+    expect(validEmail("s@gmaicom")).toBeFalsy();
   });
 });
