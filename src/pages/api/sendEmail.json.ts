@@ -2,27 +2,10 @@ export const prerender = false;
 import type { APIRoute } from "astro";
 import { Resend } from "resend";
 import { contactEmail } from "../../emailTemplates/contactForm";
+import sanitiseInput from "../../utils/contact-form/sanitiseInput";
+import validEmail from "../../utils/contact-form/validEmail";
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
-
-const validateEmail = (email: string): boolean => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-};
-
-// input sanitising function
-const sanitiseInputs = (name: string, email: string, message: string) => {
-  // remove HTML tags and trim whitespace
-  const sanitizedName = name.replace(/<[^>]*>/g, "").trim();
-  const sanitizedEmail = email.replace(/<[^>]*>/g, "").trim();
-  const sanitizedMessage = message.replace(/<[^>]*>/g, "").trim();
-
-  return {
-    name: sanitizedName,
-    email: sanitizedEmail,
-    message: sanitizedMessage,
-  };
-};
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -30,26 +13,26 @@ export const POST: APIRoute = async ({ request }) => {
     const { name, email, message } = body;
 
     // Check for missing fields
-    if (!name || !email || !message) {
+    if (!name.trim() || !email.trim() || !message.trim()) {
       return new Response(
         JSON.stringify({
           message: "All fields are required",
         }),
         {
-          status: 400, // Bad Request - client error
+          status: 400,
           statusText: "Missing Required Fields",
         },
       );
     }
 
     // Validate email
-    if (!validateEmail(email)) {
+    if (!validEmail(email)) {
       return new Response(
         JSON.stringify({
           message: "Invalid email format",
         }),
         {
-          status: 422, // Unprocessable Entity - validation failed
+          status: 422,
           statusText: "Invalid Email Format",
         },
       );
@@ -80,17 +63,14 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Sanitize inputs
-    const sanitisedInputs = sanitiseInputs(name, email, message);
-
     const { data, error } = await resend.emails.send({
       from: "Portfolio <onboarding@resend.dev>",
       to: ["ryanbprog@gmail.com"],
       subject: "Contact Form Submission",
       html: contactEmail(
-        sanitisedInputs.name,
-        sanitisedInputs.email,
-        sanitisedInputs.message,
+        sanitiseInput(name),
+        sanitiseInput(email),
+        sanitiseInput(message),
       ),
     });
 
@@ -102,7 +82,7 @@ export const POST: APIRoute = async ({ request }) => {
           error: error,
         }),
         {
-          status: 500, // Internal Server Error
+          status: 500,
           statusText: "Email Service Failed",
         },
       );
