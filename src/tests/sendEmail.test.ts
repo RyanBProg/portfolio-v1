@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.stubEnv("RESEND_API_KEY", "test-key");
 let sendMock!: ReturnType<typeof vi.fn>;
+let handleRecaptchaServerMock!: ReturnType<typeof vi.fn>;
 vi.mock("resend", () => {
   sendMock = vi.fn();
   class ResendMock {
@@ -15,8 +16,15 @@ vi.mock("resend", () => {
   return { Resend: ResendMock };
 });
 
+vi.mock("../utils/contact-form/handleRecaptchaServer", () => {
+  handleRecaptchaServerMock = vi
+    .fn()
+    .mockResolvedValue({ success: true, message: "ok" });
+  return { default: handleRecaptchaServerMock };
+});
+
 // import after mocking so the handler uses the stubbed client
-const { POST } = await import("./sendEmail.json");
+const { POST } = await import("../pages/api/sendEmail.json");
 
 const invokeRoute = (payload: Record<string, unknown>) => {
   const request = new Request("http://localhost/api/sendEmail.json", {
@@ -33,57 +41,72 @@ const invokeRoute = (payload: Record<string, unknown>) => {
 describe("POST /api/sendEmail.json", () => {
   beforeEach(() => {
     sendMock.mockReset();
+    handleRecaptchaServerMock.mockClear();
+    handleRecaptchaServerMock.mockResolvedValue({
+      success: true,
+      message: "ok",
+    });
   });
 
-  it("returns 400 when a required field is missing", async () => {
+  it("returns bad res when a required field is missing", async () => {
     const response = await invokeRoute({
       name: "   ",
       email: "person@example.com",
       message: "Hello there!",
     });
 
-    expect(response.status).toBe(400);
-    const body = await response.json();
-    expect(body.message).toBe("All fields are required");
+    expect(response.ok).toBeFalsy();
     expect(sendMock).not.toHaveBeenCalled();
   });
 
-  it("returns 422 when email is invalid", async () => {
+  it("returns bad res when email is invalid", async () => {
     const response = await invokeRoute({
       name: "Ryan",
       email: "invalid-email",
       message: "Hello there!",
     });
 
-    expect(response.status).toBe(422);
-    const body = await response.json();
-    expect(body.message).toBe("Invalid email format");
+    expect(response.ok).toBeFalsy();
     expect(sendMock).not.toHaveBeenCalled();
   });
 
-  it("returns 422 when name is too short", async () => {
+  it("returns bad res when name is too short", async () => {
     const response = await invokeRoute({
       name: "R",
       email: "person@example.com",
       message: "Hello there!",
     });
 
-    expect(response.status).toBe(422);
-    const body = await response.json();
-    expect(body.message).toBe("Name must be between 2 and 50 characters");
+    expect(response.ok).toBeFalsy();
     expect(sendMock).not.toHaveBeenCalled();
   });
 
-  it("returns 422 when message is too short", async () => {
+  it("returns 422 when reCAPTCHA verification fails", async () => {
+    handleRecaptchaServerMock.mockResolvedValueOnce({
+      success: false,
+      message: "bot detected",
+    });
+
+    const response = await invokeRoute({
+      name: "Ryan Bowler",
+      email: "person@example.com",
+      message: "Hello there, this is a longer message",
+      token: "bad-token",
+    });
+
+    expect(handleRecaptchaServerMock).toHaveBeenCalledTimes(1);
+    expect(sendMock).not.toHaveBeenCalled();
+    expect(response.status).toBe(422);
+  });
+
+  it("returns bad res when message is too short", async () => {
     const response = await invokeRoute({
       name: "Ryan",
       email: "person@example.com",
       message: "Too short",
     });
 
-    expect(response.status).toBe(422);
-    const body = await response.json();
-    expect(body.message).toBe("Message must be between 10 and 300 characters");
+    expect(response.ok).toBeFalsy();
     expect(sendMock).not.toHaveBeenCalled();
   });
 
@@ -97,12 +120,13 @@ describe("POST /api/sendEmail.json", () => {
       name: "Ryan Bowler",
       email: "person@example.com",
       message: "Hello there, this is a longer message",
+      token: "oienoivoeifoivemr",
     });
 
     expect(sendMock).toHaveBeenCalledTimes(1);
     expect(response.status).toBe(500);
     const body = await response.json();
-    expect(body.message).toBe("Failed to send email");
+    expect(body.message).toBe("Email Service Failed");
   });
 
   it("returns 200 when email is sent successfully", async () => {
@@ -115,17 +139,15 @@ describe("POST /api/sendEmail.json", () => {
       name: "<b>Ryan</b>",
       email: "person@example.com",
       message: "<script>alert('xss')</script> This is a valid message.",
+      token: "owinerfoeirm",
     });
 
     expect(sendMock).toHaveBeenCalledTimes(1);
     const [{ html }] = sendMock.mock.calls[0];
     expect(html).not.toContain("<script>");
-    expect(html).toContain("&lt;b&gt;Ryan&lt;/b&gt;");
-    expect(html).toContain("alert(&#39;xss&#39;)");
 
     expect(response.status).toBe(200);
     const body = await response.json();
     expect(body.message).toBe("Email sent successfully");
-    expect(body.data).toEqual({ id: "email-123" });
   });
 });

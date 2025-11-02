@@ -12,7 +12,7 @@
         Enter your details below and I will get back to you as soon as possible.
       </p>
     </div>
-    <form class="mt-14" aria-label="contact form" id="form">
+    <form class="mt-14 relative" aria-label="contact form" id="form">
       <div class="relative w-full">
         <input
           name="name"
@@ -55,10 +55,16 @@
           >Submit</button
         >
       </div>
+      <p
+        id="error-message"
+        class="hidden text-red-200 font-semibold text-xl absolute -bottom-16 text-center mx-auto inset-x-0"
+      >
+        Form Error
+      </p>
     </form>
   </div>
   <dialog
-    id="form-dialog"
+    id="form-dialog-success"
     class="p-4 rounded-md bg-green-200 min-w-[300px] overflow-clip backdrop:bg-black/50"
   >
     <div class="flex justify-between items-center">
@@ -102,38 +108,12 @@
       Thanks for reaching out, I'll get back to you soon.
     </p>
   </dialog>
-  <dialog
-    id="form-dialog-failed"
-    class="p-4 rounded-md bg-red-300 min-w-[300px] backdrop:bg-black/50"
-  >
-    <div class="flex justify-between items-center">
-      <p class="font-semibold">Submission Failed</p>
-      <form method="dialog">
-        <button
-          class="font-bold p-1 rounded-md transition-colors duration-300 hover:bg-white/80"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-x"
-            ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
-          >
-        </button>
-      </form>
-    </div>
-    <p class="mt-5 mb-10 relative">Please try again later.</p>
-  </dialog>
 </section>
 
 <script>
-  import handleContactSubmit from "../utils/contact-form/handleContactSubmit";
+  import validateContactFormInputs from "../utils/contact-form/validateContactFormInputs";
+  import handleRecaptchaClient from "../utils/contact-form/handleRecaptchaClient";
+  import postContactForm from "../utils/contact-form/postContactForm";
 
   const form = document.getElementById("form") as HTMLFormElement;
   const formButton = document.getElementById(
@@ -144,25 +124,69 @@
   const messageInput = document.getElementById(
     "message",
   ) as HTMLTextAreaElement;
-  const formDialog = document.getElementById(
-    "form-dialog",
+  const errorMessage = document.getElementById(
+    "error-message",
+  ) as HTMLParagraphElement;
+  const formDialogSuccess = document.getElementById(
+    "form-dialog-success",
   ) as HTMLDialogElement;
-  const formDialogFailed = document.getElementById(
-    "form-dialog-failed",
-  ) as HTMLDialogElement;
+
   let formDisabled = false;
 
   form.addEventListener("submit", async (event) => {
-    handleContactSubmit({
-      event,
-      form,
-      nameInput,
-      emailInput,
-      messageInput,
-      formButton,
-      formDisabled,
-      successDialog: formDialog,
-      errorDialog: formDialogFailed,
-    });
+    event.preventDefault();
+    if (formDisabled) {
+      return;
+    }
+
+    formButton.disabled = true;
+    formDisabled = true;
+
+    const formInputs = validateContactFormInputs(
+      nameInput.value,
+      emailInput.value,
+      messageInput.value,
+    );
+    if (!formInputs.success) {
+      console.log(formInputs.message);
+      // Show error in UI
+      errorMessage.classList.add("block");
+      errorMessage.textContent = formInputs.message;
+      return;
+    }
+
+    const { success, token, message } = await handleRecaptchaClient();
+    if (!success) {
+      console.log(message);
+      // Show error in UI
+      errorMessage.classList.add("block");
+      errorMessage.textContent = message;
+      return;
+    }
+
+    try {
+      const resData = await postContactForm(
+        nameInput.value,
+        emailInput.value,
+        messageInput.value,
+        token,
+      );
+
+      nameInput.value = "";
+      emailInput.value = "";
+      messageInput.value = "";
+      nameInput.disabled = true;
+      emailInput.disabled = true;
+      messageInput.disabled = true;
+      form.setAttribute("inert", "true");
+      formButton.innerText = "Submitted";
+      formDialogSuccess.showModal();
+    } catch (error) {
+      console.error("Form error:", error);
+      formDisabled = false;
+      formButton.disabled = false;
+      errorMessage.classList.add("block");
+      errorMessage.textContent = "Interal server error, please try again";
+    }
   });
 </script>

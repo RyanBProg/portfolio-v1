@@ -24,8 +24,25 @@ export default async function handleRecaptchaServer(token: string) {
     });
 
     const responseData = await response.json();
+    const {
+      success,
+      score = 0,
+      action,
+      hostname,
+      ["error-codes"]: errorCodes,
+    } = responseData;
+    if (Array.isArray(errorCodes) && errorCodes.length > 0) {
+      console.error("reCAPTCHA error codes:", errorCodes.join(", "));
+    }
+    if (!success || score < 0.5) {
+      console.warn("reCAPTCHA rejected", { score, action, hostname });
+      return {
+        success: false,
+        message: "ReCAPTCHA verification failed, bot detected.",
+      };
+    }
 
-    return { success: true, data: responseData };
+    return { success: true, message: "ReCAPTCHA verification success" };
   } catch (error) {
     console.error("reCAPTCHA verification failed:", error);
     return { success: false, message: "reCAPTCHA verification failed." };
