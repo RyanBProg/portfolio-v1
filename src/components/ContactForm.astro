@@ -111,9 +111,7 @@
 </section>
 
 <script>
-  import validateContactFormInputs from "../utils/contact-form/validateContactFormInputs";
-  import handleRecaptchaClient from "../utils/contact-form/handleRecaptchaClient";
-  import postContactForm from "../utils/contact-form/postContactForm";
+  import initContactForm from "../utils/contact-form/initContactForm";
 
   const form = document.getElementById("form") as HTMLFormElement;
   const formButton = document.getElementById(
@@ -131,74 +129,13 @@
     "form-dialog-success",
   ) as HTMLDialogElement;
 
-  let formDisabled = false;
-
-  const hideError = () => {
-    errorMessage.classList.add("hidden");
-    errorMessage.textContent = "";
-  };
-
-  const showError = (message: string) => {
-    formDisabled = false;
-    formButton.disabled = false;
-    errorMessage.textContent = message;
-    errorMessage.classList.remove("hidden");
-  };
-
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    if (formDisabled) {
-      return;
-    }
-
-    hideError();
-    formButton.disabled = true;
-    formDisabled = true;
-
-    const formInputs = validateContactFormInputs(
-      nameInput.value,
-      emailInput.value,
-      messageInput.value,
-    );
-    if (!formInputs.success) {
-      showError(formInputs.message);
-      return;
-    }
-    const {
-      name: sanitisedName,
-      email: sanitisedEmail,
-      message: sanitisedMessage,
-    } = formInputs.data;
-
-    const { success, token, message } = await handleRecaptchaClient();
-    if (!success) {
-      showError(message);
-      return;
-    }
-
-    try {
-      const resData = await postContactForm(
-        sanitisedName,
-        sanitisedEmail,
-        sanitisedMessage,
-        token,
-      );
-
-      nameInput.value = "";
-      emailInput.value = "";
-      messageInput.value = "";
-      nameInput.disabled = true;
-      emailInput.disabled = true;
-      messageInput.disabled = true;
-      form.setAttribute("inert", "true");
-      formButton.innerText = "Submitted";
-      formButton.disabled = true;
-      formDisabled = true;
-      hideError();
-      formDialogSuccess.showModal();
-    } catch (error) {
-      console.error("Form error:", error);
-      showError("Internal server error, please try again");
-    }
+  initContactForm({
+    form,
+    formButton,
+    nameInput,
+    emailInput,
+    messageInput,
+    errorMessage,
+    successDialog: formDialogSuccess,
   });
 </script>
