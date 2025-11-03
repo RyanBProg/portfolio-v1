@@ -133,12 +133,25 @@
 
   let formDisabled = false;
 
+  const hideError = () => {
+    errorMessage.classList.add("hidden");
+    errorMessage.textContent = "";
+  };
+
+  const showError = (message: string) => {
+    formDisabled = false;
+    formButton.disabled = false;
+    errorMessage.textContent = message;
+    errorMessage.classList.remove("hidden");
+  };
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (formDisabled) {
       return;
     }
 
+    hideError();
     formButton.disabled = true;
     formDisabled = true;
 
@@ -148,27 +161,26 @@
       messageInput.value,
     );
     if (!formInputs.success) {
-      console.log(formInputs.message);
-      // Show error in UI
-      errorMessage.classList.add("block");
-      errorMessage.textContent = formInputs.message;
+      showError(formInputs.message);
       return;
     }
+    const {
+      name: sanitisedName,
+      email: sanitisedEmail,
+      message: sanitisedMessage,
+    } = formInputs.data;
 
     const { success, token, message } = await handleRecaptchaClient();
     if (!success) {
-      console.log(message);
-      // Show error in UI
-      errorMessage.classList.add("block");
-      errorMessage.textContent = message;
+      showError(message);
       return;
     }
 
     try {
       const resData = await postContactForm(
-        nameInput.value,
-        emailInput.value,
-        messageInput.value,
+        sanitisedName,
+        sanitisedEmail,
+        sanitisedMessage,
         token,
       );
 
@@ -180,13 +192,13 @@
       messageInput.disabled = true;
       form.setAttribute("inert", "true");
       formButton.innerText = "Submitted";
+      formButton.disabled = true;
+      formDisabled = true;
+      hideError();
       formDialogSuccess.showModal();
     } catch (error) {
       console.error("Form error:", error);
-      formDisabled = false;
-      formButton.disabled = false;
-      errorMessage.classList.add("block");
-      errorMessage.textContent = "Interal server error, please try again";
+      showError("Internal server error, please try again");
     }
   });
 </script>

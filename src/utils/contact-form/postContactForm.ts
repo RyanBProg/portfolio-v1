@@ -8,6 +8,9 @@ export default async function postContactForm(
   try {
     const res = await fetchFn("/api/sendEmail.json", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         name,
         email,
@@ -16,10 +19,14 @@ export default async function postContactForm(
       }),
     });
 
-    if (!res.ok) throw new Error("Interal Server Error");
+    if (!res.ok) {
+      throw new Error("Internal Server Error");
+    }
 
     return await res.json();
   } catch (error) {
-    return new Error("Interal Server Error");
+    throw error instanceof Error
+      ? error
+      : new Error("Internal Server Error");
   }
 }
