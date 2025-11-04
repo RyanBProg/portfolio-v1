@@ -52,7 +52,9 @@ export default function initContactForm({
 
   const submitHandler = async (event: SubmitEvent) => {
     event.preventDefault();
+    formButton.innerText = "Submitting...";
     if (formDisabled) {
+      formButton.innerText = "Submit";
       return;
     }
 
@@ -67,6 +69,7 @@ export default function initContactForm({
     );
 
     if (!validated.success) {
+      formButton.innerText = "Submit";
       showError(errorMessage, validated.message, formButton, setFormDisabled);
       return;
     }
@@ -79,6 +82,7 @@ export default function initContactForm({
 
     const { success, token, message } = await recaptchaFn();
     if (!success || !token) {
+      formButton.innerText = "Submit";
       showError(
         errorMessage,
         message ?? "Unable to verify reCAPTCHA. Please try again.",
@@ -104,6 +108,7 @@ export default function initContactForm({
       successDialog.showModal();
     } catch (error) {
       console.error("Form error:", error);
+      formButton.innerText = "Submit";
       showError(
         errorMessage,
         "Internal server error, please try again",
