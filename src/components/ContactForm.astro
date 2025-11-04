@@ -12,7 +12,7 @@
         Enter your details below and I will get back to you as soon as possible.
       </p>
     </div>
-    <form class="mt-14" aria-label="contact form" id="form">
+    <form class="mt-14 relative" aria-label="contact form" id="form">
       <div class="relative w-full">
         <input
           name="name"
@@ -52,13 +52,19 @@
           type="submit"
           id="form-button"
           class="text-2xl sm:text-3xl mt-4 font-bold tracking-tight uppercase py-4 w-full rounded-md text-black bg-white transition-all duration-500 ease-out hover:bg-rose-200 hover:rounded-xl focus:outline-4 focus:-outline-offset-4 focus:outline-black disabled:bg-neutral-400 disabled:hover:bg-neutral-400"
-          >Submit</button
-        >
+          >Submit
+        </button>
       </div>
+      <p
+        id="error-message"
+        class="hidden text-red-200 font-semibold text-xl absolute -bottom-16 text-center mx-auto inset-x-0"
+      >
+        <!-- form error goes here -->
+      </p>
     </form>
   </div>
   <dialog
-    id="form-dialog"
+    id="form-dialog-success"
     class="p-4 rounded-md bg-green-200 min-w-[300px] overflow-clip backdrop:bg-black/50"
   >
     <div class="flex justify-between items-center">
@@ -102,37 +108,11 @@
       Thanks for reaching out, I'll get back to you soon.
     </p>
   </dialog>
-  <dialog
-    id="form-dialog-failed"
-    class="p-4 rounded-md bg-red-300 min-w-[300px] backdrop:bg-black/50"
-  >
-    <div class="flex justify-between items-center">
-      <p class="font-semibold">Submission Failed</p>
-      <form method="dialog">
-        <button
-          class="font-bold p-1 rounded-md transition-colors duration-300 hover:bg-white/80"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-x"
-            ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
-          >
-        </button>
-      </form>
-    </div>
-    <p class="mt-5 mb-10 relative">Please try again later.</p>
-  </dialog>
 </section>
 
 <script>
+  import initContactForm from "../utils/contact-form/initContactForm";
+
   const form = document.getElementById("form") as HTMLFormElement;
   const formButton = document.getElementById(
     "form-button",
@@ -142,87 +122,20 @@
   const messageInput = document.getElementById(
     "message",
   ) as HTMLTextAreaElement;
-  const formDialog = document.getElementById(
-    "form-dialog",
+  const errorMessage = document.getElementById(
+    "error-message",
+  ) as HTMLParagraphElement;
+  const formDialogSuccess = document.getElementById(
+    "form-dialog-success",
   ) as HTMLDialogElement;
-  const formDialogFailed = document.getElementById(
-    "form-dialog-failed",
-  ) as HTMLDialogElement;
-  let formDisabled = false;
 
-  const validateEmail = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      formDialogFailed.querySelector("p")!.textContent =
-        "Please enter a valid email address";
-      formDialogFailed.showModal();
-      return false;
-    }
-
-    return true;
-  };
-
-  // input sanitising function
-  const sanitiseInputs = (name: string, email: string, message: string) => {
-    // remove HTML tags and trim whitespace
-    const sanitizedName = name.replace(/<[^>]*>/g, "").trim();
-    const sanitizedEmail = email.replace(/<[^>]*>/g, "").trim();
-    const sanitizedMessage = message.replace(/<[^>]*>/g, "").trim();
-
-    return {
-      name: sanitizedName,
-      email: sanitizedEmail,
-      message: sanitizedMessage,
-    };
-  };
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    if (formDisabled) return;
-
-    const name = nameInput.value;
-    const email = emailInput.value;
-    const message = messageInput.value;
-
-    // validate email
-    if (!validateEmail(email)) return;
-
-    // sanitise inputs
-    const sanitisedInputs = sanitiseInputs(name, email, message);
-
-    try {
-      const res = await fetch("/api/sendEmail.json", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(sanitisedInputs),
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        nameInput.value = "";
-        emailInput.value = "";
-        messageInput.value = "";
-        nameInput.disabled = true;
-        emailInput.disabled = true;
-        messageInput.disabled = true;
-        formButton.disabled = true;
-        formDisabled = true;
-        form.setAttribute("inert", "true");
-        formButton.innerText = "Submitted";
-        formDialog.showModal();
-      } else {
-        // show error message from backend
-        formDialogFailed.querySelector("p")!.textContent = data.message;
-        formDialogFailed.showModal();
-      }
-    } catch (e) {
-      console.error(e);
-      formDialogFailed.querySelector("p")!.textContent =
-        "An error occurred. Please try again.";
-      formDialogFailed.showModal();
-    }
+  initContactForm({
+    form,
+    formButton,
+    nameInput,
+    emailInput,
+    messageInput,
+    errorMessage,
+    successDialog: formDialogSuccess,
   });
 </script>
