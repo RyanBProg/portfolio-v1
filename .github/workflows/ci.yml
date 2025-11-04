@@ -24,7 +24,13 @@ jobs:
         run: npm run test -- --run
 
       - name: Run end to end tests
-        run: npm run cypress
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          headless: true
+          start: npm run dev
+          wait-on: "http://localhost:4321"
+          spec: cypress/e2e/**/*.cy.ts
 
       - name: Run Type Check
         run: npm run type-check
