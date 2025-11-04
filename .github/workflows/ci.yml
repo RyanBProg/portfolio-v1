@@ -20,8 +20,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
+      - name: Run unit tests
         run: npm run test -- --run
+
+      - name: Run end to end tests
+        run: npm run cypress
 
       - name: Run Type Check
         run: npm run type-check
