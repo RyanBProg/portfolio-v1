@@ -47,20 +47,20 @@
           class="text-2xl sm:text-3xl w-full py-5 px-5 bg-rose-500 text-white transition-colors duration-300 placeholder:text-rose-300 focus:outline-2 focus:-outline-offset-2 focus:outline-white disabled:bg-neutral-400 disabled:placeholder:text-neutral-100"
         ></textarea><span class="absolute right-2 top-1 text-3xl">*</span>
       </div>
-      <div class="px-4 sm:px-0 w-full">
+      <div class="relative px-4 sm:px-0 w-full">
         <button
           type="submit"
           id="form-button"
           class="text-2xl sm:text-3xl mt-4 font-bold tracking-tight uppercase py-4 w-full rounded-md text-black bg-white transition-all duration-500 ease-out hover:bg-rose-200 hover:rounded-xl focus:outline-4 focus:-outline-offset-4 focus:outline-black disabled:bg-neutral-400 disabled:hover:bg-neutral-400"
           >Submit
         </button>
+        <p
+          id="error-message"
+          class="hidden mt-6 text-red-200 font-semibold text-xl text-center mx-auto"
+        >
+          <!-- form error goes here -->
+        </p>
       </div>
-      <p
-        id="error-message"
-        class="hidden text-red-200 font-semibold text-xl absolute -bottom-16 text-center mx-auto inset-x-0"
-      >
-        <!-- form error goes here -->
-      </p>
     </form>
   </div>
   <dialog
