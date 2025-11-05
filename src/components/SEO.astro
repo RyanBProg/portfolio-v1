@@ -5,6 +5,8 @@ type Props = {
   image?: string;
   canonicalURL?: string;
   type?: string;
+  publishedDate?: string;
+  author?: string;
 };
 
 const {
@@ -13,25 +15,41 @@ const {
   image = "../assets/images/my-portfolio-cover-950x950.jpg",
   canonicalURL = Astro.url.href,
   type = "website",
+  publishedDate,
+  author = "Ryan Bowler",
 } = Astro.props;
 ---
 
 <!-- Basic Meta -->
 <title>{title}</title>
 <meta name="description" content={description} />
+{
+  publishedDate && (
+    <meta name="article:published_time" content={publishedDate} />
+  )
+}
+{author && <meta name="author" content={author} />}
 
 <!-- Open Graph / Social -->
-<meta property="og:type" content={type} />
+
 <meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
+<meta property="og:type" content={type} />
 <meta property="og:image" content={image} />
 <meta property="og:url" content={canonicalURL} />
+<meta property="og:description" content={description} />
+{author && <meta property="article:author" content={author} />}
+{
+  publishedDate && (
+    <meta property="article:published_time" content={publishedDate} />
+  )
+}
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={image} />
+{author && <meta name="twitter:creator" content={author} />}
 
 <!-- Canonical -->
 <link rel="canonical" href={canonicalURL} />

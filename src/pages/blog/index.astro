@@ -31,11 +31,13 @@ const seo = {
     >
       <ul class="border-y w-full divide-y flex flex-col">
         {
-          allPosts.map((post) => (
-            <li>
-              <BlogBanner post={post} />
-            </li>
-          ))
+          allPosts
+            .map((post) => (
+              <li>
+                <BlogBanner post={post} />
+              </li>
+            ))
+            .reverse()
         }
       </ul>
     </section>
