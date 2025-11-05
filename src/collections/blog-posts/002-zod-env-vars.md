@@ -15,9 +15,9 @@ _By Ryan Bowler - 05/11/2025_
 
 ## What's the problem?
 
-Environment variables, we all use them, and we all forget about them. One day they're there, the next they're not (you forgot to add them again) and suddenly your app’s throwing errors that make no sense. Undefined values creep in, things break in mysterious ways, and TypeScript just shrugs. Debugging problems can eat hours of time, all because your environment wasn’t as safe as you thought, let's explore how we can solve this.
+Environment variables - we all use them, and we all forget about them. One day they're there, the next they're not (you forgot to add them again) and suddenly your app’s throwing errors that make no sense. Undefined values creep in, things break in mysterious ways, and TypeScript just shrugs. Debugging problems can eat hours of time, all because your environment wasn’t as safe as you thought, let's explore how we can solve this.
 
-In my setup below, I have only one key-value pair in my .env file. In my index.ts file, I’m trying to pull in 2 env variables and type them to “string”. This causes me 2 problems:
+In my setup below, I have only one key-value pair in my .env file. In my index.ts file, I’m trying to pull in 2 env variables and type them to “string”. This causes 2 problems:
 
 1. TypeScript is shouting at me that I can't assign the type “string” because the env variable could also be “undefined”.
 2. When I run the code, the second console.log() will print “undefined” …because it is.
@@ -38,7 +38,7 @@ If all you want is to silence the TypeScript error, you might be tempted to reac
 
 ### If Checks - Okay Solution
 
-Okay now we’re getting somewhere, this checks for undefined at runtime and throws descriptive errors. Not only that, but it also types the env variables to “string” after the if check. This solution is pretty good, it does what we want, nothing more, nothing less, like a Toyota Corolla type solution, ...but don’t we deserve more than that???
+Okay now we’re getting somewhere, this checks for undefined at runtime and throws descriptive errors. Not only that, but it also types the env variables to “string” after the "if" check. This solution is pretty good, it does what we want, nothing more, nothing less, like a Toyota Corolla type solution, ...but don’t we deserve more than that???
 
 ![image.png](../../assets/images/blog-posts/002/zod-env_if-checks.png)
 
